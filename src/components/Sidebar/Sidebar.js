@@ -1,5 +1,5 @@
 // @flow strict
-import React from 'react';
+import React, { useEffect } from 'react';
 import Author from './Author';
 import Contacts from './Contacts';
 import Copyright from './Copyright';

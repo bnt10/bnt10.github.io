@@ -9,6 +9,11 @@ const createPostsPages = require('./pagination/create-posts-pages.js');
 const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
+  // Test
+  createPage({
+    path: '/tt',
+    component: path.resolve('./src/templates/tt.js')
+  });
   // 404
   createPage({
     path: '/404',
