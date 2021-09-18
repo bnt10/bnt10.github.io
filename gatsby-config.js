@@ -113,6 +113,14 @@ module.exports = {
             }
           },
           {
+            resolve: 'gatsby-remark-highlight-code',
+            options: {
+              terminal: 'carbon',
+              theme: 'vscode',
+              lineNumbers: 'true',
+            }
+          },
+          {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 960,
@@ -128,6 +136,7 @@ module.exports = {
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
           'gatsby-remark-external-links'
+
         ]
       }
     },

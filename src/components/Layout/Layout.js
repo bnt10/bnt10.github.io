@@ -2,6 +2,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import type { Node as ReactNode } from 'react';
+import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
 import { useSiteMetadata } from '../../hooks';
 import styles from './Layout.module.scss';
 
@@ -11,7 +12,7 @@ type Props = {
   description?: string,
   socialImage?: string
 };
-
+deckDeckGoHighlightElement();
 const Layout = ({
   children,
   title,
