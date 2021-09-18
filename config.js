@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://bnt10.github.io/',
   pathPrefix: '/',
   title: '주 1회 작성하는 개발 블로그',
   subtitle: 'Java, Python, React, Mysql',
@@ -12,28 +12,25 @@ module.exports = {
   useKatex: false,
   menu: [
     {
-      label: '2021',
-      path: '/2021'
-    },
-    {
-      label: 'Articles',
+      label: '전체',
       path: '/'
     },
     {
-      label: 'About me',
-      path: '/pages/about'
+      label: 'React',
+      path: '/tag/react'
     },
     {
-      label: 'Contact me',
-      path: '/pages/contacts'
-    }
+      label: 'Gatsby',
+      path: '/tag/gatsby'
+    },
+
   ],
   author: {
     name: 'JinHyeong Kim',
     photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    bio: '시간을 기록으로',
     contacts: {
-      email: '',
+      email: 'bnt10@naver.com',
       facebook: '#',
       telegram: '#',
       twitter: '#',
