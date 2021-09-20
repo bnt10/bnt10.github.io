@@ -105,6 +105,23 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          {
+            resolve: 'gatsby-remark-table-of-contents',
+            options: {
+              exclude: 'Table of Contents',
+              tight: false,
+              ordered: false,
+              fromHeading: 1,
+              toHeading: 6,
+              className: 'table-of-contents'
+            },
+          },
+          {
+            resolve: 'gatsby-remark-code-buttons',
+            options: {
+              tooltipText: 'copy',
+            },
+          },
           'gatsby-remark-relative-images',
           {
             resolve: 'gatsby-remark-katex',
@@ -131,6 +148,7 @@ module.exports = {
             resolve: 'gatsby-remark-responsive-iframe',
             options: { wrapperStyle: 'margin-bottom: 1.0725rem' }
           },
+
           'gatsby-remark-autolink-headers',
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
