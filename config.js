@@ -23,12 +23,20 @@ module.exports = {
       label: 'Gatsby',
       path: '/tag/gatsby'
     },
+    {
+      label: 'Node',
+      path: '/tag/node'
+    },
+    {
+      label: 'NextJs',
+      path: '/tag/nextjs'
+    },
 
   ],
   author: {
     name: 'JinHyeong Kim',
     photo: '/photo.jpg',
-    bio: '시간을 기록으로',
+    bio: '배운거 기록',
     contacts: {
       email: 'bnt10@naver.com',
       facebook: '#',
