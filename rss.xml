@@ -1,4 +1,184 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[Java, Python, React, Mysql]]></description><link>https://bnt10.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Sep 2021 05:00:39 GMT</lastBuildDate><item><title><![CDATA[Nodejs 설치]]></title><description><![CDATA[Node intsall]]></description><link>https://bnt10.github.io//posts/node-install</link><guid isPermaLink="false">https://bnt10.github.io//posts/node-install</guid><pubDate>Tue, 21 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[Java, Python, React, Mysql]]></description><link>https://bnt10.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 22 Sep 2021 13:04:43 GMT</lastBuildDate><item><title><![CDATA[nextJs 설치]]></title><description><![CDATA[nextJs install]]></description><link>https://bnt10.github.io//posts/react-nextjs-install</link><guid isPermaLink="false">https://bnt10.github.io//posts/react-nextjs-install</guid><pubDate>Wed, 22 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
+&lt;div class=&quot;table-of-contents&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD&quot;&gt;1. 시스템 요구사항&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2-create-next-app-%ED%86%B5%ED%95%9C-%EC%84%A4%EC%B9%98&quot;&gt;2. create-next-app 통한 설치&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#3-create-next-app-%ED%86%B5%ED%95%9C-%EC%84%A4%EC%B9%98typescript&quot;&gt;3. create-next-app 통한 설치(TypeScript)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#4-%EB%A9%94%EB%89%B4%EC%96%BC-%EC%84%A4%EC%B9%98create-next-app-%EB%AF%B8%EC%82%AC%EC%9A%A9&quot;&gt;4. 메뉴얼 설치(create-next-app 미사용)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;1-시스템-요구사항&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD&quot; aria-label=&quot;1 시스템 요구사항 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 시스템 요구사항&lt;/h3&gt;
+&lt;p&gt;Node.js 12.0 이상
+MacOS, Linux Windows (including WSL)&lt;/p&gt;
+&lt;h3 id=&quot;2-create-next-app-통한-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-create-next-app-%ED%86%B5%ED%95%9C-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;2 create next app 통한 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. create-next-app 통한 설치&lt;/h3&gt;
+&lt;p&gt;npx create-next-app [project_name]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;[project_name] 생성할 프로젝트 폴더명&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`npx create-next-app hello_next`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;npx create-next-app hello_next&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-create-next-app-통한-설치typescript&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-create-next-app-%ED%86%B5%ED%95%9C-%EC%84%A4%EC%B9%98typescript&quot; aria-label=&quot;3 create next app 통한 설치typescript permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. create-next-app 통한 설치(TypeScript)&lt;/h3&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`npx create-next-app --typescript`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;npx create-next-app --typescript&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;h3 id=&quot;4-메뉴얼-설치create-next-app-미사용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-%EB%A9%94%EB%89%B4%EC%96%BC-%EC%84%A4%EC%B9%98create-next-app-%EB%AF%B8%EC%82%AC%EC%9A%A9&quot; aria-label=&quot;4 메뉴얼 설치create next app 미사용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. 메뉴얼 설치(create-next-app 미사용)&lt;/h3&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`npm install next react react-dom`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;npm install next react react-dom&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;설치 후 package.json에 아래 내용 추가&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`&amp;quot;scripts&amp;quot;: {
+  &amp;quot;dev&amp;quot;: &amp;quot;next dev&amp;quot;,
+  &amp;quot;build&amp;quot;: &amp;quot;next build&amp;quot;,
+  &amp;quot;start&amp;quot;: &amp;quot;next start&amp;quot;,
+  &amp;quot;lint&amp;quot;: &amp;quot;next lint&amp;quot;
+}`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;&amp;quot;scripts&amp;quot;: {
+  &amp;quot;dev&amp;quot;: &amp;quot;next dev&amp;quot;,
+  &amp;quot;build&amp;quot;: &amp;quot;next build&amp;quot;,
+  &amp;quot;start&amp;quot;: &amp;quot;next start&amp;quot;,
+  &amp;quot;lint&amp;quot;: &amp;quot;next lint&amp;quot;
+}&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;프로젝트 폴더를 기준으로 아래와 같은 폴더 구조로 index.js도 추가하여야 한다.&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`pages
+└─ index.js
+package.json`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;pages
+└─ index.js
+package.json&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;index.js에 간단한 내용을 추가해보자&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`function HelloNext() {
+  return &lt;div&gt;Hello Next.js!&lt;/div&gt;
+}
+
+export default HelloNext`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;function HelloNext() {
+  return &amp;lt;div&amp;gt;Hello Next.js!&amp;lt;/div&amp;gt;
+}
+
+export default HelloNext&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;페이지 실행을 확인해보자&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`npm run dev`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;npm run dev&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;hr&gt;</content:encoded></item><item><title><![CDATA[Nodejs 설치]]></title><description><![CDATA[Node intsall]]></description><link>https://bnt10.github.io//posts/node-install</link><guid isPermaLink="false">https://bnt10.github.io//posts/node-install</guid><pubDate>Tue, 21 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
 &lt;div class=&quot;table-of-contents&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
