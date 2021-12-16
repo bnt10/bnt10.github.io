@@ -1,4 +1,113 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[Java, Python, React, Mysql]]></description><link>https://bnt10.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 22 Sep 2021 13:04:43 GMT</lastBuildDate><item><title><![CDATA[nextJs 설치]]></title><description><![CDATA[nextJs install]]></description><link>https://bnt10.github.io//posts/react-nextjs-install</link><guid isPermaLink="false">https://bnt10.github.io//posts/react-nextjs-install</guid><pubDate>Wed, 22 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[Java, Python, React, Mysql]]></description><link>https://bnt10.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 16 Dec 2021 06:10:39 GMT</lastBuildDate><item><title><![CDATA[react 개발일지-(1)]]></title><description><![CDATA[프로젝트 시작]]></description><link>https://bnt10.github.io//posts/react 개발일지</link><guid isPermaLink="false">https://bnt10.github.io//posts/react 개발일지</guid><pubDate>Wed, 15 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
+&lt;div class=&quot;table-of-contents&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1-nextjs-%EC%99%80-typescript-%EC%84%A4%EC%B9%98&quot;&gt;1. NextJs 와 Typescript 설치&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2-folder-%EA%B5%AC%EC%A1%B0&quot;&gt;2. Folder 구조&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;1-nextjs-와-typescript-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-nextjs-%EC%99%80-typescript-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;1 nextjs 와 typescript 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. NextJs 와 Typescript 설치&lt;/h3&gt;
+&lt;p&gt;메뉴얼 설치(create-next-app 미사용)
+&lt;a href=&quot;/posts/react-nextjs-install&quot;&gt;설치방법&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-folder-구조&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-folder-%EA%B5%AC%EC%A1%B0&quot; aria-label=&quot;2 folder 구조 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Folder 구조&lt;/h3&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`public
+└─images
+favicon.ico
+src
+└─common
+  └─assets
+    └─scss
+  └─components
+    └─elements
+      └─[Name]
+         [Name].tsx
+    └─hooks
+    └─types
+    └─utils
+  └─modules
+    └─auth
+      └─api
+          AuthAPI.ts
+      └─components
+          AuthForm.tsx
+      auth.js
+  pages
+  └─auth
+    └─authAPI
+        authAPI.ts
+    └─[Name]API
+        [Name]API.ts
+  store
+  └─modules
+    └─base
+    index.ts
+    store.ts
+    configureSotre.ts
+  _app.tsx
+  _document.tsx
+  index.tsx
+.babelrc
+.eslintrc.json
+package.json
+tsconfig.json
+next.config.js`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;public
+└─images
+favicon.ico
+src
+└─common
+  └─assets
+    └─scss
+  └─components
+    └─elements
+      └─[Name]
+         [Name].tsx
+    └─hooks
+    └─types
+    └─utils
+  └─modules
+    └─auth
+      └─api
+          AuthAPI.ts
+      └─components
+          AuthForm.tsx
+      auth.js
+  pages
+  └─auth
+    └─authAPI
+        authAPI.ts
+    └─[Name]API
+        [Name]API.ts
+  store
+  └─modules
+    └─base
+    index.ts
+    store.ts
+    configureSotre.ts
+  _app.tsx
+  _document.tsx
+  index.tsx
+.babelrc
+.eslintrc.json
+package.json
+tsconfig.json
+next.config.js&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;</content:encoded></item><item><title><![CDATA[nextJs 설치]]></title><description><![CDATA[nextJs install]]></description><link>https://bnt10.github.io//posts/react-nextjs-install</link><guid isPermaLink="false">https://bnt10.github.io//posts/react-nextjs-install</guid><pubDate>Wed, 22 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
 &lt;div class=&quot;table-of-contents&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#1-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD&quot;&gt;1. 시스템 요구사항&lt;/a&gt;&lt;/li&gt;
@@ -64,7 +173,8 @@ MacOS, Linux Windows (including WSL)&lt;/p&gt;
               data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
               data-toaster-text=&quot;&quot;
               data-toaster-duration=&quot;3500&quot;
-              onClick=&quot;copyToClipboard(`npm install next react react-dom`, ``)&quot;
+              onClick=&quot;copyToClipboard(`npm install next react react-dom
+npm install --save-dev typescript @types/react`, ``)&quot;
             &gt;
               &lt;div
                 class=&quot;gatsby-code-button&quot;
@@ -74,7 +184,8 @@ MacOS, Linux Windows (including WSL)&lt;/p&gt;
               &lt;/div&gt;
             &lt;/div&gt;
 &lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
-          &lt;code slot=&quot;code&quot;&gt;npm install next react react-dom&lt;/code&gt;
+          &lt;code slot=&quot;code&quot;&gt;npm install next react react-dom
+npm install --save-dev typescript @types/react&lt;/code&gt;
         &lt;/deckgo-highlight-code&gt;
 &lt;p&gt;설치 후 package.json에 아래 내용 추가&lt;/p&gt;
 &lt;div
@@ -106,7 +217,7 @@ MacOS, Linux Windows (including WSL)&lt;/p&gt;
   &amp;quot;lint&amp;quot;: &amp;quot;next lint&amp;quot;
 }&lt;/code&gt;
         &lt;/deckgo-highlight-code&gt;
-&lt;p&gt;프로젝트 폴더를 기준으로 아래와 같은 폴더 구조로 index.js도 추가하여야 한다.&lt;/p&gt;
+&lt;p&gt;프로젝트 폴더를 기준으로 아래와 같은 폴더 구조로 index.jxs도 추가하여야 한다.&lt;/p&gt;
 &lt;div
               class=&quot;gatsby-code-button-container&quot;
               data-toaster-id=&quot;&quot;
@@ -115,8 +226,9 @@ MacOS, Linux Windows (including WSL)&lt;/p&gt;
               data-toaster-text=&quot;&quot;
               data-toaster-duration=&quot;3500&quot;
               onClick=&quot;copyToClipboard(`pages
-└─ index.js
-package.json`, ``)&quot;
+└─ index.tsx
+package.json
+tsconfig.json`, ``)&quot;
             &gt;
               &lt;div
                 class=&quot;gatsby-code-button&quot;
@@ -127,10 +239,97 @@ package.json`, ``)&quot;
             &lt;/div&gt;
 &lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
           &lt;code slot=&quot;code&quot;&gt;pages
-└─ index.js
-package.json&lt;/code&gt;
+└─ index.tsx
+package.json
+tsconfig.json&lt;/code&gt;
         &lt;/deckgo-highlight-code&gt;
-&lt;p&gt;index.js에 간단한 내용을 추가해보자&lt;/p&gt;
+&lt;p&gt;tsconfig.json 설정 정보&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`{
+  &amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;target&amp;quot;: &amp;quot;es5&amp;quot;,
+    &amp;quot;lib&amp;quot;: [
+      &amp;quot;dom&amp;quot;,
+      &amp;quot;dom.iterable&amp;quot;,
+      &amp;quot;esnext&amp;quot;
+    ],
+    &amp;quot;allowJs&amp;quot;: true,
+    &amp;quot;skipLibCheck&amp;quot;: true,
+    &amp;quot;strict&amp;quot;: false,
+    &amp;quot;forceConsistentCasingInFileNames&amp;quot;: true,
+    &amp;quot;noEmit&amp;quot;: true,
+    &amp;quot;esModuleInterop&amp;quot;: true,
+    &amp;quot;module&amp;quot;: &amp;quot;esnext&amp;quot;,
+    &amp;quot;moduleResolution&amp;quot;: &amp;quot;node&amp;quot;,
+    &amp;quot;resolveJsonModule&amp;quot;: true,
+    &amp;quot;isolatedModules&amp;quot;: true,
+    &amp;quot;jsx&amp;quot;: &amp;quot;preserve&amp;quot;,
+    &amp;quot;baseUrl&amp;quot;: &amp;quot;.&amp;quot;,
+    &amp;quot;checkJs&amp;quot;: true,
+  },
+  &amp;quot;include&amp;quot;: [
+    &amp;quot;next-env.d.ts&amp;quot;,
+    &amp;quot;**/*.ts&amp;quot;,
+    &amp;quot;**/*.tsx&amp;quot;,
+    &amp;quot;**/*.css&amp;quot;,
+    &amp;quot;src/**/*.ts&amp;quot;,
+    &amp;quot;src/**/*.css&amp;quot;,
+  ],
+  &amp;quot;exclude&amp;quot;: [
+    &amp;quot;node_modules&amp;quot;
+  ],
+}`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;{
+  &amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;target&amp;quot;: &amp;quot;es5&amp;quot;,
+    &amp;quot;lib&amp;quot;: [
+      &amp;quot;dom&amp;quot;,
+      &amp;quot;dom.iterable&amp;quot;,
+      &amp;quot;esnext&amp;quot;
+    ],
+    &amp;quot;allowJs&amp;quot;: true,
+    &amp;quot;skipLibCheck&amp;quot;: true,
+    &amp;quot;strict&amp;quot;: false,
+    &amp;quot;forceConsistentCasingInFileNames&amp;quot;: true,
+    &amp;quot;noEmit&amp;quot;: true,
+    &amp;quot;esModuleInterop&amp;quot;: true,
+    &amp;quot;module&amp;quot;: &amp;quot;esnext&amp;quot;,
+    &amp;quot;moduleResolution&amp;quot;: &amp;quot;node&amp;quot;,
+    &amp;quot;resolveJsonModule&amp;quot;: true,
+    &amp;quot;isolatedModules&amp;quot;: true,
+    &amp;quot;jsx&amp;quot;: &amp;quot;preserve&amp;quot;,
+    &amp;quot;baseUrl&amp;quot;: &amp;quot;.&amp;quot;,
+    &amp;quot;checkJs&amp;quot;: true,
+  },
+  &amp;quot;include&amp;quot;: [
+    &amp;quot;next-env.d.ts&amp;quot;,
+    &amp;quot;**/*.ts&amp;quot;,
+    &amp;quot;**/*.tsx&amp;quot;,
+    &amp;quot;**/*.css&amp;quot;,
+    &amp;quot;src/**/*.ts&amp;quot;,
+    &amp;quot;src/**/*.css&amp;quot;,
+  ],
+  &amp;quot;exclude&amp;quot;: [
+    &amp;quot;node_modules&amp;quot;
+  ],
+}&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt;index.tsx에 간단한 내용을 추가해보자&lt;/p&gt;
 &lt;div
               class=&quot;gatsby-code-button-container&quot;
               data-toaster-id=&quot;&quot;

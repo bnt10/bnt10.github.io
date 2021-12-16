@@ -124,7 +124,8 @@ MacOS, Linux Windows (including WSL)</p>
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text=""
               data-toaster-duration="3500"
-              onClick="copyToClipboard(`npm install next react react-dom`, ``)"
+              onClick="copyToClipboard(`npm install next react react-dom
+npm install --save-dev typescript @types/react`, ``)"
             >
               <div
                 class="gatsby-code-button"
@@ -134,7 +135,8 @@ MacOS, Linux Windows (including WSL)</p>
               </div>
             </div>
 <deckgo-highlight-code language="javascript" terminal="carbon" theme="vscode"  >
-          <code slot="code">npm install next react react-dom</code>
+          <code slot="code">npm install next react react-dom
+npm install --save-dev typescript @types/react</code>
         </deckgo-highlight-code>
 <p>설치 후 package.json에 아래 내용 추가</p>
 <div
@@ -166,7 +168,7 @@ MacOS, Linux Windows (including WSL)</p>
   &quot;lint&quot;: &quot;next lint&quot;
 }</code>
         </deckgo-highlight-code>
-<p>프로젝트 폴더를 기준으로 아래와 같은 폴더 구조로 index.js도 추가하여야 한다.</p>
+<p>프로젝트 폴더를 기준으로 아래와 같은 폴더 구조로 index.jxs도 추가하여야 한다.</p>
 <div
               class="gatsby-code-button-container"
               data-toaster-id=""
@@ -175,8 +177,9 @@ MacOS, Linux Windows (including WSL)</p>
               data-toaster-text=""
               data-toaster-duration="3500"
               onClick="copyToClipboard(`pages
-└─ index.js
-package.json`, ``)"
+└─ index.tsx
+package.json
+tsconfig.json`, ``)"
             >
               <div
                 class="gatsby-code-button"
@@ -187,10 +190,97 @@ package.json`, ``)"
             </div>
 <deckgo-highlight-code language="javascript" terminal="carbon" theme="vscode"  >
           <code slot="code">pages
-└─ index.js
-package.json</code>
+└─ index.tsx
+package.json
+tsconfig.json</code>
         </deckgo-highlight-code>
-<p>index.js에 간단한 내용을 추가해보자</p>
+<p>tsconfig.json 설정 정보</p>
+<div
+              class="gatsby-code-button-container"
+              data-toaster-id=""
+              data-toaster-class="gatsby-code-button-toaster"
+              data-toaster-text-class="gatsby-code-button-toaster-text"
+              data-toaster-text=""
+              data-toaster-duration="3500"
+              onClick="copyToClipboard(`{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es5&quot;,
+    &quot;lib&quot;: [
+      &quot;dom&quot;,
+      &quot;dom.iterable&quot;,
+      &quot;esnext&quot;
+    ],
+    &quot;allowJs&quot;: true,
+    &quot;skipLibCheck&quot;: true,
+    &quot;strict&quot;: false,
+    &quot;forceConsistentCasingInFileNames&quot;: true,
+    &quot;noEmit&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;resolveJsonModule&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;jsx&quot;: &quot;preserve&quot;,
+    &quot;baseUrl&quot;: &quot;.&quot;,
+    &quot;checkJs&quot;: true,
+  },
+  &quot;include&quot;: [
+    &quot;next-env.d.ts&quot;,
+    &quot;**/*.ts&quot;,
+    &quot;**/*.tsx&quot;,
+    &quot;**/*.css&quot;,
+    &quot;src/**/*.ts&quot;,
+    &quot;src/**/*.css&quot;,
+  ],
+  &quot;exclude&quot;: [
+    &quot;node_modules&quot;
+  ],
+}`, ``)"
+            >
+              <div
+                class="gatsby-code-button"
+                data-tooltip="copy"
+              >
+                <svg class="gatsby-code-button-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z"/></svg>
+              </div>
+            </div>
+<deckgo-highlight-code language="javascript" terminal="carbon" theme="vscode"  >
+          <code slot="code">{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es5&quot;,
+    &quot;lib&quot;: [
+      &quot;dom&quot;,
+      &quot;dom.iterable&quot;,
+      &quot;esnext&quot;
+    ],
+    &quot;allowJs&quot;: true,
+    &quot;skipLibCheck&quot;: true,
+    &quot;strict&quot;: false,
+    &quot;forceConsistentCasingInFileNames&quot;: true,
+    &quot;noEmit&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;resolveJsonModule&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;jsx&quot;: &quot;preserve&quot;,
+    &quot;baseUrl&quot;: &quot;.&quot;,
+    &quot;checkJs&quot;: true,
+  },
+  &quot;include&quot;: [
+    &quot;next-env.d.ts&quot;,
+    &quot;**/*.ts&quot;,
+    &quot;**/*.tsx&quot;,
+    &quot;**/*.css&quot;,
+    &quot;src/**/*.ts&quot;,
+    &quot;src/**/*.css&quot;,
+  ],
+  &quot;exclude&quot;: [
+    &quot;node_modules&quot;
+  ],
+}</code>
+        </deckgo-highlight-code>
+<p>index.tsx에 간단한 내용을 추가해보자</p>
 <div
               class="gatsby-code-button-container"
               data-toaster-id=""
