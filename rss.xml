@@ -1,4 +1,374 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[Java, Python, React, Mysql]]></description><link>https://bnt10.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 16 Dec 2021 06:10:39 GMT</lastBuildDate><item><title><![CDATA[react 개발일지-(1)]]></title><description><![CDATA[프로젝트 시작]]></description><link>https://bnt10.github.io//posts/react 개발일지</link><guid isPermaLink="false">https://bnt10.github.io//posts/react 개발일지</guid><pubDate>Wed, 15 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[Java, Python, React, Mysql]]></description><link>https://bnt10.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 16 Dec 2021 10:07:34 GMT</lastBuildDate><item><title><![CDATA[react 개발일지-(2)]]></title><description><![CDATA[사용 할 React 컴포넌트 스타일링 정하기]]></description><link>https://bnt10.github.io//posts/react 개발일지-2</link><guid isPermaLink="false">https://bnt10.github.io//posts/react 개발일지-2</guid><pubDate>Thu, 16 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
+&lt;div class=&quot;table-of-contents&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#style-%EB%B0%A9%EC%8B%9D-%EA%B2%B0%EC%A0%95&quot;&gt;style 방식 결정&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#inline-styles&quot;&gt;inline styles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#styled-components&quot;&gt;styled-components&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#css-modules&quot;&gt;CSS Modules&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#styled-components-%EC%84%A4%EC%B9%98&quot;&gt;styled-components 설치&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1%EC%84%A4%EC%B9%98&quot;&gt;1.설치&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#styled-components-%EC%A0%81%EC%9A%A9&quot;&gt;styled-components 적용&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1global-style-%EC%9E%91%EC%84%B1&quot;&gt;1.global style 작성&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2app%EC%97%90-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0&quot;&gt;2.APP에 적용하기&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;style-방식-결정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#style-%EB%B0%A9%EC%8B%9D-%EA%B2%B0%EC%A0%95&quot; aria-label=&quot;style 방식 결정 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;style 방식 결정&lt;/h3&gt;
+&lt;p&gt;리엑트에서 명확히 정해진 스타일링이 없다.
+이번에 사용할 스타일링 방식을 결정해 보기로 하였다.&lt;/p&gt;
+&lt;h4 id=&quot;inline-styles&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#inline-styles&quot; aria-label=&quot;inline styles permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;inline styles&lt;/h4&gt;
+&lt;p&gt;먼저 결론적으로 사용안하는게 좋다라고 판단 하였다.
+기본적으로 후보군을 찾으면서 제일 먼저 접하게 되는 스타일링 방식이다.
+기본적인 설명과 사용하지 말라는 내용이 다수&lt;br&gt;
+가장 큰 이유로 확장성이 떨어진다는 내용들이 많았다.
+(기타: 전역관리, 유지보수)&lt;br&gt;
+실제 작성해보고 별로인지 확인하고 싶어 작성 하는 시간을 가졌다.
+(추후 정리부분)&lt;/p&gt;
+&lt;h4 id=&quot;styled-components&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#styled-components&quot; aria-label=&quot;styled components permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;styled-components&lt;/h4&gt;
+&lt;p&gt;이번에는 이 방식으로 진행하기로 결정&lt;br&gt;
+CSS-in-JS방식의 CSS의 컴포넌트화 방식으로 작성
+React-native 개발당시 차용하여&lt;br&gt;
+사용한 경험이 결정에 큰 부분을 차지하여 아쉽다.. &lt;/p&gt;
+&lt;h4 id=&quot;css-modules&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#css-modules&quot; aria-label=&quot;css modules permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;CSS Modules&lt;/h4&gt;
+&lt;p&gt;CSS-in-CSS 방식으로 inline styles의 한계를 보완할 수 있는 방법이라 생각된다.
+또한 CSS-in-JS 방식보다는 번들크기에서 작아 로딩시 이점이 있다
+다음에는 이 방식으로 구성을 해보고싶다.&lt;br&gt;
+(초기 응답이 중요하다면 이런 방식은 어떨지)&lt;/p&gt;
+&lt;h3 id=&quot;styled-components-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#styled-components-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;styled components 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;styled-components 설치&lt;/h3&gt;
+&lt;h4 id=&quot;1설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1%EC%84%A4%EC%B9%98&quot; aria-label=&quot;1설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.설치&lt;/h4&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`npm i styled-components &amp;&amp; npm i -D @types/styled-components
+//브라우별 style 공통으로 초기화
+npm i --save styled-normalize`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;npm i styled-components &amp;amp;&amp;amp; npm i -D @types/styled-components
+//브라우별 style 공통으로 초기화
+npm i --save styled-normalize&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;h3 id=&quot;styled-components-적용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#styled-components-%EC%A0%81%EC%9A%A9&quot; aria-label=&quot;styled components 적용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;styled-components 적용&lt;/h3&gt;
+&lt;h4 id=&quot;1global-style-작성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1global-style-%EC%9E%91%EC%84%B1&quot; aria-label=&quot;1global style 작성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.global style 작성&lt;/h4&gt;
+&lt;p&gt; 1.전역 스타일 type 선언&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`// /src/styels/global-styled.d.ts
+import &apos;styled-components&apos;
+declare module &apos;styled-components&apos; {
+  export interface DefaultTheme {
+    device: {
+      mobile: string,
+      tablet: string,
+      laptop: string,
+    };
+    dark: {
+      mainBackground: string;
+      // neutral color
+      title: string;
+      primaryText: string;
+      secondaryText: string;
+      disable: string;
+      border: string;
+      divider: string;
+      background: string;
+      tableHeader: string;
+    };
+    light: {
+      mainBackground: string;
+      // neutral color
+      title: string;
+      primaryText: string;
+      secondaryText: string;
+      disable: string;
+      border: string;
+      divider: string;
+      background: string;
+      tableHeader: string;
+      // point-color
+      // point-color
+    };
+    response: {};
+  }
+}`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;// /src/styels/global-styled.d.ts
+import &amp;#39;styled-components&amp;#39;
+declare module &amp;#39;styled-components&amp;#39; {
+  export interface DefaultTheme {
+    device: {
+      mobile: string,
+      tablet: string,
+      laptop: string,
+    };
+    dark: {
+      mainBackground: string;
+      // neutral color
+      title: string;
+      primaryText: string;
+      secondaryText: string;
+      disable: string;
+      border: string;
+      divider: string;
+      background: string;
+      tableHeader: string;
+    };
+    light: {
+      mainBackground: string;
+      // neutral color
+      title: string;
+      primaryText: string;
+      secondaryText: string;
+      disable: string;
+      border: string;
+      divider: string;
+      background: string;
+      tableHeader: string;
+      // point-color
+      // point-color
+    };
+    response: {};
+  }
+}&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt; 2.전역으로 사용될 createGlobalStyle 정의 &lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`// /src/styels/global-styles.ts
+import { createGlobalStyle } from &amp;quot;styled-components&amp;quot;;
+import { normalize } from &amp;quot;styled-normalize&amp;quot;;
+
+const GlobalStyle = createGlobalStyle\`
+  \${normalize}
+
+  html,
+  body {
+    overflow: hidden;
+  }
+
+  html, body {width:100%; min-height:100%;}
+  
+  * {
+    box-sizing: border-box;
+  }
+\`;
+
+export default GlobalStyle;`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;// /src/styels/global-styles.ts
+import { createGlobalStyle } from &amp;quot;styled-components&amp;quot;;
+import { normalize } from &amp;quot;styled-normalize&amp;quot;;
+
+const GlobalStyle = createGlobalStyle`
+  ${normalize}
+
+  html,
+  body {
+    overflow: hidden;
+  }
+
+  html, body {width:100%; min-height:100%;}
+  
+  * {
+    box-sizing: border-box;
+  }
+`;
+
+export default GlobalStyle;&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;p&gt; 3.사용할 테마 및 미디어 쿼리 정의&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`// /src/styels/theme.tsx
+
+import styled, { css, DefaultTheme } from &apos;styled-components&apos;;
+
+export const theme: DefaultTheme = {
+    device: {
+        mobile: \`screen and (max-width: \${&amp;quot;375px&amp;quot;})\`,
+        tablet: \`screen and (max-width: \${&amp;quot;768px&amp;quot;})\`,
+        laptop: \`screen and (max-width: \${&amp;quot;1024px&amp;quot;})\`,
+    },
+    dark: {
+        mainBackground: \`#333\`,
+        // neutral color
+        title: \`rgba(255,255,255,0.85)\`,
+        primaryText: \`rgba(255,255,255,0.65)\`,
+        secondaryText: \`rgba(255,255,255,0.45)\`,
+        disable: \`rgba(255,255,255,0.25)\`,
+        border: \`rgba(255,255,255,0.15)\`,
+        divider: \`rgba(255,255,255,0.06)\`,
+        background: \`rgba(255,255,255,0.04)\`,
+        tableHeader: \`rgba(255,255,255,0.02)\`,
+        // point-color
+    },
+    light: {
+        mainBackground: \`#fff\`,
+        // neutral color
+        title: \`rgba(0, 0, 0, 0.85)\`,
+        primaryText: \`rgba(0, 0, 0, 0.75)\`,
+        secondaryText: \`rgba(0, 0, 0, 0.45)\`,
+        disable: \`rgba(0, 0, 0, 0.25)\`,
+        border: \`rgba(0, 0, 0, 0.15)\`,
+        divider: \`rgba(0, 0, 0, 0.06)\`,
+        background: \`rgba(0, 0, 0, 0.04)\`,
+        tableHeader: \`rgba(0, 0, 0, 0.02)\`,
+        // point-color
+    },
+    response: {},
+};`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;// /src/styels/theme.tsx
+
+import styled, { css, DefaultTheme } from &amp;#39;styled-components&amp;#39;;
+
+export const theme: DefaultTheme = {
+    device: {
+        mobile: `screen and (max-width: ${&amp;quot;375px&amp;quot;})`,
+        tablet: `screen and (max-width: ${&amp;quot;768px&amp;quot;})`,
+        laptop: `screen and (max-width: ${&amp;quot;1024px&amp;quot;})`,
+    },
+    dark: {
+        mainBackground: `#333`,
+        // neutral color
+        title: `rgba(255,255,255,0.85)`,
+        primaryText: `rgba(255,255,255,0.65)`,
+        secondaryText: `rgba(255,255,255,0.45)`,
+        disable: `rgba(255,255,255,0.25)`,
+        border: `rgba(255,255,255,0.15)`,
+        divider: `rgba(255,255,255,0.06)`,
+        background: `rgba(255,255,255,0.04)`,
+        tableHeader: `rgba(255,255,255,0.02)`,
+        // point-color
+    },
+    light: {
+        mainBackground: `#fff`,
+        // neutral color
+        title: `rgba(0, 0, 0, 0.85)`,
+        primaryText: `rgba(0, 0, 0, 0.75)`,
+        secondaryText: `rgba(0, 0, 0, 0.45)`,
+        disable: `rgba(0, 0, 0, 0.25)`,
+        border: `rgba(0, 0, 0, 0.15)`,
+        divider: `rgba(0, 0, 0, 0.06)`,
+        background: `rgba(0, 0, 0, 0.04)`,
+        tableHeader: `rgba(0, 0, 0, 0.02)`,
+        // point-color
+    },
+    response: {},
+};&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;h4 id=&quot;2app에-적용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2app%EC%97%90-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;2app에 적용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2.APP에 적용하기&lt;/h4&gt;
+&lt;p&gt;1.ThemeProvider로 App을 감싸줍니다.&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`//
+import { AppProps } from &apos;next/app&apos;
+import { ThemeProvider } from &apos;styled-components&apos;;
+import { theme } from &apos;src/styles/theme&apos;;
+import GlobalStyle from &apos;src/styles/global-styles&apos;;
+
+const MyApp = ({ Component, pageProps }: AppProps) =&gt; {
+  return (
+    &lt;ThemeProvider theme={theme}&gt;
+      &lt;GlobalStyle /&gt;
+      &lt;Component {...pageProps} /&gt;
+    &lt;/ThemeProvider&gt;
+  )
+}
+
+export default MyApp`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;//
+import { AppProps } from &amp;#39;next/app&amp;#39;
+import { ThemeProvider } from &amp;#39;styled-components&amp;#39;;
+import { theme } from &amp;#39;src/styles/theme&amp;#39;;
+import GlobalStyle from &amp;#39;src/styles/global-styles&amp;#39;;
+
+const MyApp = ({ Component, pageProps }: AppProps) =&amp;gt; {
+  return (
+    &amp;lt;ThemeProvider theme={theme}&amp;gt;
+      &amp;lt;GlobalStyle /&amp;gt;
+      &amp;lt;Component {...pageProps} /&amp;gt;
+    &amp;lt;/ThemeProvider&amp;gt;
+  )
+}
+
+export default MyApp&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;</content:encoded></item><item><title><![CDATA[react 개발일지-(1)]]></title><description><![CDATA[프로젝트 시작]]></description><link>https://bnt10.github.io//posts/react 개발일지</link><guid isPermaLink="false">https://bnt10.github.io//posts/react 개발일지</guid><pubDate>Wed, 15 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
 &lt;div class=&quot;table-of-contents&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#1-nextjs-%EC%99%80-typescript-%EC%84%A4%EC%B9%98&quot;&gt;1. NextJs 와 Typescript 설치&lt;/a&gt;&lt;/li&gt;
