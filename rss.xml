@@ -1,4 +1,489 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[Java, Python, React, Mysql]]></description><link>https://bnt10.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 16 Dec 2021 10:07:34 GMT</lastBuildDate><item><title><![CDATA[react 개발일지-(2)]]></title><description><![CDATA[사용 할 React 컴포넌트 스타일링 정하기]]></description><link>https://bnt10.github.io//posts/react 개발일지-2</link><guid isPermaLink="false">https://bnt10.github.io//posts/react 개발일지-2</guid><pubDate>Thu, 16 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[Java, Python, React, Mysql]]></description><link>https://bnt10.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 19 Dec 2021 05:53:46 GMT</lastBuildDate><item><title><![CDATA[react 개발일지-(3)]]></title><description><![CDATA[nextjs , typescript, redux , redux-toolkit 적용(1)]]></description><link>https://bnt10.github.io//posts/react 개발일지-3</link><guid isPermaLink="false">https://bnt10.github.io//posts/react 개발일지-3</guid><pubDate>Fri, 17 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
+&lt;div class=&quot;table-of-contents&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%EC%84%A4%EC%B9%98&quot;&gt;설치&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%EA%B5%AC%EC%84%B1&quot;&gt;구성&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#rootreducer-%EC%9E%91%EC%84%B1&quot;&gt;rootReducer 작성&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#hooks-%EC%9E%91%EC%84%B1&quot;&gt;Hooks 작성&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#configurestore-%EC%9E%91%EC%84%B1&quot;&gt;configureStore 작성&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%EB%A6%AC%EB%93%80%EC%84%9C-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0-counterslicets&quot;&gt;리듀서 작성하기 (counterSlice.ts)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#_appts%EC%97%90-redux-store-%EC%A0%81%EC%9A%A9&quot;&gt;_app.ts에 redux store 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%EB%8F%99%EC%9E%91%ED%99%95%EC%9D%B8-component-%EC%9E%91%EC%84%B1&quot;&gt;동작확인 component 작성&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%A4%EC%B9%98&quot; aria-label=&quot;설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;설치&lt;/h4&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`npm install @reduxjs/toolkit react-redux
+npm install @types/react-redux`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;npm install @reduxjs/toolkit react-redux
+npm install @types/react-redux&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;h4 id=&quot;구성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B5%AC%EC%84%B1&quot; aria-label=&quot;구성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;구성&lt;/h4&gt;
+&lt;p&gt;Nextjs, Typescript, ReduxToolkit를 조합하여
+Redux를 구성하기
+이번에는 ReduxToolkit을 기준으로 하여 구성해보기로 한다.&lt;/p&gt;
+&lt;h4 id=&quot;rootreducer-작성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#rootreducer-%EC%9E%91%EC%84%B1&quot; aria-label=&quot;rootreducer 작성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;rootReducer 작성&lt;/h4&gt;
+&lt;p&gt;reducer를 통합할 rootReducer 작성&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`// /src/store/modules/index.ts
+import { combineReducers, ThunkAction, Action } from &apos;@reduxjs/toolkit&apos;;
+import counterSlice from &amp;quot;./counter/counterSlice&amp;quot;;
+
+//configureStore 넘겨줄 rootReucer 작성
+const rootReducer = combineReducers({
+    counterSlice
+})
+
+//사용할 타입 정의
+export type RootState = ReturnType&lt;typeof rootReducer&gt;;
+export type AppThunk&lt;ReturnType = void&gt; = ThunkAction&lt;
+    ReturnType,
+    RootState,
+    unknown,
+    Action&lt;string&gt;
+&gt;;
+export default rootReducer;`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;// /src/store/modules/index.ts
+import { combineReducers, ThunkAction, Action } from &amp;#39;@reduxjs/toolkit&amp;#39;;
+import counterSlice from &amp;quot;./counter/counterSlice&amp;quot;;
+
+//configureStore 넘겨줄 rootReucer 작성
+const rootReducer = combineReducers({
+    counterSlice
+})
+
+//사용할 타입 정의
+export type RootState = ReturnType&amp;lt;typeof rootReducer&amp;gt;;
+export type AppThunk&amp;lt;ReturnType = void&amp;gt; = ThunkAction&amp;lt;
+    ReturnType,
+    RootState,
+    unknown,
+    Action&amp;lt;string&amp;gt;
+&amp;gt;;
+export default rootReducer;&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;h4 id=&quot;hooks-작성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#hooks-%EC%9E%91%EC%84%B1&quot; aria-label=&quot;hooks 작성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Hooks 작성&lt;/h4&gt;
+&lt;p&gt;useAppDispatch , useAppSelector Hook 작성&lt;br&gt;
+작성하는 이유는 useSelector의 타입을 예를 들어서 useSelector(state:RootState)를
+반복적으로 작성하는 것을 피하기 위해서
+useAppDispatch를 작성하는 이유도 마찬가지다&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`// /src/hooks/index.ts
+import {
+    TypedUseSelectorHook,
+    useDispatch,
+    useSelector,
+} from &apos;react-redux&apos;;
+import { RootState } from &apos;src/store/modules&apos;;
+import type {
+    AppDispatch,
+} from &apos;src/store&apos;;
+
+
+export const useAppDispatch = () =&gt; useDispatch&lt;AppDispatch&gt;()
+export const useAppSelector: TypedUseSelectorHook&lt;RootState&gt; = useSelector;`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;// /src/hooks/index.ts
+import {
+    TypedUseSelectorHook,
+    useDispatch,
+    useSelector,
+} from &amp;#39;react-redux&amp;#39;;
+import { RootState } from &amp;#39;src/store/modules&amp;#39;;
+import type {
+    AppDispatch,
+} from &amp;#39;src/store&amp;#39;;
+
+
+export const useAppDispatch = () =&amp;gt; useDispatch&amp;lt;AppDispatch&amp;gt;()
+export const useAppSelector: TypedUseSelectorHook&amp;lt;RootState&amp;gt; = useSelector;&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;h4 id=&quot;configurestore-작성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#configurestore-%EC%9E%91%EC%84%B1&quot; aria-label=&quot;configurestore 작성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;configureStore 작성&lt;/h4&gt;
+&lt;p&gt;redux의 설정을 관리할 configureStore를 작성한다&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`// src/store/index.ts
+import {
+    configureStore,
+} from &apos;@reduxjs/toolkit&apos;;
+
+import rootReducer from &apos;./modules&apos;;
+import logger from &apos;redux-logger&apos;;
+import { Context, createWrapper } from &amp;quot;next-redux-wrapper&amp;quot;;
+
+//redux store config
+const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =&gt; getDefaultMiddleware().concat(logger),
+});
+
+//dispatch type
+export type AppDispatch = typeof store.dispatch;
+
+//next-js redux wrapper 작성
+const wrapper = createWrapper((context: Context) =&gt; store, { debug: process.env.NODE_ENV !== &apos;production&apos;, });
+
+export default wrapper;`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;// src/store/index.ts
+import {
+    configureStore,
+} from &amp;#39;@reduxjs/toolkit&amp;#39;;
+
+import rootReducer from &amp;#39;./modules&amp;#39;;
+import logger from &amp;#39;redux-logger&amp;#39;;
+import { Context, createWrapper } from &amp;quot;next-redux-wrapper&amp;quot;;
+
+//redux store config
+const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =&amp;gt; getDefaultMiddleware().concat(logger),
+});
+
+//dispatch type
+export type AppDispatch = typeof store.dispatch;
+
+//next-js redux wrapper 작성
+const wrapper = createWrapper((context: Context) =&amp;gt; store, { debug: process.env.NODE_ENV !== &amp;#39;production&amp;#39;, });
+
+export default wrapper;&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;h4 id=&quot;리듀서-작성하기-counterslicets&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A6%AC%EB%93%80%EC%84%9C-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0-counterslicets&quot; aria-label=&quot;리듀서 작성하기 counterslicets permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;리듀서 작성하기 (counterSlice.ts)&lt;/h4&gt;
+&lt;p&gt;리듀서의 작동을 확인 하기 위한 간단한 카운터를 작성해본다.&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`import {
+    createSlice,
+    PayloadAction,
+} from &apos;@reduxjs/toolkit&apos;;
+import { RootState } from &apos;..&apos;;
+
+//counterState 타입 정의
+export type CounterState = {
+    value: number;
+};
+
+const initialState: CounterState = {
+    value: 0,
+};
+
+export const counterSlice = createSlice({
+    //생성된 액션타입의 네임스페이스로 사용된다.
+    name: &apos;counter&apos;,
+    //초기 State값으로 전달된 initalState에서 CounterState타입을 유추한다.
+    initialState,
+    reducers: {
+        //리덕스의 actionCreator
+        increment: (state: CounterState) =&gt; {
+            state.value++;
+        },
+        decrement: (state: CounterState) =&gt; {
+            state.value--;
+        },
+        //payload 추가하는 경우 타입지정 예시
+        incrementByAmount: (state: CounterState, action: PayloadAction&lt;number&gt;) =&gt; {
+            state.value += action.payload;
+        },
+    },
+});
+// 작성한 타입을 export
+export const {
+    increment,
+    decrement,
+    incrementByAmount,
+} = counterSlice.actions;
+
+// selector 작성 
+export const selectCount = (state: RootState) =&gt; state.counterSlice.value;
+
+const counterReducer = counterSlice.reducer;
+export default counterReducer;`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;import {
+    createSlice,
+    PayloadAction,
+} from &amp;#39;@reduxjs/toolkit&amp;#39;;
+import { RootState } from &amp;#39;..&amp;#39;;
+
+//counterState 타입 정의
+export type CounterState = {
+    value: number;
+};
+
+const initialState: CounterState = {
+    value: 0,
+};
+
+export const counterSlice = createSlice({
+    //생성된 액션타입의 네임스페이스로 사용된다.
+    name: &amp;#39;counter&amp;#39;,
+    //초기 State값으로 전달된 initalState에서 CounterState타입을 유추한다.
+    initialState,
+    reducers: {
+        //리덕스의 actionCreator
+        increment: (state: CounterState) =&amp;gt; {
+            state.value++;
+        },
+        decrement: (state: CounterState) =&amp;gt; {
+            state.value--;
+        },
+        //payload 추가하는 경우 타입지정 예시
+        incrementByAmount: (state: CounterState, action: PayloadAction&amp;lt;number&amp;gt;) =&amp;gt; {
+            state.value += action.payload;
+        },
+    },
+});
+// 작성한 타입을 export
+export const {
+    increment,
+    decrement,
+    incrementByAmount,
+} = counterSlice.actions;
+
+// selector 작성 
+export const selectCount = (state: RootState) =&amp;gt; state.counterSlice.value;
+
+const counterReducer = counterSlice.reducer;
+export default counterReducer;&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;h4 id=&quot;_appts에-redux-store-적용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#_appts%EC%97%90-redux-store-%EC%A0%81%EC%9A%A9&quot; aria-label=&quot;_appts에 redux store 적용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;_app.ts에 redux store 적용&lt;/h4&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`// /src/pages/_app.ts
+
+import { AppProps } from &apos;next/app&apos;
+import { ThemeProvider } from &apos;styled-components&apos;;
+import { theme } from &apos;src/styles/theme&apos;;
+import GlobalStyle from &apos;src/styles/global-styles&apos;;
+import wrapper from &apos;../store&apos;;
+
+const MyApp = ({ Component, pageProps }: AppProps) =&gt; {
+  return (
+
+    &lt;ThemeProvider theme={theme}&gt;
+      &lt;GlobalStyle /&gt;
+      &lt;Component {...pageProps} /&gt;
+    &lt;/ThemeProvider&gt;
+
+  )
+}
+//리덕스로 감싸기
+export default wrapper.withRedux(MyApp)`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;// /src/pages/_app.ts
+
+import { AppProps } from &amp;#39;next/app&amp;#39;
+import { ThemeProvider } from &amp;#39;styled-components&amp;#39;;
+import { theme } from &amp;#39;src/styles/theme&amp;#39;;
+import GlobalStyle from &amp;#39;src/styles/global-styles&amp;#39;;
+import wrapper from &amp;#39;../store&amp;#39;;
+
+const MyApp = ({ Component, pageProps }: AppProps) =&amp;gt; {
+  return (
+
+    &amp;lt;ThemeProvider theme={theme}&amp;gt;
+      &amp;lt;GlobalStyle /&amp;gt;
+      &amp;lt;Component {...pageProps} /&amp;gt;
+    &amp;lt;/ThemeProvider&amp;gt;
+
+  )
+}
+//리덕스로 감싸기
+export default wrapper.withRedux(MyApp)&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;
+&lt;h4 id=&quot;동작확인-component-작성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8F%99%EC%9E%91%ED%99%95%EC%9D%B8-component-%EC%9E%91%EC%84%B1&quot; aria-label=&quot;동작확인 component 작성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;동작확인 component 작성&lt;/h4&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`// /src/pages/index.ts
+import { useState } from &apos;react&apos;;
+import {
+    useAppDispatch,
+    useAppSelector,
+} from &apos;src/hooks&apos;;
+import {
+    decrement,
+    increment,
+    incrementByAmount,
+    selectCount,
+} from &apos;src/store/modules/counter/counterSlice&apos;;
+
+
+const IndexPage: React.FC = () =&gt; {
+    const dispatch = useAppDispatch();
+    const count = useAppSelector(selectCount);
+    const [incrementAmount, setIncrementAmount] = useState&lt;number&gt;(0);
+
+    return (
+        &lt;&gt;
+            &lt;h1&gt;Redux Counter&lt;/h1&gt;
+            &lt;h2&gt;
+                숫자 : {count}
+            &lt;/h2&gt;
+            &lt;div&gt;
+                &lt;input
+                    value={incrementAmount}
+                    onChange={(e) =&gt; setIncrementAmount(Number(e.target.value))}
+                    type=&amp;quot;number&amp;quot;
+                /&gt;
+                &lt;button
+                    onClick={() =&gt; dispatch(incrementByAmount(Number(incrementAmount)))}
+                &gt;
+                    입력값으로 +
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;button onClick={() =&gt; dispatch(decrement())}&gt;-1&lt;/button&gt;
+                &lt;button onClick={() =&gt; dispatch(increment())}&gt;+1&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/&gt;
+    );
+};
+
+export default IndexPage;`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;copy&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;deckgo-highlight-code language=&quot;javascript&quot; terminal=&quot;carbon&quot; theme=&quot;vscode&quot;  &gt;
+          &lt;code slot=&quot;code&quot;&gt;// /src/pages/index.ts
+import { useState } from &amp;#39;react&amp;#39;;
+import {
+    useAppDispatch,
+    useAppSelector,
+} from &amp;#39;src/hooks&amp;#39;;
+import {
+    decrement,
+    increment,
+    incrementByAmount,
+    selectCount,
+} from &amp;#39;src/store/modules/counter/counterSlice&amp;#39;;
+
+
+const IndexPage: React.FC = () =&amp;gt; {
+    const dispatch = useAppDispatch();
+    const count = useAppSelector(selectCount);
+    const [incrementAmount, setIncrementAmount] = useState&amp;lt;number&amp;gt;(0);
+
+    return (
+        &amp;lt;&amp;gt;
+            &amp;lt;h1&amp;gt;Redux Counter&amp;lt;/h1&amp;gt;
+            &amp;lt;h2&amp;gt;
+                숫자 : {count}
+            &amp;lt;/h2&amp;gt;
+            &amp;lt;div&amp;gt;
+                &amp;lt;input
+                    value={incrementAmount}
+                    onChange={(e) =&amp;gt; setIncrementAmount(Number(e.target.value))}
+                    type=&amp;quot;number&amp;quot;
+                /&amp;gt;
+                &amp;lt;button
+                    onClick={() =&amp;gt; dispatch(incrementByAmount(Number(incrementAmount)))}
+                &amp;gt;
+                    입력값으로 +
+                &amp;lt;/button&amp;gt;
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div&amp;gt;
+                &amp;lt;button onClick={() =&amp;gt; dispatch(decrement())}&amp;gt;-1&amp;lt;/button&amp;gt;
+                &amp;lt;button onClick={() =&amp;gt; dispatch(increment())}&amp;gt;+1&amp;lt;/button&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/&amp;gt;
+    );
+};
+
+export default IndexPage;&lt;/code&gt;
+        &lt;/deckgo-highlight-code&gt;</content:encoded></item><item><title><![CDATA[react 개발일지-(2)]]></title><description><![CDATA[사용 할 React 컴포넌트 스타일링 정하기]]></description><link>https://bnt10.github.io//posts/react 개발일지-2</link><guid isPermaLink="false">https://bnt10.github.io//posts/react 개발일지-2</guid><pubDate>Thu, 16 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;목차&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AA%A9%EC%B0%A8&quot; aria-label=&quot;목차 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;목차&lt;/h2&gt;
 &lt;div class=&quot;table-of-contents&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
