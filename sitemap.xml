@@ -3,11 +3,11 @@
 <url> <loc>https://bnt10.github.io/tt</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://bnt10.github.io/tags</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://bnt10.github.io/categories</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://bnt10.github.io/posts/react-gatsby-toturial</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://bnt10.github.io/posts/react-nextjs-install</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://bnt10.github.io/posts/node-install</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://bnt10.github.io/pages/contacts/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://bnt10.github.io/pages/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://bnt10.github.io/posts/react-gatsby-toturial</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://bnt10.github.io/tag/gatsby</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://bnt10.github.io/tag/nextjs</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://bnt10.github.io/tag/node</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>

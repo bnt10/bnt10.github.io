@@ -105,18 +105,6 @@
   Link: </component---src-templates-categories-list-template-js-2181ec47d28e5c35d3e9.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/categories/page-data.json>; rel=preload; as=fetch; crossorigin
-/posts/react-gatsby-toturial
-  Link: </webpack-runtime-a69ac4a89312cffa3d1e.js>; rel=preload; as=script
-  Link: </styles-407fe62976dc5310c43e.js>; rel=preload; as=script
-  Link: </framework-4842d2c0752ed335a3e7.js>; rel=preload; as=script
-  Link: </532a2f07-d05f238db5f768b1710d.js>; rel=preload; as=script
-  Link: </dc6a8720040df98778fe970bf6c000a41750d3ae-b56c7ed930d47e54d4ed.js>; rel=preload; as=script
-  Link: </app-a4d1d2a75ff3358fe4eb.js>; rel=preload; as=script
-  Link: </styles-407fe62976dc5310c43e.js>; rel=preload; as=script
-  Link: </cd95ea5cbd2c605f26db819f07999610c9ff4310-74b9e39d53af0077dbd5.js>; rel=preload; as=script
-  Link: </component---src-templates-post-template-js-64bcce75e6c4398080ed.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/posts/react-gatsby-toturial/page-data.json>; rel=preload; as=fetch; crossorigin
 /posts/react-nextjs-install
   Link: </webpack-runtime-a69ac4a89312cffa3d1e.js>; rel=preload; as=script
   Link: </styles-407fe62976dc5310c43e.js>; rel=preload; as=script
@@ -165,6 +153,18 @@
   Link: </component---src-templates-page-template-js-c937055e273d362c1067.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/pages/about/page-data.json>; rel=preload; as=fetch; crossorigin
+/posts/react-gatsby-toturial
+  Link: </webpack-runtime-a69ac4a89312cffa3d1e.js>; rel=preload; as=script
+  Link: </styles-407fe62976dc5310c43e.js>; rel=preload; as=script
+  Link: </framework-4842d2c0752ed335a3e7.js>; rel=preload; as=script
+  Link: </532a2f07-d05f238db5f768b1710d.js>; rel=preload; as=script
+  Link: </dc6a8720040df98778fe970bf6c000a41750d3ae-b56c7ed930d47e54d4ed.js>; rel=preload; as=script
+  Link: </app-a4d1d2a75ff3358fe4eb.js>; rel=preload; as=script
+  Link: </styles-407fe62976dc5310c43e.js>; rel=preload; as=script
+  Link: </cd95ea5cbd2c605f26db819f07999610c9ff4310-74b9e39d53af0077dbd5.js>; rel=preload; as=script
+  Link: </component---src-templates-post-template-js-64bcce75e6c4398080ed.js>; rel=preload; as=script
+  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/posts/react-gatsby-toturial/page-data.json>; rel=preload; as=fetch; crossorigin
 /tag/gatsby
   Link: </webpack-runtime-a69ac4a89312cffa3d1e.js>; rel=preload; as=script
   Link: </styles-407fe62976dc5310c43e.js>; rel=preload; as=script
