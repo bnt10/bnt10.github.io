@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[Java, Python, React, Mysql]]></description><link>https://bnt10.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 07 Feb 2022 14:13:39 GMT</lastBuildDate><item><title><![CDATA[Python - Singleton class]]></title><description><![CDATA[Python singleton class 만들기]]></description><link>https://bnt10.github.io//posts/Python-Singleton class</link><guid isPermaLink="false">https://bnt10.github.io//posts/Python-Singleton class</guid><pubDate>Mon, 07 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;div class=&quot;table-of-contents&quot;&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[Java, Python, React, Mysql]]></description><link>https://bnt10.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 08 Feb 2022 12:54:29 GMT</lastBuildDate><item><title><![CDATA[Python - Singleton class]]></title><description><![CDATA[Python singleton class 만들기]]></description><link>https://bnt10.github.io//posts/Python-Singleton class</link><guid isPermaLink="false">https://bnt10.github.io//posts/Python-Singleton class</guid><pubDate>Mon, 07 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;div class=&quot;table-of-contents&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#1-singleton&quot;&gt;1. Singleton&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#2-%EA%B3%B5%EB%B6%80%ED%95%9C-%EC%9D%B4%EC%9C%A0&quot;&gt;2. 공부한 이유&lt;/a&gt;&lt;/li&gt;
@@ -87,7 +87,217 @@ telnetNode &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span 
 &lt;span class=&quot;token function&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sshNode&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;get_server&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; telnetNode&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;get_server&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 
 #동일 인스턴스 확인
-&lt;span class=&quot;token function&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Is it the same instance?&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; sshNode is telnetNode&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Python - socket]]></title><description><![CDATA[Python socket 통신 정리]]></description><link>https://bnt10.github.io//posts/Python-socket</link><guid isPermaLink="false">https://bnt10.github.io//posts/Python-socket</guid><pubDate>Sun, 06 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;div class=&quot;table-of-contents&quot;&gt;
+&lt;span class=&quot;token function&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Is it the same instance?&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; sshNode is telnetNode&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Docker - 설치부터(1)]]></title><description><![CDATA[Docker 설치부터(1)]]></description><link>https://bnt10.github.io//posts/docker-설치</link><guid isPermaLink="false">https://bnt10.github.io//posts/docker-설치</guid><pubDate>Mon, 07 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;div class=&quot;table-of-contents&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1-docker&quot;&gt;1. Docker?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2-%EA%B3%B5%EB%B6%80%ED%95%9C-%EC%9D%B4%EC%9C%A0&quot;&gt;2. 공부한 이유&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#3-mac%EC%97%90%EC%84%9C-docker-%EC%84%A4%EC%B9%98&quot;&gt;3. Mac에서 Docker 설치&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;1-docker&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-docker&quot; aria-label=&quot;1 docker permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Docker?&lt;/h3&gt;
+&lt;p&gt;Docker는 애플리케이션에 대한 구축,테스트를 표준화하여 컨테이너기반의 배포를 할 수 있는 플랫폼 입니다.&lt;/p&gt;
+&lt;h3 id=&quot;2-공부한-이유&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EA%B3%B5%EB%B6%80%ED%95%9C-%EC%9D%B4%EC%9C%A0&quot; aria-label=&quot;2 공부한 이유 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 공부한 이유&lt;/h3&gt;
+&lt;p&gt;On-premise 환경에서 애플리케이션을 배포시 같은 사양의 서버라도 예상치 못한
+문제에 직면한 경우가 생겼습니다. 이를 해결하기 위해서 Docker를 통해서
+어디서든 동일한 실행환경을 구축하고 싶었습니다.&lt;/p&gt;
+&lt;h3 id=&quot;3-mac에서-docker-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-mac%EC%97%90%EC%84%9C-docker-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;3 mac에서 docker 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. Mac에서 Docker 설치&lt;/h3&gt;
+&lt;p&gt;도커 설치 &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;hub.docker.com/editions/community/docker-ce-desktop-mac&quot;&gt;설치링크&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6313973ee1900a961a54263f3aa98b9c/e28fd/docker-install-mac.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 34.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABDElEQVQoz22RzU7FIBCFeTcXPomvpY/gxuQmbnTnwp0xxuTGraa51ttCKT8DcxxKa5tGkgMDzPlmCCpSQqCMIQIjAYkxjbJkmZJMe5VzxqrMcjbfKR8i7OjgvUevNbQ2f2uMscJ5tnKtRkSSY6DNAD1YpJQnaMlTzy9vODw+oTcWzY+eYF1fgYO1CBsoz0DvA5pTi7Yz+Badrcd5cLAuQI3OS+Cl5SwdkVRLk7E+I0/aA4PkddKdCwFeCtpAElPtsBhIIFGeUZRmwHYssAXoYsZnT/gSnUz15PlO4Z+xBSyQ2nX9rteGcXENXN4AV7eAjatP7c1bwBKv+wpsR8bdO+P+yHj4YDiqn1ZyfgFI4yHqSGkyCwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/6313973ee1900a961a54263f3aa98b9c/8ac56/docker-install-mac.webp 240w,
+/static/6313973ee1900a961a54263f3aa98b9c/d3be9/docker-install-mac.webp 480w,
+/static/6313973ee1900a961a54263f3aa98b9c/e46b2/docker-install-mac.webp 960w,
+/static/6313973ee1900a961a54263f3aa98b9c/f992d/docker-install-mac.webp 1440w,
+/static/6313973ee1900a961a54263f3aa98b9c/882b9/docker-install-mac.webp 1920w,
+/static/6313973ee1900a961a54263f3aa98b9c/dc0f0/docker-install-mac.webp 2650w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/6313973ee1900a961a54263f3aa98b9c/8ff5a/docker-install-mac.png 240w,
+/static/6313973ee1900a961a54263f3aa98b9c/e85cb/docker-install-mac.png 480w,
+/static/6313973ee1900a961a54263f3aa98b9c/d9199/docker-install-mac.png 960w,
+/static/6313973ee1900a961a54263f3aa98b9c/07a9c/docker-install-mac.png 1440w,
+/static/6313973ee1900a961a54263f3aa98b9c/29114/docker-install-mac.png 1920w,
+/static/6313973ee1900a961a54263f3aa98b9c/e28fd/docker-install-mac.png 2650w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/6313973ee1900a961a54263f3aa98b9c/d9199/docker-install-mac.png&quot;
+            alt=&quot;docker-install&quot;
+            title=&quot;docker-install&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;chip 타입을 확인하고 다운로드하여 설치합니다&lt;/p&gt;
+&lt;p&gt;설치가 완료되고 도커에서 제공해주는 &lt;strong&gt;docker/getting-started&lt;/strong&gt; Image를 이용해서
+컨테이너를 올려줍니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9c725baa1cab02e05d917c82d6908488/af975/docker-install-completed.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 49.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABTklEQVQoz32R23KCMBCGeYNOx3pqhSACWpAg4eAhSB3HtvbCGS86ff83+buAoEXtxTeb7CZfko3ipxJWKGEGS1jijB2uKLeAO8+QfR3hLrI6X9U2h2+kVAs3n1hTlPsjFDOQMPw5upYH1RFg0/APmisoHxQxh03FVe0SpWdxdEwPbcOF6op64Vlwlg95cnVgE6U1dJDTHrm1oCkavM6g8xjp4Qd2lOJ5zGnNHeET3eyWsHqOTvNJLOFQL4PsncYpnGQN3YsarSj33RTmGH5CT4yL5gfrHaK3D4hsB19ukWz3GEeyqBuzORjJq713hAImCU0/xohHMCq8MjJnRmNRMOEhLC+8LSx/OcJgwtHSRmipBjFEW7dPWAWPfRUPnX6B2nuBbdNl/nty2ZegEcOay0/QqZaTC9l94eUmynkxNH8FjS8pSmg0Z9XaE+wk/QWKMipz6imXyAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/9c725baa1cab02e05d917c82d6908488/8ac56/docker-install-completed.webp 240w,
+/static/9c725baa1cab02e05d917c82d6908488/d3be9/docker-install-completed.webp 480w,
+/static/9c725baa1cab02e05d917c82d6908488/e46b2/docker-install-completed.webp 960w,
+/static/9c725baa1cab02e05d917c82d6908488/f992d/docker-install-completed.webp 1440w,
+/static/9c725baa1cab02e05d917c82d6908488/882b9/docker-install-completed.webp 1920w,
+/static/9c725baa1cab02e05d917c82d6908488/e6ef2/docker-install-completed.webp 2478w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/9c725baa1cab02e05d917c82d6908488/8ff5a/docker-install-completed.png 240w,
+/static/9c725baa1cab02e05d917c82d6908488/e85cb/docker-install-completed.png 480w,
+/static/9c725baa1cab02e05d917c82d6908488/d9199/docker-install-completed.png 960w,
+/static/9c725baa1cab02e05d917c82d6908488/07a9c/docker-install-completed.png 1440w,
+/static/9c725baa1cab02e05d917c82d6908488/29114/docker-install-completed.png 1920w,
+/static/9c725baa1cab02e05d917c82d6908488/af975/docker-install-completed.png 2478w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/9c725baa1cab02e05d917c82d6908488/d9199/docker-install-completed.png&quot;
+            alt=&quot;docker-install&quot;
+            title=&quot;docker-install&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;터미널상에서 커멘드 실행&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1b24f04ec37f4a9c62b479b4c41d1b0f/668c6/docker-run-cli.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 19.583333333333332%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAnklEQVQY063P2w6CMBAE0IaLRauIECy0rg2BooX//74xW8XEdx9Ospk021mhtUbd1KiqCsfmBHVR6PseRAQhBKSUUZZlSNM0SpIk4ozf/FiXFeQInTWg5Q7tr7B0gzU2Lh3HEcMwwDkH7z1CCJjnOWbTNMEYg7ZtoZR6L+x0h/JcQh72eD4Cil0Rf2Z5nn9bsS1jW2Oe+QKePy0F/ukF1fdaVEy3FXQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/1b24f04ec37f4a9c62b479b4c41d1b0f/8ac56/docker-run-cli.webp 240w,
+/static/1b24f04ec37f4a9c62b479b4c41d1b0f/d3be9/docker-run-cli.webp 480w,
+/static/1b24f04ec37f4a9c62b479b4c41d1b0f/e46b2/docker-run-cli.webp 960w,
+/static/1b24f04ec37f4a9c62b479b4c41d1b0f/f992d/docker-run-cli.webp 1440w,
+/static/1b24f04ec37f4a9c62b479b4c41d1b0f/e176c/docker-run-cli.webp 1692w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/1b24f04ec37f4a9c62b479b4c41d1b0f/8ff5a/docker-run-cli.png 240w,
+/static/1b24f04ec37f4a9c62b479b4c41d1b0f/e85cb/docker-run-cli.png 480w,
+/static/1b24f04ec37f4a9c62b479b4c41d1b0f/d9199/docker-run-cli.png 960w,
+/static/1b24f04ec37f4a9c62b479b4c41d1b0f/07a9c/docker-run-cli.png 1440w,
+/static/1b24f04ec37f4a9c62b479b4c41d1b0f/668c6/docker-run-cli.png 1692w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/1b24f04ec37f4a9c62b479b4c41d1b0f/d9199/docker-run-cli.png&quot;
+            alt=&quot;docker-run-cli&quot;
+            title=&quot;docker-run-cli&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;명령어 입력후 &lt;a href=&quot;http://localhost/tutorial/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;http://localhost/tutorial/&lt;/a&gt; 접속하여
+컨테이너 동작확인&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f51281e743ae4fae80ef47b5f3b00375/fcdaa/docker-success-result.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB/UlEQVQoz3WRy27TQBSG/QwIUSGERCUWXYGQ48vYHt8vSZoLNJemxG7sJKUgwQuAKAJBxY4FKzY8BSXh6X7OTBoTIVh8mhn7zD//+Y9y7/0a6uc17r5bYf/DGg8uaX9xhRuvf+DmmyvcervCHrFZf+L+y2/YP/+KO/MvuP3qOw4+/cLDyxUOPq6xd7GCYjEO7sVgzIXWYDBMjixto5kRtFp01jUGU7dhELo4my4MqjcMB5blweEhdPnfgmLaIcLWAI7fhEaFFo+QZF0kzR7irAMvyMAcusA8EvEJr0Y3PUTJIdqdI1knzoppBfCiDmw3kYKm5cufrp9K/LAJmx4Rrv5GMzYGuJdsapgU9BHGLbqYUQEnsRTV/BwlMV88R0Usli9QVs/wNK+QF3NMidPZEv0nYzR0Xj8gXCvMDqjFjhRlti9fO5mWkvx0TiykiNhPSXB0nGM4nmI8KXDYPaqFNhG4UMRGuNx+FC4Hwwm6/SECalc490T79JBA1Ww8UplE7LdCtcM/mZCgyIUYnMxQlGcYHBeIaTicMrXcGCYNx3Si6zWEQd3tOpSCtV2xkjvVz6AmPeg8RoPToHZxt6QS3YlqQf1/gg0vxYSyKsslZteIAeRFVSOyFN9b7T4Nxfm3Q4londpoUdi9/kjmWNMbolMzQO/xCEHUkpnvavwGdCiTo03bv0kAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/f51281e743ae4fae80ef47b5f3b00375/8ac56/docker-success-result.webp 240w,
+/static/f51281e743ae4fae80ef47b5f3b00375/d3be9/docker-success-result.webp 480w,
+/static/f51281e743ae4fae80ef47b5f3b00375/e46b2/docker-success-result.webp 960w,
+/static/f51281e743ae4fae80ef47b5f3b00375/f992d/docker-success-result.webp 1440w,
+/static/f51281e743ae4fae80ef47b5f3b00375/882b9/docker-success-result.webp 1920w,
+/static/f51281e743ae4fae80ef47b5f3b00375/eb1f9/docker-success-result.webp 2892w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/f51281e743ae4fae80ef47b5f3b00375/8ff5a/docker-success-result.png 240w,
+/static/f51281e743ae4fae80ef47b5f3b00375/e85cb/docker-success-result.png 480w,
+/static/f51281e743ae4fae80ef47b5f3b00375/d9199/docker-success-result.png 960w,
+/static/f51281e743ae4fae80ef47b5f3b00375/07a9c/docker-success-result.png 1440w,
+/static/f51281e743ae4fae80ef47b5f3b00375/29114/docker-success-result.png 1920w,
+/static/f51281e743ae4fae80ef47b5f3b00375/fcdaa/docker-success-result.png 2892w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/f51281e743ae4fae80ef47b5f3b00375/d9199/docker-success-result.png&quot;
+            alt=&quot;docker-success-result&quot;
+            title=&quot;docker-success-result&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&quot;다음&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8B%A4%EC%9D%8C&quot; aria-label=&quot;다음 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;다음&lt;/h1&gt;
+&lt;p&gt;다음 설명부터는 도커의 기술적인 개념에 대해서
+설명해보겠습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Python - socket]]></title><description><![CDATA[Python socket 통신 정리]]></description><link>https://bnt10.github.io//posts/Python-socket</link><guid isPermaLink="false">https://bnt10.github.io//posts/Python-socket</guid><pubDate>Sun, 06 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;div class=&quot;table-of-contents&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#1-socket-%EC%A0%95%EC%9D%98&quot;&gt;1. Socket 정의&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#2-python%EC%97%90%EC%84%9C-socket%EA%B5%AC%ED%98%84&quot;&gt;2. Python에서 Socket구현&lt;/a&gt;&lt;/li&gt;
