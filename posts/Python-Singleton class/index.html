@@ -93,14 +93,36 @@
         return cls.__instances[cls]        
 
 # 메타클래스로 Singleton으로 생성
+class Singleton(type):   
+    # 인스턴스가 저장될 속성
+    __instances = {}      
+    # __call__ 클래스에서 생성된 인스턴스를 호출할때 동작
+    def __call__(cls, *args, **kwargs):   
+        # 인스턴스 생성 여부 확인
+        if cls not in cls.__instances: 
+            # 인스턴스 미생성 경우 인스턴스 생성하여 저장    
+            cls.__instances[cls] = super().__call__(*args, **kwargs) 
+        #인스턴스가 존재하는경우 기존 생성 인스턴스 전달
+        return cls.__instances[cls]        
+    def clear(cls):
+        try:
+            del cls.__instances[cls]
+        except KeyError:
+            print(&quot;Error:&quot;, KeyError)    
+            
+# 메타클래스로 Singleton으로 생성
 class Proxy(metaclass=Singleton):    
     def __init__(self, server):
         self.server = server
 
+    def close(self):
+        
+        self.__class__.clear()
+        del self
     def get_server(self):
         
         return self.server 
-
+    #...
     
 sshNode = Proxy('ssh')
 telnetNode = Proxy('telnet')
@@ -109,7 +131,12 @@ telnetNode = Proxy('telnet')
 print(sshNode.get_server(), telnetNode.get_server())
 
 #동일 인스턴스 확인
-print('Is it the same instance?', sshNode is telnetNode)`, ``)"
+print('Is it the same instance?', sshNode is telnetNode)
+
+#인스턴스 초기화'
+sshNode.close()
+sshNode = Proxy('new ssh')
+print(sshNode.get_server())`, ``)"
             >
               <div
                 class="gatsby-code-button"
@@ -131,14 +158,36 @@ print('Is it the same instance?', sshNode is telnetNode)`, ``)"
         <span class="token keyword">return</span> cls<span class="token punctuation">.</span>__instances<span class="token punctuation">[</span>cls<span class="token punctuation">]</span>        
 
 # 메타클래스로 Singleton으로 생성
+<span class="token keyword">class</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token operator">:</span>   
+    # 인스턴스가 저장될 속성
+    __instances <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>      
+    # __call__ 클래스에서 생성된 인스턴스를 호출할때 동작
+    def <span class="token function">__call__</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token operator">:</span>   
+        # 인스턴스 생성 여부 확인
+        <span class="token keyword">if</span> cls not <span class="token keyword">in</span> cls<span class="token punctuation">.</span>__instances<span class="token operator">:</span> 
+            # 인스턴스 미생성 경우 인스턴스 생성하여 저장    
+            cls<span class="token punctuation">.</span>__instances<span class="token punctuation">[</span>cls<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">__call__</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span> 
+        #인스턴스가 존재하는경우 기존 생성 인스턴스 전달
+        <span class="token keyword">return</span> cls<span class="token punctuation">.</span>__instances<span class="token punctuation">[</span>cls<span class="token punctuation">]</span>        
+    def <span class="token function">clear</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token operator">:</span>
+        <span class="token keyword">try</span><span class="token operator">:</span>
+            del cls<span class="token punctuation">.</span>__instances<span class="token punctuation">[</span>cls<span class="token punctuation">]</span>
+        except KeyError<span class="token operator">:</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Error:"</span><span class="token punctuation">,</span> KeyError<span class="token punctuation">)</span>    
+            
+# 메타클래스로 Singleton으로 생성
 <span class="token keyword">class</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>metaclass<span class="token operator">=</span>Singleton<span class="token punctuation">)</span><span class="token operator">:</span>    
     def <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> server<span class="token punctuation">)</span><span class="token operator">:</span>
         self<span class="token punctuation">.</span>server <span class="token operator">=</span> server
 
+    def <span class="token function">close</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+        
+        self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        del self
     def <span class="token function">get_server</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
         
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>server 
-
+    #<span class="token operator">...</span>
     
 sshNode <span class="token operator">=</span> <span class="token function">Proxy</span><span class="token punctuation">(</span><span class="token string">'ssh'</span><span class="token punctuation">)</span>
 telnetNode <span class="token operator">=</span> <span class="token function">Proxy</span><span class="token punctuation">(</span><span class="token string">'telnet'</span><span class="token punctuation">)</span>
@@ -147,4 +196,9 @@ telnetNode <span class="token operator">=</span> <span class="token function">Pr
 <span class="token function">print</span><span class="token punctuation">(</span>sshNode<span class="token punctuation">.</span><span class="token function">get_server</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> telnetNode<span class="token punctuation">.</span><span class="token function">get_server</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 #동일 인스턴스 확인
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'Is it the same instance?'</span><span class="token punctuation">,</span> sshNode is telnetNode<span class="token punctuation">)</span></code></pre></div></div></div></div><div class="Post-module--post__footer--3WzWU"><div><p class="Meta-module--meta__date--29eD7">Published <!-- -->Feb 7, 2022</p></div><div class="Tags-module--tags--1L_ct"><ul class="Tags-module--tags__list--91FqN"><li class="Tags-module--tags__list-item--1M30P"><a class="Tags-module--tags__list-item-link--3SL_8" href="/tag/python/">python</a></li></ul></div><div class="Author-module--author--2Yefr"><p>배운거 기록<a class="Author-module--author__bio-twitter--n-O9n" rel="noopener noreferrer" target="_blank"><strong>JinHyeong Kim</strong> on Twitter</a></p></div></div><div class="Post-module--post__comments--25y6I"></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/posts/Python-Singleton class";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-0f38af40638a939fd32e.js"],"app":["/app-5610887f13c0ade0a3b3.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-fd4fb51a6fac1c18bdde.js"],"component---src-templates-categories-list-template-js":["/component---src-templates-categories-list-template-js-2181ec47d28e5c35d3e9.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-606f67389f67126272d7.js"],"component---src-templates-index-template-js":["/component---src-templates-index-template-js-399e327051528735bb18.js"],"component---src-templates-not-found-template-js":["/component---src-templates-not-found-template-js-d66e142dde22b49d91e8.js"],"component---src-templates-page-template-js":["/component---src-templates-page-template-js-c937055e273d362c1067.js"],"component---src-templates-post-template-js":["/component---src-templates-post-template-js-64bcce75e6c4398080ed.js"],"component---src-templates-tag-template-js":["/component---src-templates-tag-template-js-e984f87fb536aa49b757.js"],"component---src-templates-tags-list-template-js":["/component---src-templates-tags-list-template-js-2d7007993fc2bf0f9caf.js"],"component---src-templates-tt-js":["/component---src-templates-tt-js-e8991e1dfc24523cdd0c.js"],"polyfills-dom":["/polyfills-dom-1b7a9e75872e1ee1bfe7.js"],"polyfills-core-js":["/polyfills-core-js-8b1dd7f8c8c63a31ca7a.js"]};/*]]>*/</script><script src="/polyfill-0f38af40638a939fd32e.js" nomodule=""></script><script src="/component---src-templates-post-template-js-64bcce75e6c4398080ed.js" async=""></script><script src="/cd95ea5cbd2c605f26db819f07999610c9ff4310-74b9e39d53af0077dbd5.js" async=""></script><script src="/styles-407fe62976dc5310c43e.js" async=""></script><script src="/app-5610887f13c0ade0a3b3.js" async=""></script><script src="/dc6a8720040df98778fe970bf6c000a41750d3ae-b56c7ed930d47e54d4ed.js" async=""></script><script src="/532a2f07-d05f238db5f768b1710d.js" async=""></script><script src="/framework-4842d2c0752ed335a3e7.js" async=""></script><script src="/webpack-runtime-bd37c144e564a541e1df.js" async=""></script></body></html>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'Is it the same instance?'</span><span class="token punctuation">,</span> sshNode is telnetNode<span class="token punctuation">)</span>
+
+#인스턴스 초기화'
+sshNode<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+sshNode <span class="token operator">=</span> <span class="token function">Proxy</span><span class="token punctuation">(</span><span class="token string">'new ssh'</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>sshNode<span class="token punctuation">.</span><span class="token function">get_server</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></div></div></div><div class="Post-module--post__footer--3WzWU"><div><p class="Meta-module--meta__date--29eD7">Published <!-- -->Feb 7, 2022</p></div><div class="Tags-module--tags--1L_ct"><ul class="Tags-module--tags__list--91FqN"><li class="Tags-module--tags__list-item--1M30P"><a class="Tags-module--tags__list-item-link--3SL_8" href="/tag/python/">python</a></li></ul></div><div class="Author-module--author--2Yefr"><p>배운거 기록<a class="Author-module--author__bio-twitter--n-O9n" rel="noopener noreferrer" target="_blank"><strong>JinHyeong Kim</strong> on Twitter</a></p></div></div><div class="Post-module--post__comments--25y6I"></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/posts/Python-Singleton class";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-0f38af40638a939fd32e.js"],"app":["/app-5610887f13c0ade0a3b3.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-fd4fb51a6fac1c18bdde.js"],"component---src-templates-categories-list-template-js":["/component---src-templates-categories-list-template-js-2181ec47d28e5c35d3e9.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-606f67389f67126272d7.js"],"component---src-templates-index-template-js":["/component---src-templates-index-template-js-399e327051528735bb18.js"],"component---src-templates-not-found-template-js":["/component---src-templates-not-found-template-js-d66e142dde22b49d91e8.js"],"component---src-templates-page-template-js":["/component---src-templates-page-template-js-c937055e273d362c1067.js"],"component---src-templates-post-template-js":["/component---src-templates-post-template-js-64bcce75e6c4398080ed.js"],"component---src-templates-tag-template-js":["/component---src-templates-tag-template-js-e984f87fb536aa49b757.js"],"component---src-templates-tags-list-template-js":["/component---src-templates-tags-list-template-js-2d7007993fc2bf0f9caf.js"],"component---src-templates-tt-js":["/component---src-templates-tt-js-e8991e1dfc24523cdd0c.js"],"polyfills-dom":["/polyfills-dom-1b7a9e75872e1ee1bfe7.js"],"polyfills-core-js":["/polyfills-core-js-8b1dd7f8c8c63a31ca7a.js"]};/*]]>*/</script><script src="/polyfill-0f38af40638a939fd32e.js" nomodule=""></script><script src="/component---src-templates-post-template-js-64bcce75e6c4398080ed.js" async=""></script><script src="/cd95ea5cbd2c605f26db819f07999610c9ff4310-74b9e39d53af0077dbd5.js" async=""></script><script src="/styles-407fe62976dc5310c43e.js" async=""></script><script src="/app-5610887f13c0ade0a3b3.js" async=""></script><script src="/dc6a8720040df98778fe970bf6c000a41750d3ae-b56c7ed930d47e54d4ed.js" async=""></script><script src="/532a2f07-d05f238db5f768b1710d.js" async=""></script><script src="/framework-4842d2c0752ed335a3e7.js" async=""></script><script src="/webpack-runtime-bd37c144e564a541e1df.js" async=""></script></body></html>
