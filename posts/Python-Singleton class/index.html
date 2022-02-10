@@ -106,7 +106,7 @@ class Singleton(type):
         return cls.__instances[cls]        
     def clear(cls):
         try:
-            del cls.__instances[cls]
+            cls.__instances = {}
         except KeyError:
             print(&quot;Error:&quot;, KeyError)    
             
@@ -171,7 +171,7 @@ print(sshNode.get_server())`, ``)"
         <span class="token keyword">return</span> cls<span class="token punctuation">.</span>__instances<span class="token punctuation">[</span>cls<span class="token punctuation">]</span>        
     def <span class="token function">clear</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token operator">:</span>
         <span class="token keyword">try</span><span class="token operator">:</span>
-            del cls<span class="token punctuation">.</span>__instances<span class="token punctuation">[</span>cls<span class="token punctuation">]</span>
+            cls<span class="token punctuation">.</span>__instances <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
         except KeyError<span class="token operator">:</span>
             <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Error:"</span><span class="token punctuation">,</span> KeyError<span class="token punctuation">)</span>    
             
