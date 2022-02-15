@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[16],{bknJ:function(n,e,t){"use strict";t.r(e);var a=t("q1tI");t("Wbzz");e.default=function(n){n.pageTitle,n.children;return a.createElement("div",null,"aa")}}}]);
-//# sourceMappingURL=component---src-templates-tt-js-e8991e1dfc24523cdd0c.js.map
