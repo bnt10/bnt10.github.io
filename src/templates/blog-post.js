@@ -12,6 +12,7 @@ import { SponsorButton } from '../components/sponsor-button'
 import { Bio } from '../components/bio'
 import { PostNavigator } from '../components/post-navigator'
 import { Disqus } from '../components/disqus'
+import { Toc } from '../components/toc'
 import { Utterances } from '../components/utterances'
 import * as ScrollManager from '../utils/scroll'
 
@@ -32,6 +33,7 @@ export default ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={title}>
+      <Toc />
       <Head title={postTitle} description={post.excerpt} />
       <PostTitle title={postTitle} />
       <PostDate date={date} />
@@ -76,6 +78,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 280)
       html
+      tableOfContents
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
