@@ -51,7 +51,8 @@ export default ({ data, location }) => {
   })
 
   return (
-    <Layout location={location} title={siteMetadata.title}>
+    <Layout location={location} title={siteMetadata.title} siteUrl={siteMetadata.siteUrl} author={siteMetadata.author}>
+    
       <Head title={HOME_TITLE} keywords={siteMetadata.keywords} />
       <Bio ref={bioRef} />
       <Category
@@ -77,6 +78,8 @@ export const pageQuery = graphql`
         configs {
           countOfInitialPost
         }
+        siteUrl
+        author
       }
     }
     allMarkdownRemark(

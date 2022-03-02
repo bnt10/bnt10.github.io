@@ -32,16 +32,14 @@ export default ({ data, pageContext, location }) => {
   const { title: postTitle, date } = post.frontmatter
 
   return (
-    <Layout location={location} title={title}>
+    <Layout location={location} title={title} siteUrl={siteUrl} author={author}>
       <Toc />
       <Head title={postTitle} description={post.excerpt} />
       <PostTitle title={postTitle} />
       <PostDate date={date} />
       <PostContainer html={post.html} />
       <SocialShare title={postTitle} author={author} />
-      {!!sponsor.buyMeACoffeeId && (
-        <SponsorButton sponsorId={sponsor.buyMeACoffeeId} />
-      )}
+     
       <Elements.Hr />
       <Bio />
       <PostNavigator pageContext={pageContext} />

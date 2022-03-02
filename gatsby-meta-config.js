@@ -1,12 +1,12 @@
 module.exports = {
   title: `주 1회 작성하는 개발 블로그`,
   description: `배움을 기록하자`,
-  author: `[JinhyeongKim]`,
+  author: `JinhyeongKim`,
   introduction: `주 1회 작성하는 개발 블로그`,
   siteUrl: `https://bnt10.github.io/`, // Your blog site url
   social: {
     twitter: ``, // Your Twitter account
-    github: `https://github.com/bnt10/bnt10.github.io`, // Your github account, // Your GitHub account
+    github: `bnt10/bnt10.github.io`, // Your github account, // Your GitHub account
     medium: ``, // Your Medium account
     facebook: ``, // Your Facebook account
     linkedin: ``, // Your LinkedIn account
@@ -16,13 +16,13 @@ module.exports = {
   keywords: [`blog`],
   comment: {
     disqusShortName: 'bnt10-github-io', // Your disqus-short-name. check disqus.com.
-    utterances: 'JaeYeopHan/gatsby-starter-bee', // Your repository for archive comment
+    utterances: 'JinHyongKim/blog', // Your repository for archive comment
   },
   configs: {
     countOfInitialPost: 10, // Config your initial count of post
   },
   sponsor: {
-    buyMeACoffeeId: 'jbee',
+    buyMeACoffeeId: '',
   },
   share: {
     facebookAppId: '', // Add facebookAppId for using facebook share feature v3.2
