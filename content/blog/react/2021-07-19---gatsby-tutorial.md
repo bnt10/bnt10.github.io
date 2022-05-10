@@ -2,7 +2,7 @@
 title: Gatsby 설치
 date: "2021-09-18"
 template: "post"
-draft: false
+draft: true
 slug: "react-gatsby-toturial"
 category: 
   "gatsby"

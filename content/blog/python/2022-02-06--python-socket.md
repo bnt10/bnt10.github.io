@@ -1,27 +1,30 @@
 ---
 title: Python - socket
-date: "2022-02-06"
-template: "post"
+date: '2022-02-06'
+template: 'post'
 draft: false
-slug: "Python-socket"
-category: 
-  "python"
+slug: 'Python-socket'
+category: 'python'
 tags:
-  - "python"
-description: "Python socket 통신 정리"
-socialImage: "/media/gatsby_icon.png"
+  - 'python'
+description: 'Python socket 통신 정리'
+socialImage: '/media/gatsby_icon.png'
 ---
 
 ### 1. Socket 정의
+
 소캣이란 네트워크를 경유하는 프로세스 간 통신의 종착점이다
 주로 소켓통신이 필요할때는 http 프로토콜 처럼 단방향통신이 아니라 프로세스간 양방향 통신이 필요할때 사용하면 된다.
 소켓에서 같은 ip와 port 번호를 가진 서버와 클라이언트는 소켓을 통한 양방향 통신이 가능하기 때문이다.
+
 #### 1 소제
+
 ### 2. Python에서 Socket구현
+
 서버와 클라이언트 사이에 통신을 구현해 봅니다.
 서버와 클라이언트간의 메시지를 전달할 수 있도록 작성해봅니다.
 
-serverSocket.py 를 먼저 구현해봅니다. 
+serverSocket.py 를 먼저 구현해봅니다.
 
 ```javascript
 
@@ -29,7 +32,7 @@ import socket
 from _thread import *
 
 # 서버에 접속한 클라이언트 목록
-client_sockets = [] 
+client_sockets = []
 # 서버 IP 및 열어줄 포트
 HOST = '127.0.0.1'
 PORT = 9998
@@ -68,11 +71,11 @@ def threaded(client_socket, addr):
 
 #socket server start
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
-    
+
     server_socket.bind((HOST, PORT))
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server_socket.listen() 
-    
+    server_socket.listen()
+
     try:
         while True:
             print('connet wait')
@@ -84,14 +87,16 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
             start_new_thread(threaded, (client_socket, addr))
             #현재 연결되 clinet의 수
             print("client count: ", len(client_sockets))
-            
+
     except Exception as e :
         print ('error: ',e)
     finally:
         server_socket.close()
 
 ```
+
 다음으로 클라언트를 clientSocket.py를 작성해봅니다.
+
 ```python
 from _thread import *
 import socket
@@ -105,7 +110,7 @@ def recv_data(client_socket) :
         print("recive : ",repr(data.decode()))
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
-    
+
     client_socket.connect((HOST, PORT))
 
     try:
@@ -117,7 +122,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
                 close_data = message
                 break
             client_socket.send(message.encode())
-            
+
     except Exception as e :
         print ('error: ',e)
     finally:

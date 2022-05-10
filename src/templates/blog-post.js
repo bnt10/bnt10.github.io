@@ -13,10 +13,11 @@ import { Bio } from '../components/bio'
 import { PostNavigator } from '../components/post-navigator'
 import { Disqus } from '../components/disqus'
 import { Toc } from '../components/toc'
+import { ThemeSwitch } from '../components/theme-switch'
 import { Utterances } from '../components/utterances'
 import * as ScrollManager from '../utils/scroll'
-
 import '../styles/code.scss'
+import './index.scss'
 import 'katex/dist/katex.min.css'
 
 export default ({ data, pageContext, location }) => {
@@ -32,27 +33,41 @@ export default ({ data, pageContext, location }) => {
   const { title: postTitle, date } = post.frontmatter
 
   return (
-    <Layout location={location} title={title} siteUrl={siteUrl} author={author}>
-      <Toc />
-      <Head title={postTitle} description={post.excerpt} />
-      <PostTitle title={postTitle} />
-      <PostDate date={date} />
-      <PostContainer html={post.html} />
-      <SocialShare title={postTitle} author={author} />
+    <>
+   <div className="post-content-wrap">
+  
+    <div className="post-content">
+      <Layout location={location} title={title} siteUrl={siteUrl} author={author}>
      
-      <Elements.Hr />
-      <Bio />
-      <PostNavigator pageContext={pageContext} />
-      {!!disqusShortName && (
-        <Disqus
-          post={post}
-          shortName={disqusShortName}
-          siteUrl={siteUrl}
-          slug={pageContext.slug}
-        />
-      )}
-      {!!utterances && <Utterances repo={utterances} />}
-    </Layout>
+        <div className="home-header-wrap">
+        <Head title={postTitle} description={post.excerpt} />
+        <PostTitle title={postTitle} />
+        <ThemeSwitch />
+        </div>
+        <PostDate date={date} />
+        <PostContainer html={post.html} />
+        <SocialShare title={postTitle} author={author} />
+      
+        <Elements.Hr />
+        <Bio />
+        <PostNavigator pageContext={pageContext} />
+        {!!disqusShortName && (
+          <Disqus
+            post={post}
+            shortName={disqusShortName}
+            siteUrl={siteUrl}
+            slug={pageContext.slug}
+          />
+        )}
+        {!!utterances && <Utterances repo={utterances} />}
+      
+        </Layout>
+        </div>
+        { post.tableOfContents && (
+         <Toc toc={post}/>
+        )}
+      </div>
+    </>
   )
 }
 
@@ -72,6 +87,7 @@ export const pageQuery = graphql`
         }
       }
     }
+
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 280)

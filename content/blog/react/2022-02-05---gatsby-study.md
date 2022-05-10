@@ -2,7 +2,7 @@
 title: gatsby research
 date: "2022-02-05"
 template: "post"
-draft: false
+draft: true
 slug: "gatsby 공부"
 category: 
   "gatsby"

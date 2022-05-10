@@ -1,0 +1,34 @@
+.toc-wrap{  
+    flex:1
+}
+.toc-content{
+    top: 50px;
+    flex-grow: 0;
+    max-width: calc(100% / 3);
+    flex-basis: calc(100% / 3);
+    margin-left: 1rem;
+    max-width: 18rem;
+    max-height: calc(100vh - 200px);
+    position: sticky;
+    overflow: auto;
+    ul {
+    margin-left: 0px;
+    li {
+      color: #3e3e5a;
+    }
+    a{
+        border-radius: 6px;
+        color: var(--color-text);
+        display: block;
+        overflow: hidden;
+        padding: 4px 8px;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        transition: all .25s ease 0s;
+        white-space: nowrap;
+    }
+    a.active{
+        color: red;
+    }
+  }
+}
