@@ -48,81 +48,311 @@
         }
       }
     })
-  </script><link rel="preconnect" href="https://www.google-analytics.com"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><link rel="icon" href="/favicon-32x32.png?v=08d1167632bb288cc6b3d20157af049c" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#ffffff"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><title data-react-helmet="true">Python - Singleton class | 주 1회 작성하는 개발 블로그</title><meta data-react-helmet="true" name="description" content="1. Singleton 현재 실행중인 프로세스에서 하나의 인스터스를 메모리에 할당하여 유일한 단일객체로서 사용하는 디자인패턴을 말한다. 2. 공부한 이유 현재 개발중인 게이트웨이로서의 Proxy서버에 대해서 다수의 node서버 접속시 사용할 전역 Proxy서버 객체 및
-공유된 리소스에 대한 말단 노드간의 동시성 제어가 필요했습니다. 3. Python에서 Singleton 구현 방식 및 예시 생각보다 python에서 싱글턴을 구현하는 방식들이 다양합니다.
-제가 이번에 구현한 방식은 type…"/><meta data-react-helmet="true" property="og:title" content="Python - Singleton class"/><meta data-react-helmet="true" property="og:description" content="1. Singleton 현재 실행중인 프로세스에서 하나의 인스터스를 메모리에 할당하여 유일한 단일객체로서 사용하는 디자인패턴을 말한다. 2. 공부한 이유 현재 개발중인 게이트웨이로서의 Proxy서버에 대해서 다수의 node서버 접속시 사용할 전역 Proxy서버 객체 및
-공유된 리소스에 대한 말단 노드간의 동시성 제어가 필요했습니다. 3. Python에서 Singleton 구현 방식 및 예시 생각보다 python에서 싱글턴을 구현하는 방식들이 다양합니다.
-제가 이번에 구현한 방식은 type…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="twitter:creator" content="JinhyeongKim"/><meta data-react-helmet="true" name="twitter:title" content="Python - Singleton class"/><meta data-react-helmet="true" name="twitter:description" content="1. Singleton 현재 실행중인 프로세스에서 하나의 인스터스를 메모리에 할당하여 유일한 단일객체로서 사용하는 디자인패턴을 말한다. 2. 공부한 이유 현재 개발중인 게이트웨이로서의 Proxy서버에 대해서 다수의 node서버 접속시 사용할 전역 Proxy서버 객체 및
-공유된 리소스에 대한 말단 노드간의 동시성 제어가 필요했습니다. 3. Python에서 Singleton 구현 방식 및 예시 생각보다 python에서 싱글턴을 구현하는 방식들이 다양합니다.
-제가 이번에 구현한 방식은 type…"/><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link as="script" rel="preload" href="/webpack-runtime-80d3efaa7d685d5840fc.js"/><link as="script" rel="preload" href="/framework-b853ef79118f5b1debd8.js"/><link as="script" rel="preload" href="/app-500bb602f1fbbf5b0609.js"/><link as="script" rel="preload" href="/styles-e9d24b1846c7d6eb9685.js"/><link as="script" rel="preload" href="/133dca110fad53aa1997b630637bbac3134a2d14-b9d424b4c6bbcac9907c.js"/><link as="script" rel="preload" href="/d5d7a013bc6c1e2b6d7db819052c16d7efea5559-00d3876b99551a51ff03.js"/><link as="script" rel="preload" href="/cd7d5f864fc9e15ed8adef086269b0aeff617554-4349a6f44e29c627a25e.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-js-23c63952df5ade85f962.js"/><link as="fetch" rel="preload" href="/page-data/python/2022-02-07--python-singleton/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2486386679.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3128451518.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="post-content-wrap"><div class="post-content"><div style="margin-left:auto;margin-right:auto;max-width:65rem;padding:2.4375rem 1.21875rem"><div class="home-header-wrap"><h1>Python - Singleton class</h1><div class="switch-container"><label for="normal-switch"><div style="position:relative;display:inline-block;text-align:left;opacity:1;direction:ltr;border-radius:12px;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s;touch-action:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none"><div class="react-switch-bg" style="height:24px;width:48px;margin:0;position:relative;background:#d9dfe2;border-radius:12px;cursor:pointer;-webkit-transition:background 0.25s;-moz-transition:background 0.25s;transition:background 0.25s"><div style="height:24px;width:26px;position:relative;opacity:0;pointer-events:none;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s"><div class="icon checkedIcon"><svg width="24" height="24"><rect width="24" height="24" fill="none" rx="0" ry="0"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M14.8102 3.2H13.8202C13.4902 3.2 13.2302 2.93 13.2302 2.6C13.2302 2.27 13.5002 2 13.8302 2H16.2602C16.5002 2 16.7202 2.15 16.8102 2.37C16.9002 2.59 16.8502 2.85 16.6802 3.02L15.2702 4.43H16.2602C16.5902 4.43 16.8602 4.7 16.8602 5.03C16.8602 5.36 16.5902 5.63 16.2602 5.63H13.8202C13.5802 5.63 13.3602 5.48 13.2702 5.26C13.1802 5.04 13.2302 4.78 13.4002 4.61L14.8102 3.2ZM20.1401 11.0101H21.1301C21.4601 11.0101 21.7401 11.2801 21.7401 11.6101C21.7401 11.9401 21.4701 12.2101 21.1401 12.2101H18.7001C18.4601 12.2101 18.2401 12.0601 18.1501 11.8401C18.0601 11.6201 18.1101 11.3601 18.2801 11.1901L19.6901 9.78008H18.7001C18.3701 9.78008 18.1001 9.51008 18.1001 9.18008C18.1001 8.85008 18.3701 8.58008 18.7001 8.58008H21.1301C21.3701 8.58008 21.5901 8.73008 21.6801 8.95008C21.7701 9.17008 21.7201 9.43008 21.5501 9.60008L20.1401 11.0101ZM11.0302 9.8499H12.8502L10.7002 11.9999C10.5302 12.1699 10.4802 12.4299 10.5702 12.6499C10.6602 12.8699 10.8802 13.0199 11.1202 13.0199H14.2902C14.6202 13.0199 14.8902 12.7499 14.8902 12.4199C14.8902 12.0899 14.6202 11.8199 14.2902 11.8199H12.5602L14.7102 9.6699C14.8802 9.4999 14.9302 9.2399 14.8402 9.0199C14.7502 8.7999 14.5302 8.6499 14.2902 8.6499H11.0202C10.6902 8.6499 10.4202 8.9199 10.4202 9.2499C10.4202 9.5799 10.7002 9.8499 11.0302 9.8499ZM14.5501 16.89C15.6601 16.89 16.7201 16.66 17.7101 16.19C17.9401 16.08 18.2101 16.13 18.3801 16.3C18.5601 16.48 18.6101 16.75 18.5001 16.98C17.0901 20.05 13.9901 22.03 10.6001 22.03C5.79013 22.03 1.88013 18.12 1.88013 13.31C1.88013 9.94004 3.87013 6.84004 6.93013 5.40004C7.16013 5.29004 7.43012 5.34004 7.61012 5.52004C7.79012 5.70004 7.84013 5.97004 7.73013 6.20004C7.27013 7.19004 7.03012 8.26004 7.03012 9.38004C7.03012 13.52 10.4001 16.89 14.5501 16.89ZM3.09013 13.31C3.09013 17.46 6.46012 20.83 10.6101 20.83C12.9901 20.83 15.2001 19.7 16.6001 17.85C15.9401 18.01 15.2501 18.09 14.5501 18.09C9.74013 18.09 5.83012 14.18 5.83012 9.38004C5.83012 8.68004 5.91013 7.99004 6.07013 7.32004C4.22013 8.73004 3.09013 10.94 3.09013 13.31Z"></path></svg></div></div><div style="height:24px;width:26px;position:absolute;opacity:1;right:0;top:0;pointer-events:none;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s"><div class="icon uncheckedIcon"><svg width="24" height="24"><rect width="24" height="24" fill="none" rx="0" ry="0"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M12.7488 5.67224C13.1057 5.67298 13.3958 5.38416 13.3965 5.0271C13.3973 4.67005 13.1084 4.37989 12.7515 4.37915C12.3943 4.37842 12.1043 4.66724 12.1035 5.02442C12.1028 5.38135 12.3916 5.67151 12.7488 5.67224ZM9.39535 6.57153C9.70504 6.39355 9.81173 5.99841 9.63388 5.68884C9.45602 5.37914 9.06076 5.27245 8.75119 5.45031C8.44162 5.62817 8.3348 6.02343 8.51266 6.333C8.69064 6.64257 9.08578 6.74926 9.39535 6.57153ZM6.94091 9.02688C6.76171 9.33571 6.3662 9.44094 6.05736 9.26174C5.74852 9.08254 5.6433 8.68691 5.8225 8.37807C6.0017 8.06923 6.39733 7.96413 6.70617 8.14333C7.015 8.32253 7.12011 8.71804 6.94091 9.02688ZM6.04309 12.3806C6.04383 12.0234 5.75501 11.7334 5.39795 11.7327C5.0409 11.7319 4.75074 12.0208 4.75 12.3779C4.74927 12.7349 5.03809 13.0249 5.39527 13.0256C5.7522 13.0265 6.04236 12.7376 6.04309 12.3806ZM5.82116 16.3781C5.6433 16.0684 5.74999 15.6734 6.05968 15.4954C6.36925 15.3176 6.7644 15.4244 6.94237 15.734C7.12023 16.0435 7.01342 16.4388 6.70385 16.6165C6.39428 16.7945 5.99902 16.6877 5.82116 16.3781ZM9.39773 18.1882C9.08889 18.0091 8.69338 18.1142 8.51418 18.423C8.33498 18.7319 8.44008 19.1275 8.74892 19.3067C9.05776 19.4858 9.45339 19.3808 9.63259 19.072C9.81179 18.7631 9.70656 18.3674 9.39773 18.1882ZM12.1035 19.7313C12.1043 19.3743 12.3943 19.0855 12.7515 19.0862C13.1084 19.0869 13.3973 19.377 13.3965 19.7341C13.3958 20.0911 13.1057 20.3799 12.7488 20.3792C12.3916 20.3784 12.1028 20.0884 12.1035 19.7313ZM16.1047 18.1869C15.7951 18.3647 15.6883 18.7599 15.8662 19.0695C16.0442 19.3791 16.4392 19.4859 16.7489 19.308C17.0584 19.1302 17.1652 18.735 16.9873 18.4255C16.8095 18.1158 16.4143 18.009 16.1047 18.1869ZM18.559 15.7315C18.7382 15.4227 19.134 15.3177 19.4428 15.4969C19.7516 15.676 19.8566 16.0716 19.6775 16.3804C19.4983 16.6893 19.1027 16.7945 18.7939 16.6153C18.485 16.4361 18.3799 16.0403 18.559 15.7315ZM20.105 11.7327C19.7478 11.7319 19.4578 12.0208 19.457 12.3779C19.4563 12.7349 19.7451 13.0249 20.1022 13.0256C20.4592 13.0265 20.7493 12.7376 20.75 12.3806C20.7507 12.0234 20.4619 11.7334 20.105 11.7327ZM19.679 8.38046C19.8569 8.69003 19.75 9.08529 19.4405 9.26315C19.1309 9.44101 18.7356 9.33432 18.5579 9.02462C18.3799 8.71505 18.4867 8.31991 18.7964 8.14193C19.106 7.96408 19.5011 8.07089 19.679 8.38046ZM16.1022 6.57006C16.4111 6.74926 16.8068 6.64415 16.986 6.33532C17.1652 6.02648 17.06 5.63085 16.7512 5.45165C16.4423 5.27245 16.0467 5.37767 15.8676 5.68651C15.6884 5.99535 15.7934 6.39086 16.1022 6.57006ZM8.26319 12.3795C8.26319 9.90466 10.2761 7.8916 12.75 7.8916C15.2249 7.8916 17.2379 9.90466 17.2379 12.3795C17.2379 14.8534 15.2249 16.8663 12.75 16.8663C10.2761 16.8663 8.26319 14.8534 8.26319 12.3795ZM9.5553 12.3795C9.5553 14.141 10.9885 15.5741 12.75 15.5741C14.5115 15.5741 15.9458 14.141 15.9458 12.3795C15.9458 10.618 14.5115 9.18372 12.75 9.18372C10.9885 9.18372 9.5553 10.618 9.5553 12.3795Z"></path></svg></div></div></div><div class="react-switch-handle" style="height:22px;width:22px;background:#ffffff;display:inline-block;cursor:pointer;border-radius:50%;position:absolute;transform:translateX(1px);top:1px;outline:0;border:0;-webkit-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;-moz-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s"></div><input type="checkbox" role="switch" style="border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px" id="normal-switch"/></div></label></div></div><p class="post-date">February 07, 2022</p><div><h3>1. Singleton</h3>
-<p>현재 실행중인 프로세스에서 하나의 인스터스를 메모리에 할당하여 유일한 단일객체로서 사용하는 디자인패턴을 말한다.</p>
-<h3>2. 공부한 이유</h3>
-<p>현재 개발중인 게이트웨이로서의 Proxy서버에 대해서 다수의 node서버 접속시 사용할 전역 Proxy서버 객체 및
-공유된 리소스에 대한 말단 노드간의 동시성 제어가 필요했습니다.</p>
-<h3>3. Python에서 Singleton 구현 방식 및 예시</h3>
-<p>생각보다 python에서 싱글턴을 구현하는 방식들이 다양합니다.
-제가 이번에 구현한 방식은 type 통한 metaclass 생성을 통해서 싱글톤을 구현 해보겠습니다.</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token operator">:</span>
-    # 인스턴스가 저장될 속성
-    __instances <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-    # __call__ 클래스에서 생성된 인스턴스를 호출할때 동작
-    def <span class="token function">__call__</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token operator">:</span>
-        # 인스턴스 생성 여부 확인
-        <span class="token keyword">if</span> cls not <span class="token keyword">in</span> cls<span class="token punctuation">.</span>__instances<span class="token operator">:</span>
-            # 인스턴스 미생성 경우 인스턴스 생성하여 저장
-            cls<span class="token punctuation">.</span>__instances<span class="token punctuation">[</span>cls<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">__call__</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-        #인스턴스가 존재하는경우 기존 생성 인스턴스 전달
-        <span class="token keyword">return</span> cls<span class="token punctuation">.</span>__instances<span class="token punctuation">[</span>cls<span class="token punctuation">]</span>
+  </script><link rel="preconnect" href="https://www.google-analytics.com"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><link rel="icon" href="/favicon-32x32.png?v=08d1167632bb288cc6b3d20157af049c" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#ffffff"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=08d1167632bb288cc6b3d20157af049c"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><title data-react-helmet="true">React - Tutorial 문서정리 | 주 1회 작성하는 개발 블로그</title><meta data-react-helmet="true" name="description" content="1. 작성 이유 문서에 기반한 정리하는 연습을 해보고 싶어서 작성해보려고 합니다. 공식문서를 따라 해보면서
+튜토리얼을 목차를 따라 가보면서 제가 튜툐리얼을 따라가면서 중요하다 생각하는 개념 위주로 정리했습니다. 옆에 공식문서를 띄어놓고 같이 봐주시기 바랍니다. 2. 정리 Before We Start the Tutorial the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설명한다고 합니다. 이 튜토리얼을 따라가기 위해서는 ES6 버전의 Javascript의
+arrow…"/><meta data-react-helmet="true" property="og:title" content="React - Tutorial 문서정리"/><meta data-react-helmet="true" property="og:description" content="1. 작성 이유 문서에 기반한 정리하는 연습을 해보고 싶어서 작성해보려고 합니다. 공식문서를 따라 해보면서
+튜토리얼을 목차를 따라 가보면서 제가 튜툐리얼을 따라가면서 중요하다 생각하는 개념 위주로 정리했습니다. 옆에 공식문서를 띄어놓고 같이 봐주시기 바랍니다. 2. 정리 Before We Start the Tutorial the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설명한다고 합니다. 이 튜토리얼을 따라가기 위해서는 ES6 버전의 Javascript의
+arrow…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="twitter:creator" content="JinhyeongKim"/><meta data-react-helmet="true" name="twitter:title" content="React - Tutorial 문서정리"/><meta data-react-helmet="true" name="twitter:description" content="1. 작성 이유 문서에 기반한 정리하는 연습을 해보고 싶어서 작성해보려고 합니다. 공식문서를 따라 해보면서
+튜토리얼을 목차를 따라 가보면서 제가 튜툐리얼을 따라가면서 중요하다 생각하는 개념 위주로 정리했습니다. 옆에 공식문서를 띄어놓고 같이 봐주시기 바랍니다. 2. 정리 Before We Start the Tutorial the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설명한다고 합니다. 이 튜토리얼을 따라가기 위해서는 ES6 버전의 Javascript의
+arrow…"/><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link as="script" rel="preload" href="/webpack-runtime-80d3efaa7d685d5840fc.js"/><link as="script" rel="preload" href="/framework-b853ef79118f5b1debd8.js"/><link as="script" rel="preload" href="/app-500bb602f1fbbf5b0609.js"/><link as="script" rel="preload" href="/styles-e9d24b1846c7d6eb9685.js"/><link as="script" rel="preload" href="/133dca110fad53aa1997b630637bbac3134a2d14-b9d424b4c6bbcac9907c.js"/><link as="script" rel="preload" href="/d5d7a013bc6c1e2b6d7db819052c16d7efea5559-00d3876b99551a51ff03.js"/><link as="script" rel="preload" href="/cd7d5f864fc9e15ed8adef086269b0aeff617554-4349a6f44e29c627a25e.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-js-23c63952df5ade85f962.js"/><link as="fetch" rel="preload" href="/page-data/react/2022-05-14--react-tutorial/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2486386679.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3128451518.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="post-content-wrap"><div class="post-content"><div style="margin-left:auto;margin-right:auto;max-width:65rem;padding:2.4375rem 1.21875rem"><div class="home-header-wrap"><h1>React - Tutorial 문서정리</h1><div class="switch-container"><label for="normal-switch"><div style="position:relative;display:inline-block;text-align:left;opacity:1;direction:ltr;border-radius:12px;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s;touch-action:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none"><div class="react-switch-bg" style="height:24px;width:48px;margin:0;position:relative;background:#d9dfe2;border-radius:12px;cursor:pointer;-webkit-transition:background 0.25s;-moz-transition:background 0.25s;transition:background 0.25s"><div style="height:24px;width:26px;position:relative;opacity:0;pointer-events:none;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s"><div class="icon checkedIcon"><svg width="24" height="24"><rect width="24" height="24" fill="none" rx="0" ry="0"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M14.8102 3.2H13.8202C13.4902 3.2 13.2302 2.93 13.2302 2.6C13.2302 2.27 13.5002 2 13.8302 2H16.2602C16.5002 2 16.7202 2.15 16.8102 2.37C16.9002 2.59 16.8502 2.85 16.6802 3.02L15.2702 4.43H16.2602C16.5902 4.43 16.8602 4.7 16.8602 5.03C16.8602 5.36 16.5902 5.63 16.2602 5.63H13.8202C13.5802 5.63 13.3602 5.48 13.2702 5.26C13.1802 5.04 13.2302 4.78 13.4002 4.61L14.8102 3.2ZM20.1401 11.0101H21.1301C21.4601 11.0101 21.7401 11.2801 21.7401 11.6101C21.7401 11.9401 21.4701 12.2101 21.1401 12.2101H18.7001C18.4601 12.2101 18.2401 12.0601 18.1501 11.8401C18.0601 11.6201 18.1101 11.3601 18.2801 11.1901L19.6901 9.78008H18.7001C18.3701 9.78008 18.1001 9.51008 18.1001 9.18008C18.1001 8.85008 18.3701 8.58008 18.7001 8.58008H21.1301C21.3701 8.58008 21.5901 8.73008 21.6801 8.95008C21.7701 9.17008 21.7201 9.43008 21.5501 9.60008L20.1401 11.0101ZM11.0302 9.8499H12.8502L10.7002 11.9999C10.5302 12.1699 10.4802 12.4299 10.5702 12.6499C10.6602 12.8699 10.8802 13.0199 11.1202 13.0199H14.2902C14.6202 13.0199 14.8902 12.7499 14.8902 12.4199C14.8902 12.0899 14.6202 11.8199 14.2902 11.8199H12.5602L14.7102 9.6699C14.8802 9.4999 14.9302 9.2399 14.8402 9.0199C14.7502 8.7999 14.5302 8.6499 14.2902 8.6499H11.0202C10.6902 8.6499 10.4202 8.9199 10.4202 9.2499C10.4202 9.5799 10.7002 9.8499 11.0302 9.8499ZM14.5501 16.89C15.6601 16.89 16.7201 16.66 17.7101 16.19C17.9401 16.08 18.2101 16.13 18.3801 16.3C18.5601 16.48 18.6101 16.75 18.5001 16.98C17.0901 20.05 13.9901 22.03 10.6001 22.03C5.79013 22.03 1.88013 18.12 1.88013 13.31C1.88013 9.94004 3.87013 6.84004 6.93013 5.40004C7.16013 5.29004 7.43012 5.34004 7.61012 5.52004C7.79012 5.70004 7.84013 5.97004 7.73013 6.20004C7.27013 7.19004 7.03012 8.26004 7.03012 9.38004C7.03012 13.52 10.4001 16.89 14.5501 16.89ZM3.09013 13.31C3.09013 17.46 6.46012 20.83 10.6101 20.83C12.9901 20.83 15.2001 19.7 16.6001 17.85C15.9401 18.01 15.2501 18.09 14.5501 18.09C9.74013 18.09 5.83012 14.18 5.83012 9.38004C5.83012 8.68004 5.91013 7.99004 6.07013 7.32004C4.22013 8.73004 3.09013 10.94 3.09013 13.31Z"></path></svg></div></div><div style="height:24px;width:26px;position:absolute;opacity:1;right:0;top:0;pointer-events:none;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s"><div class="icon uncheckedIcon"><svg width="24" height="24"><rect width="24" height="24" fill="none" rx="0" ry="0"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M12.7488 5.67224C13.1057 5.67298 13.3958 5.38416 13.3965 5.0271C13.3973 4.67005 13.1084 4.37989 12.7515 4.37915C12.3943 4.37842 12.1043 4.66724 12.1035 5.02442C12.1028 5.38135 12.3916 5.67151 12.7488 5.67224ZM9.39535 6.57153C9.70504 6.39355 9.81173 5.99841 9.63388 5.68884C9.45602 5.37914 9.06076 5.27245 8.75119 5.45031C8.44162 5.62817 8.3348 6.02343 8.51266 6.333C8.69064 6.64257 9.08578 6.74926 9.39535 6.57153ZM6.94091 9.02688C6.76171 9.33571 6.3662 9.44094 6.05736 9.26174C5.74852 9.08254 5.6433 8.68691 5.8225 8.37807C6.0017 8.06923 6.39733 7.96413 6.70617 8.14333C7.015 8.32253 7.12011 8.71804 6.94091 9.02688ZM6.04309 12.3806C6.04383 12.0234 5.75501 11.7334 5.39795 11.7327C5.0409 11.7319 4.75074 12.0208 4.75 12.3779C4.74927 12.7349 5.03809 13.0249 5.39527 13.0256C5.7522 13.0265 6.04236 12.7376 6.04309 12.3806ZM5.82116 16.3781C5.6433 16.0684 5.74999 15.6734 6.05968 15.4954C6.36925 15.3176 6.7644 15.4244 6.94237 15.734C7.12023 16.0435 7.01342 16.4388 6.70385 16.6165C6.39428 16.7945 5.99902 16.6877 5.82116 16.3781ZM9.39773 18.1882C9.08889 18.0091 8.69338 18.1142 8.51418 18.423C8.33498 18.7319 8.44008 19.1275 8.74892 19.3067C9.05776 19.4858 9.45339 19.3808 9.63259 19.072C9.81179 18.7631 9.70656 18.3674 9.39773 18.1882ZM12.1035 19.7313C12.1043 19.3743 12.3943 19.0855 12.7515 19.0862C13.1084 19.0869 13.3973 19.377 13.3965 19.7341C13.3958 20.0911 13.1057 20.3799 12.7488 20.3792C12.3916 20.3784 12.1028 20.0884 12.1035 19.7313ZM16.1047 18.1869C15.7951 18.3647 15.6883 18.7599 15.8662 19.0695C16.0442 19.3791 16.4392 19.4859 16.7489 19.308C17.0584 19.1302 17.1652 18.735 16.9873 18.4255C16.8095 18.1158 16.4143 18.009 16.1047 18.1869ZM18.559 15.7315C18.7382 15.4227 19.134 15.3177 19.4428 15.4969C19.7516 15.676 19.8566 16.0716 19.6775 16.3804C19.4983 16.6893 19.1027 16.7945 18.7939 16.6153C18.485 16.4361 18.3799 16.0403 18.559 15.7315ZM20.105 11.7327C19.7478 11.7319 19.4578 12.0208 19.457 12.3779C19.4563 12.7349 19.7451 13.0249 20.1022 13.0256C20.4592 13.0265 20.7493 12.7376 20.75 12.3806C20.7507 12.0234 20.4619 11.7334 20.105 11.7327ZM19.679 8.38046C19.8569 8.69003 19.75 9.08529 19.4405 9.26315C19.1309 9.44101 18.7356 9.33432 18.5579 9.02462C18.3799 8.71505 18.4867 8.31991 18.7964 8.14193C19.106 7.96408 19.5011 8.07089 19.679 8.38046ZM16.1022 6.57006C16.4111 6.74926 16.8068 6.64415 16.986 6.33532C17.1652 6.02648 17.06 5.63085 16.7512 5.45165C16.4423 5.27245 16.0467 5.37767 15.8676 5.68651C15.6884 5.99535 15.7934 6.39086 16.1022 6.57006ZM8.26319 12.3795C8.26319 9.90466 10.2761 7.8916 12.75 7.8916C15.2249 7.8916 17.2379 9.90466 17.2379 12.3795C17.2379 14.8534 15.2249 16.8663 12.75 16.8663C10.2761 16.8663 8.26319 14.8534 8.26319 12.3795ZM9.5553 12.3795C9.5553 14.141 10.9885 15.5741 12.75 15.5741C14.5115 15.5741 15.9458 14.141 15.9458 12.3795C15.9458 10.618 14.5115 9.18372 12.75 9.18372C10.9885 9.18372 9.5553 10.618 9.5553 12.3795Z"></path></svg></div></div></div><div class="react-switch-handle" style="height:22px;width:22px;background:#ffffff;display:inline-block;cursor:pointer;border-radius:50%;position:absolute;transform:translateX(1px);top:1px;outline:0;border:0;-webkit-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;-moz-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s"></div><input type="checkbox" role="switch" style="border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px" id="normal-switch"/></div></label></div></div><p class="post-date">April 14, 2022</p><div><h2>1. 작성 이유</h2>
+<p>문서에 기반한 정리하는 연습을 해보고 싶어서 작성해보려고 합니다.<br>
+공식문서를 따라 해보면서
+튜토리얼을 목차를 따라 가보면서 제가 튜툐리얼을 따라가면서 중요하다 생각하는 개념 위주로 정리했습니다.<br>
+옆에 <a href="https://reactjs.org/tutorial/tutorial.html#adding-time-travel">공식문서</a>를 띄어놓고 같이 봐주시기 바랍니다.</p>
+<h2>2. 정리</h2>
+<h3>Before We Start the Tutorial</h3>
+<p>the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설명한다고 합니다.</p>
+<p>이 튜토리얼을 따라가기 위해서는 ES6 버전의 Javascript의
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow functions</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">classes</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">let</a>, 그리고 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a> 특징을 알아야 합니다.</p>
+<p>리엑트에 집중할 수 있도록 선수지식에 대해서는 제외하고 정리를 하였습니다.</p>
+<h3>Setup for the Tutorial</h3>
+<p>이 튜토리얼을 실습하기 위해서는 브라우저를 통한 방법과 자신의 로컬 환경을 구축하고 실습하는
+방법을 2가지를 지원합니다.</p>
+<p>개념학습에 집중하기 위해서 <a href="(https://codepen.io/gaearon/pen/oWWQNa?editors=0010)">브라우저를 통한 코드 작성</a> 방법을 선택하겠습니다.</p>
+<h3>Overvieew</h3>
+<ol>
+<li>
+<p>What Is React?</p>
+<p>리엑트는 선언적이고 효율적이며 유연한 자바스크립트 라이브러리 입니다.</p>
+<p>선언적, 효율적, 유연한 이라는 키워드는 튜토리얼을 진행해 나가면서 점차 경험할 수 있었습니다.</p>
+<p><strong>컴포넌트</strong>라는 작고 독립된 코드를 통해서 복잡한 UI를 구성합니다.
+앞으로 이 컴포넌트라는 단위를 기준으로 리엑트에 대해서 이해 해보도록 합시다.</p>
+<p>튜토리얼에서 가장 처음 접하게 되는 <strong>컴포넌트</strong>는 <strong>Class</strong>형태의 <strong>React.Component</strong> 입니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">ShoppingList</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+ <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> <span class="token punctuation">(</span>
+     <span class="token comment">// 화면에 출력하고 싶은 데이터</span>
+     <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"shopping-list"</span><span class="token operator">></span>
+       <span class="token operator">&lt;</span>h1<span class="token operator">></span>Shopping List <span class="token keyword">for</span> <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+       <span class="token operator">&lt;</span>ul<span class="token operator">></span>
+         <span class="token operator">&lt;</span>li<span class="token operator">></span>Instagram<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+         <span class="token operator">&lt;</span>li<span class="token operator">></span>WhatsApp<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+         <span class="token operator">&lt;</span>li<span class="token operator">></span>Oculus<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+       <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+     <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+   <span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-# 메타클래스로 Singleton으로 생성
-<span class="token keyword">class</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token operator">:</span>
-    # 인스턴스가 저장될 속성
-    __instances <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-    # __call__ 클래스에서 생성된 인스턴스를 호출할때 동작
-    def <span class="token function">__call__</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token operator">:</span>
-        # 인스턴스 생성 여부 확인
-        <span class="token keyword">if</span> cls not <span class="token keyword">in</span> cls<span class="token punctuation">.</span>__instances<span class="token operator">:</span>
-            # 인스턴스 미생성 경우 인스턴스 생성하여 저장
-            cls<span class="token punctuation">.</span>__instances<span class="token punctuation">[</span>cls<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">__call__</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-        #인스턴스가 존재하는경우 기존 생성 인스턴스 전달
-        <span class="token keyword">return</span> cls<span class="token punctuation">.</span>__instances<span class="token punctuation">[</span>cls<span class="token punctuation">]</span>
-    def <span class="token function">clear</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token operator">:</span>
-        <span class="token keyword">try</span><span class="token operator">:</span>
-            cls<span class="token punctuation">.</span>__instances <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-        except KeyError<span class="token operator">:</span>
-            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Error:"</span><span class="token punctuation">,</span> KeyError<span class="token punctuation">)</span>
+<span class="token comment">// Example usage: &lt;ShoppingList name="Mark" /></span></code></pre></div>
+<p>전체적인 코드는 <a href="https://ko.wikipedia.org/wiki/XML">XML</a>의 형태와 비슷합니다.</p>
+<p><code class="language-text">render()</code>라는 함수의 <code class="language-text">return</code> 메소드를 통해서 <code class="language-text">React element</code>를 반환하게 됩니다.
+이를 통해 화면에 <code class="language-text">React element</code>가 랜더링 됩니다.</p>
+<p>쉽게 말해서 화면에 뿌려줄 부분에 해당합니다.(Rendering)
+시작부터 여러 개념들이 나오기 시작하면서 위기가 찾아 오기 시작합니다..</p>
+<p>모든 개념들을 이해하면서 진행하면 좋지만 이번에는 리엑트를 이해하고 사용하는데 필요한 기본적인 개념부분을 먼저 정리 하였습니다.</p>
+<p>여기서 눈여겨 봐야할 코드는 <code class="language-text">{this.props.name}</code> 입니다.
+<code class="language-text">props</code> 란 propertiess의 줄임말로 컴포넌트가 가지고 있는 속성으로 다음으로 나올 <code class="language-text">state</code>와 함께
+리엑트를 사용함에 있어서 제일 많이 접하는 키워드입니다.</p>
+<p><code class="language-text">React element</code>는 아래와 같은 형태로 빌드되어 화면에 출력 되게 됩니다.
+단 <code class="language-text">xxx.JSX</code> 라는 확장자의 파일로 React 코드를 작성한다면 아래와 같은 작성하게 번거로운 방식으로
+코드를 작성하지 않아도 됩니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">return</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
+ <span class="token string">'div'</span><span class="token punctuation">,</span>
+ <span class="token punctuation">{</span> <span class="token literal-property property">className</span><span class="token operator">:</span> <span class="token string">'shopping-list'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+ React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'h1'</span> <span class="token comment">/* ... h1 children ... */</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+ React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'ul'</span> <span class="token comment">/* ... ul children ... */</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span></code></pre></div>
+<p><code class="language-text">&lt;ShoppingList name="Mark" /></code> 이처럼 작성된 컴포넌트는 <code class="language-text">&lt;div /></code>태그를 사용하듯
+동일한 방법으로 사용 할 수 있습니다.</p>
+</li>
+</ol>
+<br/>
+<ol start="2">
+<li>
+<p>Inspecting the Starter Code<br>
+<a href="https://codepen.io/gaearon/pen/oWWQNa?editors=0010">Starter Code</a>.를 통해 튜토리얼을 진행합니다.</p>
+<p>3가지의 컴포넌트를 구성하게 됩니다.</p>
+<ul>
+<li>Square</li>
+<li>Board</li>
+<li>Game</li>
+</ul>
+</li>
+</ol>
+<br/>
+<ol start="3">
+<li>
+<p>Passing Data Through Props<br>
+이제 본격적으로 Props를 통해서 데이터를 넘기는 방법에 대해서 배우게 됩니다.<br>
+설명되는 코드를 따라가보며 이해하기 위해 노력합시다.<br>
+추가적으로 코드에 주석을 통해서 흐름을 따라가기 쉽게 하려고 합니다.<br>
+Board와 Square 를 아래와 같이 변경합니다.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Board</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+<span class="gatsby-highlight-code-line"> <span class="token function">renderSquare</span><span class="token punctuation">(</span><span class="token parameter">i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><span class="gatsby-highlight-code-line">   <span class="token keyword">return</span> <span class="token operator">&lt;</span>Square value<span class="token operator">=</span><span class="token punctuation">{</span>i<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span> <span class="token comment">// 이제 Square는 props.value 값을 가집니다.</span></span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-highlight has-highlighted-lines" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Square</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+ <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="gatsby-highlight-code-line">   <span class="token keyword">return</span> <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token string">"square"</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>value<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span> <span class="token comment">//&lt;Square value={i} /> 에서 전달받은 value를 랜더링 합니다.</span></span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>정상적으로 변경 했다면 화면에 숫자가 랜더링 됩니다. <a href="https://codepen.io/gaearon/pen/aWWQOG?editors=0010">여기까지 동작하는 코드</a>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 319px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 115.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAABYlAAAWJQFJUiTwAAACPElEQVQ4y61VS8tBURT1/0zM/BeMlQyUjESSDJhggIEMkPJICokkMkDe7zf7a+06t4vjMvh2ne45++y7ztpr73uu7vF4EAxP9VD7ZPtqv9p0r5u3243u9/vTi/CJoQZ4BVMAYQD51a7XqxL/xhCnwjKZDDmdTkokEhSPx6nZbFI4HKZoNErFYpEikQilUilarVbk8/loPp+/yfLEcDqdUqFQoGQySfl8ntrtNgWDQSqXyxSLxdgP4O12S/V6nQ6Hg5yh7BSRlpZW5/NZWhid0A+p4FQw2+12nBLYjEYjfiID+DudDs1mM/Ydj0c54OVy4QoiFbPZzGkKhm63mwaDAcfAoHEoFOI5QDUBq9UqmUwm1koAoCi9Xo9ThKFw6XSa52AsBQTYZrNhR7/fZwmwBsv1es3gWCMOKS+XSz5gv99/1hCaIXCxWHAgtIOuABNaAhxzPBEnq7TCEPSxYbVamYVI2ePxUKVSURrZZrNRrVb7nrIQ2GKxUKlU4jmqqdfruQ+FuVwuCgQC2kURDDHA5nQ6KZrhidTxMjRtNBo0mUy+a4g+Q5AoyHg8VnRFvw2HQ9YO+4jD3kcNcTJY4WRoBDZY42W/30/ZbJZEJna7nb9pTQ1RADjRhwaDgRtc9J3X6+WvRzA3Go3kcDi+a4hNAOdyOaV1ANpqtThQ9CMukG63y1l9ZAgHTkcAwKEZNIIPoDhMfNvYh0/06BugeoG0xI39eoOr1+qb++MvQHZFfTPp9aX1E/plaAL+h/0BAzzbqVPzj/IAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="react-tutorial_step_1.png"
+        title="react-tutorial_step_1.png"
+        src="/static/9b32900e074f0963cbd4c588789f6811/b53cf/react-tutorial_1.png"
+        srcset="/static/9b32900e074f0963cbd4c588789f6811/5a46d/react-tutorial_1.png 300w,
+/static/9b32900e074f0963cbd4c588789f6811/b53cf/react-tutorial_1.png 319w"
+        sizes="(max-width: 319px) 100vw, 319px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
+</li>
+<li>
+<p>Making an Interactive Component</p>
+<p>다음은 Square 컴퍼넌트를 클릭 했을때 X 값으로 채우는 기능을 추가함으로서 컴포넌트에 단순 props를 통한 상태값만을<br>
+표시하는게 아니라 상호작용을 할 수 있는 컴포넌트로 변경할 수 있는 방법을 설명합니다.<br>
+이제 <code class="language-text">state</code> <code class="language-text">onEvent</code>가 등장하게 됩니다. <a href="https://codepen.io/gaearon/pen/VbbVLg?editors=0010">여기까지 동작하는 코드</a></p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Square</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+ <span class="token comment">/* 클래스형 컴포넌트가 state를 가지기 위해서는 아래 constructor를 작성해야 합니다.</span>
+<span class="token comment"> state를 가지기 위한 형식적인 코드라고 생각하면 됩니다.</span>
+<span class="token comment"> */</span>
+ <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+<span class="gatsby-highlight-code-line">   <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span></span><span class="gatsby-highlight-code-line">     <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span></span><span class="gatsby-highlight-code-line">   <span class="token punctuation">}</span></span> <span class="token punctuation">}</span>
 
-# 메타클래스로 Singleton으로 생성
-<span class="token keyword">class</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>metaclass<span class="token operator">=</span>Singleton<span class="token punctuation">)</span><span class="token operator">:</span>
-    def <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> server<span class="token punctuation">)</span><span class="token operator">:</span>
-        self<span class="token punctuation">.</span>server <span class="token operator">=</span> server
+ <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">/* </span>
+<span class="token comment">   onEvent중 하나인 onClick에 누를때 마다 this.setState 를 호출하는 함수를 추가 합니다.</span>
+<span class="token comment">   react 에서는 this.setState을 통해 state 의 값을 변경합니다.</span>
+<span class="token comment">   주의 할 점은 onClick(setState({value:'X'})) 처럼 즉시 실행하는 식으로 코드를 작성하면</span>
+<span class="token comment">   안됩니다. 항상 실행 할 수 있는 함수를 넘긴다는 생각으로 작성해야 합니다.</span>
+<span class="token comment">   */</span>
 
-    def <span class="token function">close</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+   <span class="token keyword">return</span> <span class="token punctuation">(</span>
+     <span class="token operator">&lt;</span>button
+       className<span class="token operator">=</span><span class="token string">"square"</span>
+       onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">'X'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+     <span class="token operator">></span>
+       <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>value<span class="token punctuation">}</span>
+     <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+   <span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<br/>
+</li>
+<li>Developer Tools
+개발에 도움을 주는 툴에 대한 설명으로 크롬과 파이어 폭스의 확장 프로그램을 통해 추가하여 사용하는 방법에 대해서 설명합니다.
+디버깅은 중요하지만 현재 튜토리얼에는 비중이 낮아 넘어가도록 합니다.</li>
+</ol>
+<h3>Completing the Game</h3>
+<ol>
+<li>
+<p>Lifting State Up<br>
+기존 컴포넌트는 Square마다 onClick Event와 <code class="language-text">State</code>를 가지고 있습니다.
+이게 무슨 문제가 될까요?<br>
+구현된 코드가 동작하는데는 아무 문제가 없습니다.</p>
+<p>여기서 잠깐 리엑트는 무엇인가로 잠시 돌아가 보겠습니다.
+선언적이고 효율적이며 유연하다 라는 특징을 유지하기 위해서는
+<code class="language-text">state</code>관리가 핵심입니다. 이 튜토리얼에서는 간단한 3개의 컴포넌트지만</p>
+<p>향후 복잡한 컴포넌트를 다루면 과연 모든 컴포넌트의 <code class="language-text">state</code>에 대해서 확인하는 것은 쉽지 않습니다.</p>
+<p>따라서 부모 컴포넌트로 <code class="language-text">state</code>에 대한 처리를 올려 컴포넌트에 <code class="language-text">props</code>의 변경만으로</p>
+<p>재사용을 통해 효율적이고 유연적인 코드를 작성할 수 있게 됩니다.</p>
+<p>다음은 기존 작성된 <code class="language-text">state</code>를 부모 컴퍼넌트로 올리는 방법에 대해서 설명합니다.</p>
+<p>Board와 Square컴포넌트를 아래와 같이 변경 합니다.
+<a href="https://codepen.io/gaearon/pen/gWWQPY?editors=0010">여기까지 동작하는 코드</a></p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">    <span class="token keyword">class</span> <span class="token class-name">Board</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+      <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">squares</span><span class="token operator">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// sqaures 초기값</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
 
-        self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        del self
-    def <span class="token function">get_server</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+        <span class="token function">handleClick</span><span class="token punctuation">(</span><span class="token parameter">i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">const</span> squares <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>squares<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          squares<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'X'</span><span class="token punctuation">;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">squares</span><span class="token operator">:</span> squares<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>server
-    #<span class="token operator">...</span>
+        <span class="token function">renderSquare</span><span class="token punctuation">(</span><span class="token parameter">i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment">//Board -> square로 value와 onClick을 내려줍니다.</span>
 
-sshNode <span class="token operator">=</span> <span class="token function">Proxy</span><span class="token punctuation">(</span><span class="token string">'ssh'</span><span class="token punctuation">)</span>
-telnetNode <span class="token operator">=</span> <span class="token function">Proxy</span><span class="token punctuation">(</span><span class="token string">'telnet'</span><span class="token punctuation">)</span>
+          <span class="token keyword">return</span> <span class="token keyword">return</span>
+          <span class="token punctuation">(</span> <span class="token operator">&lt;</span>Square value<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>squares<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">}</span>
+            onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">handleClick</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">;</span>
+            <span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> status <span class="token operator">=</span> <span class="token string">'Next player: X'</span><span class="token punctuation">;</span>
 
-#초기화 값 확인
-<span class="token function">print</span><span class="token punctuation">(</span>sshNode<span class="token punctuation">.</span><span class="token function">get_server</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> telnetNode<span class="token punctuation">.</span><span class="token function">get_server</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+          <span class="token operator">&lt;</span>div<span class="token operator">></span>
+            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"status"</span><span class="token operator">></span><span class="token punctuation">{</span>status<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+        <span class="token punctuation">}</span>
+        <span class="token operator">...</span></code></pre></div>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Square</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token comment">/*이제 상태가 존재하지 않기 떄문에 constructor를 제거 합니다.*/</span>
+  <span class="token comment">//   constructor(props) {</span>
+  <span class="token comment">//   super(props)</span>
+  <span class="token comment">//   this.state = {</span>
+  <span class="token comment">//     value: null,</span>
+  <span class="token comment">//   }</span>
+  <span class="token comment">// }</span>
 
-#동일 인스턴스 확인
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'Is it the same instance?'</span><span class="token punctuation">,</span> sshNode is telnetNode<span class="token punctuation">)</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token comment">//전달 받은 props를 통해서 구현합니다.</span>
+      <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token string">"square"</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span><span class="token function">onClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>
+        <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>value<span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<br>
+</li>
+<li>
+<p>Why Immutability Is Important</p>
+<p>왜 불변성(Immutability)이 중요한지 다음 아래 예제 데이터 코드를 통해 설명합니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">//불변성이 지켜지지 않는 경우</span>
+<span class="token keyword">var</span> player <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">score</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Jeff'</span> <span class="token punctuation">}</span>
+player<span class="token punctuation">.</span>score <span class="token operator">=</span> <span class="token number">2</span>
+<span class="token comment">// Now player is {score: 2, name: 'Jeff'}</span>
 
-#인스턴스 초기화'
-sshNode<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-sshNode <span class="token operator">=</span> <span class="token function">Proxy</span><span class="token punctuation">(</span><span class="token string">'new ssh'</span><span class="token punctuation">)</span>
-<span class="token function">print</span><span class="token punctuation">(</span>sshNode<span class="token punctuation">.</span><span class="token function">get_server</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></div><div class="social-share"><a class="resp-sharing-button__link" href="#" target="_blank" rel="noopener" aria-label="Share on Facebook"><div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--large"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"></path></svg></div><span class="service-label">Share on Facebook</span></div></a><a class="resp-sharing-button__link" href="#" rel="noopener" aria-label="Share on Twitter"><div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--large"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"></path></svg></div><span class="service-label">Share on Twitter</span></div></a></div><hr class="custom-hr"/><div class="bio"><div class="author"><div class="author-description"><div class="author-image gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:72px;height:72px;border-radius:100%"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC10lEQVQ4y21U+0/aUBT231+ybGaZiTinkUcLMnHOKQp9AWaIOOTR0kFbW+kLhT4B2Y87lwsVzZKT5tz2fve75zvf6QbJSquQCUq84zt8tzEwFNc1phNrNrU8zzQtpd6qZ5kmwcok248gG1GWZqUEJdG19jQ0fd/0PCMIbN+3g8ByHEMzlRzbSNLSGtkaGJhTxa5uqrOZ7Qfm05M6Hg9GI81xdcfR7ZHR7otEsU2ySkS+BKc5KU5J7I0wn1lhaIeBOf875oX6wUFsPh8FAbqLPtSYeitR7MHm18wcooVSn2dDvBVuG4YWJPCEGDmGpKt3PTFDdxaVr8BQLRRzdsWHgYG3YiScAoGTx/FAGtzzaj//q5Wk+ukXMCfHC39uefF5ZuPdbyJAYXq+oVnqVbOTLIoAia4NTRJMS51OkbY4Iv71xHHNrtwjqA656BkCpxj5e7nrOg8g1Tr4hXb1xvVMeSDnuBZAEDNqLy3lq91JaAThC9UbPE7AMLKu5KutxKJsBI5TfaomPE/xZwN6O5nYWCeMgeVwqHieDic+2Bp724kXUNlLcKXRBTPCt/H4wbYVDI4ClgvPQF2WZmnlu3aSEskIXP4tzKa255v/VRvjQ3SiCczlxlLwDWzpwrWAmRfGQMKEr+tfCuaCVZRibekzpDY4Jk0Lj08atAqNxBo/SOUjq1gTdKih6PcdpXfMNZdqY2ODemydB/JwMozs5QcLzQI0YcORrpgar8mFahMXvDYYJQUE5G553VYdD8wAYbhwi8Aejk3VHrTlPlu7IX/SeyfXBN17NRipopC4aG1nK1vxb8nc+dE5c8ZULrjKKc0Qxyc7ifhmbOfdp52PX7P7P66Tl+2Fw1bgRL65TV58juc297LvY6kPu4dbxOWX4+r2IRfLljb3c1up892j0v5pDYaPYHpvfwYELaZokWT6JNNLFXj4JUEzMiUlU7rPlFV4whLNAydHkH84CeQF47BWKwAAAABJRU5ErkJggg==" alt="JinhyeongKim" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/4d617d07e5778a9e5d28cc4518f2aff5/e5b88/profile.png 1x,
+<span class="token keyword">var</span> player <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">score</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Jeff'</span> <span class="token punctuation">}</span>
+
+<span class="token comment">//불변성이 지켜지는 경우</span>
+<span class="token keyword">var</span> newPlayer <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> player<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">score</span><span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}</span>
+
+<span class="token comment">// Or if you are using object spread syntax proposal, you can write:</span>
+<span class="token comment">// var newPlayer = {...player, score: 2};</span></code></pre></div>
+<p>코드를 보면 뭐.. 그렇구나 하게 됩니다.
+튜토리얼에서는 몇가지 예시를 들어주며 왜 불변성이 유지 되어야 하는지 설명해 줍니다.</p>
+<ul>
+<li>복잡한 기능을 간단하게 만든다.<br>
+이 튜토리얼 후반부에 소개할 “time travel” 기능에서 유용성을 설명 해준다고 합니다.</li>
+<li>변경감지<br>
+변경 가능한 객체는(mutable object) 변경 여부를 찾기 위해서는 전체 객체 트리에서 찾아야
+하기 때문에 불변 객체가 변경 감지에 더 쉽습니다.</li>
+<li><strong>리엑트의 리랜더링 여부 결정</strong><br>
+리엑트로 작성된 코드에서 항상 큰 고민을 주는 부분중 하나는 불필요한 리랜더링을 줄이는 것입니다.
+여기서 불변성이 지켜진다는 것은 리엑트에서 리랜더링 여부를 결정하는 중요한 요소가 됩니다.
+이 리랜더링 결정여부는 변경감지를 통해서 복잡한 기능을 더 간단하게 만들어주기 때문에
+불변성이 지켜져야 하는 가장큰 이유라 생각됩니다.</li>
+</ul>
+</li>
+</ol>
+  <br/>
+<ol start="3">
+<li>
+<p>Function Components</p>
+<p>튜토리얼 상의 함수형 컴포넌트는 state를 가지고 있지 않는 컴포넌트를 표현할때 함수형으로 사용해야 한다
+라고 설명해주고 있습니다. 요즘 함수형 컴포넌트를 사용하는 방향이랑은 차이가 있으나
+본질적으로 함수형 컴포넌트가 존재하게 된 이유라 생각합니다.</p>
+<p>아래 코드는 Square 클래스를 함수형태로 변경한 코드입니다.<a href="https://codepen.io/gaearon/pen/QvvJOv?editors=0010">여기까지 동작하는 코드</a></p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Square</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">return</span> <span class="token punctuation">(</span>
+   <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token string">"square"</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>onClick<span class="token punctuation">}</span><span class="token operator">></span>
+     <span class="token punctuation">{</span>props<span class="token punctuation">.</span>value<span class="token punctuation">}</span>
+   <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+ <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+</li>
+<li>Taking Turns &#x26; Declaring a Winner<br>
+O , X 로 서로 순서를 가지도록 코드를 추가합니다. 추가적인 개념이 나오는게 아니기 때문에
+설명은 생략하겠습니다.<a href="https://codepen.io/gaearon/pen/LyyXgK?editors=0010">여기까지 동작하는 코드</a></li>
+</ol>
+<h3>Adding Time Travel</h3>
+<ol>
+<li>
+<p>Storing a History of Moves &#x26; Lifting State Up, Again &#x26; Showing the Past Moves</p>
+<p>불변성이 지켜진 Squares array를 통해서 state의 history를 만들게 됩니다.<br>
+history state를 관리하기 위해서 top-level의 Game 컴포넌트 까지<br>
+다시 한번 상태를 끌어 올립니다. 특별히 중요한 개념적인 내용이 없어 생략하였습니다.</p>
+<p><a href="https://codepen.io/gaearon/pen/EmmGEa?editors=0010">여기까지 동작하는 코드</a><br>
+<br/></p>
+</li>
+<li>
+<p>Picking a Key</p>
+<p><strong>마지막으로 중요한 내용입니다.</strong> 여기서는 리스트 형태의 컴포넌트를 호출할때 key가 추가 되어야 하는 이유와 어떻게 추가해주는지
+설명합니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"> <span class="token comment">//key가 없기 떄문에 React에서 변경탐지가 어려워요..</span>
+ <span class="token operator">&lt;</span>li<span class="token operator">></span>Ben<span class="token operator">:</span> <span class="token number">9</span> tasks left<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+ <span class="token operator">&lt;</span>li<span class="token operator">></span>Claudia<span class="token operator">:</span> <span class="token number">8</span> tasks left<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+ <span class="token operator">&lt;</span>li<span class="token operator">></span>Alexa<span class="token operator">:</span> <span class="token number">5</span> tasks left<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+
+ <span class="token comment">//key를 추가해야 합니다!</span>
+ <span class="token comment">//key는 유일값이여야 하지만 이것은 동적요소의 형제들과 구분되는 값을 의미 합니다.</span>
+ <span class="token comment">//모든 컴포넌트에서 유일값에 해당하지 않다는 것 입니다.</span>
+ <span class="token operator">&lt;</span>li key<span class="token operator">=</span><span class="token punctuation">{</span>user<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token operator">></span>tasks left<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span></code></pre></div>
+</li>
+<li>Implementing Time Travel<br>
+key까지 추가된 상태에서의 <a href="https://codepen.io/gaearon/pen/gWWZgR?editors=0010">최종코드</a> 입니다.</li>
+</ol></div><div class="social-share"><a class="resp-sharing-button__link" href="#" target="_blank" rel="noopener" aria-label="Share on Facebook"><div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--large"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"></path></svg></div><span class="service-label">Share on Facebook</span></div></a><a class="resp-sharing-button__link" href="#" rel="noopener" aria-label="Share on Twitter"><div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--large"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"></path></svg></div><span class="service-label">Share on Twitter</span></div></a></div><hr class="custom-hr"/><div class="bio"><div class="author"><div class="author-description"><div class="author-image gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:72px;height:72px;border-radius:100%"><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC10lEQVQ4y21U+0/aUBT231+ybGaZiTinkUcLMnHOKQp9AWaIOOTR0kFbW+kLhT4B2Y87lwsVzZKT5tz2fve75zvf6QbJSquQCUq84zt8tzEwFNc1phNrNrU8zzQtpd6qZ5kmwcok248gG1GWZqUEJdG19jQ0fd/0PCMIbN+3g8ByHEMzlRzbSNLSGtkaGJhTxa5uqrOZ7Qfm05M6Hg9GI81xdcfR7ZHR7otEsU2ySkS+BKc5KU5J7I0wn1lhaIeBOf875oX6wUFsPh8FAbqLPtSYeitR7MHm18wcooVSn2dDvBVuG4YWJPCEGDmGpKt3PTFDdxaVr8BQLRRzdsWHgYG3YiScAoGTx/FAGtzzaj//q5Wk+ukXMCfHC39uefF5ZuPdbyJAYXq+oVnqVbOTLIoAia4NTRJMS51OkbY4Iv71xHHNrtwjqA656BkCpxj5e7nrOg8g1Tr4hXb1xvVMeSDnuBZAEDNqLy3lq91JaAThC9UbPE7AMLKu5KutxKJsBI5TfaomPE/xZwN6O5nYWCeMgeVwqHieDic+2Bp724kXUNlLcKXRBTPCt/H4wbYVDI4ClgvPQF2WZmnlu3aSEskIXP4tzKa255v/VRvjQ3SiCczlxlLwDWzpwrWAmRfGQMKEr+tfCuaCVZRibekzpDY4Jk0Lj08atAqNxBo/SOUjq1gTdKih6PcdpXfMNZdqY2ODemydB/JwMozs5QcLzQI0YcORrpgar8mFahMXvDYYJQUE5G553VYdD8wAYbhwi8Aejk3VHrTlPlu7IX/SeyfXBN17NRipopC4aG1nK1vxb8nc+dE5c8ZULrjKKc0Qxyc7ifhmbOfdp52PX7P7P66Tl+2Fw1bgRL65TV58juc297LvY6kPu4dbxOWX4+r2IRfLljb3c1up892j0v5pDYaPYHpvfwYELaZokWT6JNNLFXj4JUEzMiUlU7rPlFV4whLNAydHkH84CeQF47BWKwAAAABJRU5ErkJggg==" alt="JinhyeongKim" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/4d617d07e5778a9e5d28cc4518f2aff5/e5b88/profile.png 1x,
 /static/4d617d07e5778a9e5d28cc4518f2aff5/e7bd6/profile.png 1.5x,
 /static/4d617d07e5778a9e5d28cc4518f2aff5/a12fc/profile.png 2x" /><img loading="lazy" width="72" height="72" srcset="/static/4d617d07e5778a9e5d28cc4518f2aff5/e5b88/profile.png 1x,
 /static/4d617d07e5778a9e5d28cc4518f2aff5/e7bd6/profile.png 1.5x,
-/static/4d617d07e5778a9e5d28cc4518f2aff5/a12fc/profile.png 2x" src="/static/4d617d07e5778a9e5d28cc4518f2aff5/e5b88/profile.png" alt="JinhyeongKim" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><div class="author-name"><span class="author-name-prefix">Written by</span><span class="author-name-content">@<!-- -->JinhyeongKim</span><div class="author-introduction">주 1회 작성하는 개발 블로그</div><p class="author-socials"><a href="https://github.com/bnt10/bnt10.github.io">GitHub</a></p></div></div></div></div><ul class="navigator"><li><a rel="prev" href="/python/2022-02-06--python-socket/">← <!-- -->Python - socket</a></li><li><a rel="next" href="/react/2022-05-14--react-tutorial/">React - Tutorial 문서정리<!-- --> →</a></li></ul><div><div id="disqus_thread"></div></div><div class="utterances"></div><footer class="footer">©<a href="https://bnt10.github.io">JinhyeongKim</a>, Built with<!-- --> <a href="https://github.com/JaeYeopHan/gatsby-starter-bee">Gatsby-starter-bee</a></footer></div></div><div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+/static/4d617d07e5778a9e5d28cc4518f2aff5/a12fc/profile.png 2x" src="/static/4d617d07e5778a9e5d28cc4518f2aff5/e5b88/profile.png" alt="JinhyeongKim" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><div class="author-name"><span class="author-name-prefix">Written by</span><span class="author-name-content">@<!-- -->JinhyeongKim</span><div class="author-introduction">주 1회 작성하는 개발 블로그</div><p class="author-socials"><a href="https://github.com/bnt10/bnt10.github.io">GitHub</a></p></div></div></div></div><ul class="navigator"><li><a rel="prev" href="/python/2022-02-07--python-singleton/">← <!-- -->Python - Singleton class</a></li><li></li></ul><div><div id="disqus_thread"></div></div><div class="utterances"></div><footer class="footer">©<a href="https://bnt10.github.io">JinhyeongKim</a>, Built with<!-- --> <a href="https://github.com/JaeYeopHan/gatsby-starter-bee">Gatsby-starter-bee</a></footer></div></div><div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
   
   
   if(true) {
@@ -138,4 +368,4 @@ sshNode <span class="token operator">=</span> <span class="token function">Proxy
       
       
       
-      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/python/2022-02-07--python-singleton/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-c5f50f2ad13861331c8a.js"],"app":["/app-500bb602f1fbbf5b0609.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-15096bed533ed0ff8b58.js"],"component---src-pages-404-js":["/component---src-pages-404-js-64b4b10bec6f94406ee7.js"],"component---src-pages-about-js":["/component---src-pages-about-js-7c98c55521c7b23b4710.js"],"component---src-pages-index-js":["/component---src-pages-index-js-26958512422174979706.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-23c63952df5ade85f962.js"]};/*]]>*/</script><script src="/polyfill-c5f50f2ad13861331c8a.js" nomodule=""></script><script src="/component---src-templates-blog-post-js-23c63952df5ade85f962.js" async=""></script><script src="/cd7d5f864fc9e15ed8adef086269b0aeff617554-4349a6f44e29c627a25e.js" async=""></script><script src="/d5d7a013bc6c1e2b6d7db819052c16d7efea5559-00d3876b99551a51ff03.js" async=""></script><script src="/133dca110fad53aa1997b630637bbac3134a2d14-b9d424b4c6bbcac9907c.js" async=""></script><script src="/styles-e9d24b1846c7d6eb9685.js" async=""></script><script src="/app-500bb602f1fbbf5b0609.js" async=""></script><script src="/framework-b853ef79118f5b1debd8.js" async=""></script><script src="/webpack-runtime-80d3efaa7d685d5840fc.js" async=""></script></body></html>
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/react/2022-05-14--react-tutorial/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-c5f50f2ad13861331c8a.js"],"app":["/app-500bb602f1fbbf5b0609.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-15096bed533ed0ff8b58.js"],"component---src-pages-404-js":["/component---src-pages-404-js-64b4b10bec6f94406ee7.js"],"component---src-pages-about-js":["/component---src-pages-about-js-7c98c55521c7b23b4710.js"],"component---src-pages-index-js":["/component---src-pages-index-js-26958512422174979706.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-23c63952df5ade85f962.js"]};/*]]>*/</script><script src="/polyfill-c5f50f2ad13861331c8a.js" nomodule=""></script><script src="/component---src-templates-blog-post-js-23c63952df5ade85f962.js" async=""></script><script src="/cd7d5f864fc9e15ed8adef086269b0aeff617554-4349a6f44e29c627a25e.js" async=""></script><script src="/d5d7a013bc6c1e2b6d7db819052c16d7efea5559-00d3876b99551a51ff03.js" async=""></script><script src="/133dca110fad53aa1997b630637bbac3134a2d14-b9d424b4c6bbcac9907c.js" async=""></script><script src="/styles-e9d24b1846c7d6eb9685.js" async=""></script><script src="/app-500bb602f1fbbf5b0609.js" async=""></script><script src="/framework-b853ef79118f5b1debd8.js" async=""></script><script src="/webpack-runtime-80d3efaa7d685d5840fc.js" async=""></script></body></html>
