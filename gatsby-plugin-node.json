@@ -1,0 +1,39 @@
+{
+  "paths": [
+    {
+      "path": "/offline-plugin-app-shell-fallback/"
+    },
+    {
+      "path": "/react/2022-05-14--react-tutorial/"
+    },
+    {
+      "path": "/python/2022-02-07--python-singleton/"
+    },
+    {
+      "path": "/python/2022-02-06--python-socket/"
+    },
+    {
+      "path": "/react/2022-05-05--react-class-lifecycle/"
+    },
+    {
+      "path": "/python/2021-07-19---nextjs-install/"
+    },
+    {
+      "path": "/node/2021-07-21---nodejs-install/"
+    },
+    {
+      "path": "/404/"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "path": "/md-editor/"
+    },
+    {
+      "path": "/404.html"
+    }
+  ],
+  "redirects": [],
+  "pathPrefix": ""
+}
