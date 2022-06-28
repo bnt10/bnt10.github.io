@@ -26,13 +26,10 @@
       "path": "/404/"
     },
     {
-      "path": "/about copy/"
-    },
-    {
-      "path": "/about/"
-    },
-    {
       "path": "/"
+    },
+    {
+      "path": "/md-editor/"
     },
     {
       "path": "/404.html"

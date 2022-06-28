@@ -4,9 +4,9 @@ date: '2021-09-21'
 template: 'post'
 draft: false
 slug: 'node-install'
-category: 'node'
+category: 'nodejs'
 tags:
-  - 'node'
+  - 'nodejs'
   - 'npm'
 description: 'Node intsall'
 socialImage: '/media/gatsby_icon.png'
@@ -35,5 +35,3 @@ Mac도 Winodw와 같이 [설치링크](https://nodejs.org/en/)에서 원하는 �
 ```javascript{}
 brew install node
 ```
-
----
