@@ -34,38 +34,38 @@ export default ({ data, pageContext, location }) => {
 
   return (
     <>
-   <div className="post-content-wrap">
-  
-    <div className="post-content">
-      <Layout location={location} title={title} siteUrl={siteUrl} author={author}>
-     
-        <div className="home-header-wrap">
-        <Head title={postTitle} description={post.excerpt} />
-        <PostTitle title={postTitle} />
-        <ThemeSwitch />
-        </div>
-        <PostDate date={date} />
-        <PostContainer html={post.html} />
-        <SocialShare title={postTitle} author={author} />
-      
-        <Elements.Hr />
-        <Bio />
-        <PostNavigator pageContext={pageContext} />
-        {!!disqusShortName && (
-          <Disqus
-            post={post}
-            shortName={disqusShortName}
+      <div className="post-content-wrap">
+        <div className="post-content">
+          <Layout
+            location={location}
+            title={title}
             siteUrl={siteUrl}
-            slug={pageContext.slug}
-          />
-        )}
-        {!!utterances && <Utterances repo={utterances} />}
-      
-        </Layout>
+            author={author}
+          >
+            <div className="home-header-wrap">
+              <Head title={postTitle} description={post.excerpt} />
+              <PostTitle title={postTitle} />
+              <ThemeSwitch />
+            </div>
+            <PostDate date={date} />
+            <PostContainer html={post.html} />
+            {/* <SocialShare title={postTitle} author={author} /> */}
+
+            <Elements.Hr />
+            <Bio />
+            <PostNavigator pageContext={pageContext} />
+            {/* {!!disqusShortName && (
+              <Disqus
+                post={post}
+                shortName={disqusShortName}
+                siteUrl={siteUrl}
+                slug={pageContext.slug}
+              />
+            )}
+            {!!utterances && <Utterances repo={utterances} />} */}
+          </Layout>
         </div>
-        { post.tableOfContents && (
-         <Toc toc={post}/>
-        )}
+        {post.tableOfContents && <Toc toc={post} />}
       </div>
     </>
   )

@@ -53,7 +53,7 @@ export default class Demo extends React.Component {
       description,
       socialImage,
     } = this.state
-    //ToDo: add MataData component
+
     const initMarkDownMataData = `---\ntitle: ${title}\ndate: "${date}"\ntemplate: "${template}"\ndraft: ${draft}\nslug: "${slug}"\ncategory: "${category}"\ntags: ${tags}\ndescription: "${description}"\nsocialImage: "${socialImage}"\nmdFileName: ${date}---.md\nmdFileDirectory: /content/blog/\n---`
     this.setState({ value: initMarkDownMataData })
   }
