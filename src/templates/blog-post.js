@@ -65,7 +65,7 @@ export default ({ data, pageContext, location }) => {
             {!!utterances && <Utterances repo={utterances} />} */}
           </Layout>
         </div>
-        {post.tableOfContents && <Toc toc={post} />}
+        {post.tableOfContents && <Toc content={post.tableOfContents} />}
       </div>
     </>
   )

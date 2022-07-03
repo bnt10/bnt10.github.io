@@ -51,6 +51,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          { resolve: `gatsby-remark-autolink-headers` },
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -71,12 +72,7 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              offsetY: `100`,
-            },
-          },
+
           {
             resolve: `gatsby-remark-prismjs`,
             options: {

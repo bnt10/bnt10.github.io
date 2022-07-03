@@ -1,14 +1,14 @@
 ---
 title: React - Tutorial 문서정리
-date: "2022-04-14"
-template: "post"
+date: '2022-04-14'
+template: 'post'
 draft: false
-slug: "react tutorial"
-category: "react"
+slug: 'react tutorial'
+category: 'react'
 tags:
-  - "react"
-description: "React Organize official documents"
-socialImage: "/media/gatsby_icon.png"
+  - 'react'
+description: 'React Organize official documents'
+socialImage: '/media/gatsby_icon.png'
 ---
 
 ## 1. 작성 이유
@@ -62,7 +62,7 @@ the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설�
              <li>Oculus</li>
            </ul>
          </div>
-       );
+       )
      }
    }
 
@@ -89,11 +89,11 @@ the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설�
 
    ```javascript
    return React.createElement(
-     "div",
-     { className: "shopping-list" },
-     React.createElement("h1" /* ... h1 children ... */),
-     React.createElement("ul" /* ... ul children ... */)
-   );
+     'div',
+     { className: 'shopping-list' },
+     React.createElement('h1' /* ... h1 children ... */),
+     React.createElement('ul' /* ... ul children ... */)
+   )
    ```
 
    `<ShoppingList name="Mark" />` 이처럼 작성된 컴포넌트는 `<div />`태그를 사용하듯
@@ -121,7 +121,7 @@ the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설�
    ```javascript{2-3}
    class Board extends React.Component {
      renderSquare(i) {
-       return <Square value={i} />; // 이제 Square는 props.value 값을 가집니다.
+       return <Square value={i} /> // 이제 Square는 props.value 값을 가집니다.
      }
    }
    ```
@@ -129,7 +129,7 @@ the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설�
    ```javascript{3}
    class Square extends React.Component {
      render() {
-       return <button className="square">{this.props.value}</button>; //<Square value={i} /> 에서 전달받은 value를 랜더링 합니다.
+       return <button className="square">{this.props.value}</button> //<Square value={i} /> 에서 전달받은 value를 랜더링 합니다.
      }
    }
    ```
@@ -149,10 +149,10 @@ the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설�
      state를 가지기 위한 형식적인 코드라고 생각하면 됩니다.
      */
      constructor(props) {
-       super(props);
+       super(props)
        this.state = {
          value: null,
-       };
+       }
      }
 
      render() {
@@ -166,11 +166,11 @@ the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설�
        return (
          <button
            className="square"
-           onClick={() => this.setState({ value: "X" })}
+           onClick={() => this.setState({ value: 'X' })}
          >
            {this.state.value}
          </button>
-       );
+       )
      }
    }
    ```
@@ -252,7 +252,7 @@ the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설�
           <button className="square" onClick={() => this.props.onClick()}>
             {this.props.value}
           </button>
-        );
+        )
       }
     }
     ```
@@ -265,14 +265,14 @@ the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설�
 
     ```javascript
     //불변성이 지켜지지 않는 경우
-    var player = { score: 1, name: "Jeff" };
-    player.score = 2;
+    var player = { score: 1, name: 'Jeff' }
+    player.score = 2
     // Now player is {score: 2, name: 'Jeff'}
 
-    var player = { score: 1, name: "Jeff" };
+    var player = { score: 1, name: 'Jeff' }
 
     //불변성이 지켜지는 경우
-    var newPlayer = Object.assign({}, player, { score: 2 });
+    var newPlayer = Object.assign({}, player, { score: 2 })
     // Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
 
     // Or if you are using object spread syntax proposal, you can write:
@@ -311,7 +311,7 @@ the tic-tac-toe 게임을 만들어 나가면서 주요 개념에 대해서 설�
        <button className="square" onClick={props.onClick}>
          {props.value}
        </button>
-     );
+     )
    }
    ```
 
