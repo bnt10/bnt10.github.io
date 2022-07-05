@@ -19,7 +19,7 @@ import * as ScrollManager from '../utils/scroll'
 import '../styles/code.scss'
 import './index.scss'
 import 'katex/dist/katex.min.css'
-
+import { isMobile } from 'react-device-detect'
 export default ({ data, pageContext, location }) => {
   useEffect(() => {
     ScrollManager.init()
@@ -65,7 +65,9 @@ export default ({ data, pageContext, location }) => {
             {!!utterances && <Utterances repo={utterances} />} */}
           </Layout>
         </div>
-        {post.tableOfContents && <Toc content={post.tableOfContents} />}
+        {!isMobile && post.tableOfContents && (
+          <Toc content={post.tableOfContents} />
+        )}
       </div>
     </>
   )
