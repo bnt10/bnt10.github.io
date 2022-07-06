@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { graphql } from 'gatsby'
 
 import * as Elements from '../components/elements'
@@ -19,10 +19,19 @@ import * as ScrollManager from '../utils/scroll'
 import '../styles/code.scss'
 import './index.scss'
 import 'katex/dist/katex.min.css'
+import { isMobile } from 'react-device-detect'
 
+import { globalHistory } from '@reach/router/lib/history'
+import { navigate } from '@reach/router'
 export default ({ data, pageContext, location }) => {
   useEffect(() => {
+    globalHistory.listen(e => {
+      if (e.action == 'POP') {
+        navigate(`/`, { replace: true })
+      }
+    })
     ScrollManager.init()
+
     return () => ScrollManager.destroy()
   }, [])
 
@@ -65,7 +74,9 @@ export default ({ data, pageContext, location }) => {
             {!!utterances && <Utterances repo={utterances} />} */}
           </Layout>
         </div>
-        {post.tableOfContents && <Toc content={post.tableOfContents} />}
+        {!isMobile && post.tableOfContents && (
+          <Toc content={post.tableOfContents} />
+        )}
       </div>
     </>
   )
