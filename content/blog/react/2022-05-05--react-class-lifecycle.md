@@ -1,14 +1,14 @@
 ---
 title: React Lifecycle - class
-date: "2021-12-15"
-template: "post"
-draft: false
-slug: "react class"
-category: "react"
+date: '2021-12-15'
+template: 'post'
+draft: true
+slug: 'react class'
+category: 'react'
 tags:
-  - "react"
-description: "React class Lifecycle"
-socialImage: "/media/gatsby_icon.png"
+  - 'react'
+description: 'React class Lifecycle'
+socialImage: '/media/gatsby_icon.png'
 ---
 
 ## 1. 작성 이유
@@ -59,21 +59,21 @@ constructor() 메소드는 컴포넌트 생성시 가장 먼저 호출 됩니다
 ```javascript
 class Page extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.handleClick = this.handleClick.bind(this); // 인스턴스에 이벤트 처리 메서드를 바인딩
+    this.handleClick = this.handleClick.bind(this) // 인스턴스에 이벤트 처리 메서드를 바인딩
 
     //주의사항
     //props를 받아서 바로 사용하는 경우 color props 변해도 state.color는 변경 불가
-    this.state = { color: props.color };
+    this.state = { color: props.color }
     //여기서 this.setState()를 호출하면 하지 안도록 주의
-    this.setState(state => state.count + 1);
+    this.setState(state => state.count + 1)
     //아래 방식으로 초기화 해야 합니다.
-    this.state = { count: 2 }; // this.state에 객체를 할당하여 지역 state를 초기화
+    this.state = { count: 2 } // this.state에 객체를 할당하여 지역 state를 초기화
   }
 
   render() {
-    return <h1>{this.state.count}</h1>;
+    return <h1>{this.state.count}</h1>
   }
 }
 ```
@@ -115,7 +115,7 @@ class Header extends React.Component {
   state = {
     isScrollingDown: false,
     lastRow: null,
-  };
+  }
 
   static getDerivedStateFromProps(props, state) {
     if (props.currentRow !== state.lastRow) {
@@ -123,11 +123,11 @@ class Header extends React.Component {
       return {
         isScrollingDown: props.currentRow > state.lastRow,
         lastRow: props.currentRow,
-      };
+      }
     }
 
     // null 리턴할 경우 상태 변경이 없습니다.
-    return null;
+    return null
   }
 }
 ```
@@ -168,7 +168,7 @@ render() 순수함수이며 유일해야 하며, 컴포넌트 생성 시 꼭 필
 class Page extends React.Component {
   render() {
     //render 함수
-    return <h1>Render</h1>;
+    return <h1>Render</h1>
   }
 }
 ```

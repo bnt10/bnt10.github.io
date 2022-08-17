@@ -18,6 +18,13 @@ export const Toc = ({ content }: Props) => {
         : el.classList.remove('active')
     })
   }, [activeId])
+  useEffect(() => {
+    const headList = tocRef.current.querySelectorAll('ul') as HTMLCollection
+    console.log(headList.item(0)?.children)
+    // headList.forEach((element: any) => {
+    //   console.log(element)
+    // })
+  }, [])
   return (
     <div className="toc-wrap">
       <div

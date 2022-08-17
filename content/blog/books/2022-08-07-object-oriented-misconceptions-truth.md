@@ -2,7 +2,7 @@
 title: '[도서] 객체지향의 사실과 오해'
 date: '2022-08-07'
 template: 'post'
-draft: false
+draft: true
 slug: 'technical-book'
 category: '도서'
 tags: -"기술서적"

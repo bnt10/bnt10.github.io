@@ -2,7 +2,7 @@
 title: React - Tutorial 문서정리
 date: '2022-04-14'
 template: 'post'
-draft: false
+draft: true
 slug: 'react tutorial'
 category: 'react'
 tags:
