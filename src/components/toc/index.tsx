@@ -10,6 +10,7 @@ export const Toc = ({ content }: Props) => {
   const tocRef = useRef<any>({})
 
   useTocIntersectionObserver(setActiveId, content)
+
   useEffect(() => {
     const actvieToc = tocRef.current.querySelectorAll('a')
     actvieToc.forEach((el: HTMLAnchorElement) => {
@@ -18,12 +19,15 @@ export const Toc = ({ content }: Props) => {
         : el.classList.remove('active')
     })
   }, [activeId])
+
   useEffect(() => {
-    const headList = tocRef.current.querySelectorAll('ul') as HTMLCollection
-    console.log(headList.item(0)?.children)
-    // headList.forEach((element: any) => {
-    //   console.log(element)
-    // })
+    const tocWrap = tocRef.current.querySelector('ul') as Element
+    const subparagraphList = tocWrap.querySelectorAll('li')
+    subparagraphList.forEach(el => {
+      if (el.parentNode?.parentNode?.nodeName.toLowerCase() == 'li') {
+        el.classList.add('subparagraph')
+      }
+    })
   }, [])
   return (
     <div className="toc-wrap">
