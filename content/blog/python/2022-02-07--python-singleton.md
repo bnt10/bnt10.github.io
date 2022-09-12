@@ -2,7 +2,7 @@
 title: Python - Singleton class
 date: '2022-02-07'
 template: 'post'
-draft: false
+draft: true
 slug: 'Python-Singleton class'
 category: 'python'
 tags:
