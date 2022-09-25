@@ -20,7 +20,7 @@ import '../styles/code.scss'
 import './index.scss'
 import 'katex/dist/katex.min.css'
 import { isMobile } from 'react-device-detect'
-import {Word} from '../components/word'
+import { Word } from '../components/word'
 import { globalHistory } from '@reach/router/lib/history'
 import { navigate } from '@reach/router'
 
