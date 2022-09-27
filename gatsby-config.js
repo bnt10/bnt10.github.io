@@ -53,6 +53,13 @@ module.exports = {
         plugins: [
           { resolve: `gatsby-remark-autolink-headers` },
           {
+            resolve: 'gatsby-remark-mermaid',
+            options: {
+              language: 'mermaid',
+              theme: 'default',
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
@@ -79,6 +86,7 @@ module.exports = {
               inlineCodeMarker: '%',
             },
           },
+
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-emoji`,
