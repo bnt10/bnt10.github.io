@@ -2,7 +2,7 @@
 title: nextJs 설치
 date: '2021-09-22'
 template: 'post'
-draft: false
+draft: true
 slug: 'react-nextjs-install'
 category: 'nextjs'
 tags:

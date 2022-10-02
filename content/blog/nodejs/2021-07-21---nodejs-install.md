@@ -2,7 +2,7 @@
 title: Nodejs 설치
 date: '2021-09-21'
 template: 'post'
-draft: false
+draft: true
 slug: 'node-install'
 category: 'nodejs'
 tags:

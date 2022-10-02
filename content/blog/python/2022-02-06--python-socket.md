@@ -2,7 +2,7 @@
 title: Python - socket
 date: '2022-02-06'
 template: 'post'
-draft: false
+draft: true
 slug: 'Python-socket'
 category: 'python'
 tags:
