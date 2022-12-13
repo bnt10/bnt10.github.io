@@ -1,4 +1,205 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[배움을 기록하자]]></description><link>https://bnt10.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 02 Oct 2022 05:24:34 GMT</lastBuildDate><item><title><![CDATA[알고리즘 기초 Chapter04]]></title><description><![CDATA[1. 큐 1.1 정의 큐(Queue)은 입력시 데이터에 대해서 순차적으로 저장합니다. 출력시  저장된 데이터를 기준으로 출력됩니다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[배움을 기록하자]]></description><link>https://bnt10.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 13 Dec 2022 11:12:26 GMT</lastBuildDate><item><title><![CDATA[Next.js & React Study (2)]]></title><description><![CDATA[들어가기 앞서 Next.js에서 제공하는 내장 라우팅 시스템이 무엇이고 어떤방식으로 사용하는지를 중점으로 정리 하였습니다. 1. File-system based router Next.js에서 기본 내장 되어 있는 라우팅 시스템은 File-system…]]></description><link>https://bnt10.github.io/react/2022-12.13---next-study-02/</link><guid isPermaLink="false">https://bnt10.github.io/react/2022-12.13---next-study-02/</guid><pubDate>Tue, 13 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;들어가기-앞서&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%95%9E%EC%84%9C&quot; aria-label=&quot;들어가기 앞서 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 앞서&lt;/h1&gt;
+&lt;p&gt;Next.js에서 제공하는 내장 라우팅 시스템이 무엇이고 어떤방식으로 사용하는지를 중점으로 정리 하였습니다.&lt;/p&gt;
+&lt;h2 id=&quot;1-file-system-based-router&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-file-system-based-router&quot; aria-label=&quot;1 file system based router permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. File-system based router&lt;/h2&gt;
+&lt;p&gt;Next.js에서 기본 내장 되어 있는 라우팅 시스템은 File-system 기반으로 정적 파일을 생성하여 동작합니다.&lt;/p&gt;
+&lt;p&gt;Next.js에서는 pages 폴더 아래 파일들이 라우팅 경로로 사용 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Index routes&lt;/p&gt;
+&lt;p&gt;pages폴더 안에 index.js는 → / 경로를 표현합니다. 그렇다면 /blog를 표현하고 싶다면 어떻게 해야 할까요?&lt;br&gt;
+다음과 같이 pages/blog/index.js 표현 하면 됩니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/br&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Nested routes&lt;/p&gt;
+&lt;p&gt;중첩된 라우팅을 표현하고 싶다면 파일 구조를 중첩하여 사용하면 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;/blog/post.js → /blog/post&lt;/li&gt;
+&lt;li&gt;/blog/content.js → /blog/content&lt;/li&gt;
+&lt;li&gt;/blog/settings/username.js → /blog/settings/username&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/br&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Dynamic route segments&lt;/p&gt;
+&lt;p&gt;블로그 포스트를 에로 포스트 번호가 1번 2번 3번이 있다고 가정한다면
+각각 /blog/1&lt;em&gt;post.js, /blog/2&lt;/em&gt;post.js, /blog/3_post.js 이런식으로 작성한다는 것은 매우 비효율적입니다.
+따라서 동적으로 라우팅 페이지를 구성하고 싶은 경우 아래와 같은 양식으로 파일을 작성해야 합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pages/blog/[slug].js → /blog/:slug (/blog/hello-world)&lt;/li&gt;
+&lt;li&gt;pages/[username]/settings.js → /:username/settings (/foo/settings)&lt;/li&gt;
+&lt;li&gt;pages/post/[…all].js → /post/* (/post/2020/id/title) # 여러개의 인자를 받고 싶은경우&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2-linking-between-pages&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-linking-between-pages&quot; aria-label=&quot;2 linking between pages permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Linking between pages&lt;/h2&gt;
+&lt;p&gt;Next.js 에서 페이지 간에 이동을 위해서는 &lt;strong&gt;next/router&lt;/strong&gt; , &lt;strong&gt;next/link&lt;/strong&gt; 를 사용 할 수 있습니다.&lt;/p&gt;
+&lt;h3 id=&quot;21-nextlink&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#21-nextlink&quot; aria-label=&quot;21 nextlink permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2.1 next/link&lt;/h3&gt;
+&lt;p&gt;Link를 사용하는 기본적인 예시 입니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; Link &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;next/link&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Home&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;ul&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;li&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Link href&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;Home&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;Link&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;li&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;li&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Link href&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/about&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;About Us&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;Link&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;li&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;li&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Link href&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/blog/hello-world&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;Blog Post&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;Link&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;li&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;ul&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; Home&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;22-nextrouter&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#22-nextrouter&quot; aria-label=&quot;22 nextrouter permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2.2 next/router&lt;/h3&gt;
+&lt;p&gt;Router를 사용하는 기본적인 예시 입니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; useRouter &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;next/router&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ActiveLink&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; children&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; href &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; router &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useRouter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; style &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;marginRight&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; router&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;asPath &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; href &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;red&apos;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;black&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;handleClick&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;preventDefault&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    router&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;href&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 페이지 이동&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;a href&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;href&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; onClick&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;handleClick&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; style&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;style&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;children&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;a&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; ActiveLink&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/br&gt;
+&lt;h3 id=&quot;23-어느-방식을-사용해야-하나요&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#23-%EC%96%B4%EB%8A%90-%EB%B0%A9%EC%8B%9D%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%98%EB%82%98%EC%9A%94&quot; aria-label=&quot;23 어느 방식을 사용해야 하나요 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2.3 어느 방식을 사용해야 하나요?&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;router.push&lt;/strong&gt;를 사용해서 화면을 전환하는 경우는 javascript에서 &lt;code class=&quot;language-text&quot;&gt;window.location&lt;/code&gt;을 하는 경우와 비슷합니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Link&lt;/strong&gt;를 사용해서 화면을 전환하는 경우는 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;a&gt;&lt;/code&gt; tag를 이용해서 화면을 전환 하는 경우와 비슷합니다. 다만 Next.js에서의 일반적인 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;a&gt;&lt;/code&gt; tag와는 다르게client-side 의 라우팅을 지원합니다.&lt;/p&gt;
+&lt;p&gt;여기서 확인되는 차이점은 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;a&gt;&lt;/code&gt; tag가 생성된다는 점 입니다.&lt;/p&gt;
+&lt;p&gt;즉 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;a&gt;&lt;/code&gt; tag 가 생성된다는 것은 SEO 최적화에 더 유리하다는 것을 의미합니다. (&lt;code class=&quot;language-text&quot;&gt;&amp;lt;a&gt;&lt;/code&gt; tag에 링크를 크롤링 봇이 이동 할 수 있습니다.)&lt;/p&gt;
+&lt;p&gt;추가적으로 link는 &lt;code class=&quot;language-text&quot;&gt;data prefetch&lt;/code&gt; 기능을 제공하여 사용자의 화면에 link 태그가 보이게 되면 해당 링크에 연결된 페이지를 서버에 요청하여 prefetch 할 수 있습니다.
+미리 가져온 페이지가 존재하기 때문에 이동시 더욱 빠르게 이동 할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Next.js & React Study (1)]]></title><description><![CDATA[들어가기 앞서 이번 정리의 초점은 Next.js란 무엇인지, 어떤 문제를 해결하기 위해서 사용되는지를 중점적으로 정리 해보겠습니다. 1. Next.js란? 공식 NextJS 웹사이트인 nextjs.org에서는 프로덕션용 React…]]></description><link>https://bnt10.github.io/react/2022-12.10---next-study-01/</link><guid isPermaLink="false">https://bnt10.github.io/react/2022-12.10---next-study-01/</guid><pubDate>Sat, 10 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;들어가기-앞서&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%95%9E%EC%84%9C&quot; aria-label=&quot;들어가기 앞서 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 앞서&lt;/h1&gt;
+&lt;p&gt;이번 정리의 초점은 Next.js란 무엇인지, 어떤 문제를 해결하기 위해서 사용되는지를 중점적으로 정리 해보겠습니다.&lt;/p&gt;
+&lt;h2 id=&quot;1-nextjs란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-nextjs%EB%9E%80&quot; aria-label=&quot;1 nextjs란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Next.js란?&lt;/h2&gt;
+&lt;p&gt;공식 NextJS 웹사이트인 &lt;a href=&quot;https://nextjs.org/learn/foundations/about-nextjs/what-is-nextjs&quot;&gt;nextjs.org&lt;/a&gt;에서는 프로덕션용 React 프레임워크라고 정의합니다. React에 대한 프레임 워크라는 정의가 다소 어색해 보일 수 있습니다. 쉽게 이해하기 위해서 한 가지 예시를 들어 보겠습니다.&lt;/p&gt;
+&lt;p&gt;React Application 에서 각 페이지에 대한 Routing이 필요하다고 생각해 봅시다. 이를 해결 하기 위해서는 일반적으로 &lt;code class=&quot;language-text&quot;&gt;react-router-dom&lt;/code&gt; 라이브러리의 추가 및 사용이 요구 됩니다.
+하지만 Next.js를 사용한다면 Next.js에 내장된 라우팅 시스템을 이용하여 추가 서드파티 없이 개발을 진행 할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;위에 설명한 간단한 예시 이외에도 서버사이드 렌더링 등 다양한 기능을 Next.js는 React개발에 필요한 기능들을 미리 추가하여 React 개발을 돕는 프레임워크 입니다.&lt;/p&gt;
+&lt;h2 id=&quot;2-무엇을-해결-할-수-있는가&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EB%AC%B4%EC%97%87%EC%9D%84-%ED%95%B4%EA%B2%B0-%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94%EA%B0%80&quot; aria-label=&quot;2 무엇을 해결 할 수 있는가 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 무엇을 해결 할 수 있는가?&lt;/h2&gt;
+&lt;h3 id=&quot;ssr서버사이드-렌더링과-csr클라이언트-사이드-렌더링&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ssr%EC%84%9C%EB%B2%84%EC%82%AC%EC%9D%B4%EB%93%9C-%EB%A0%8C%EB%8D%94%EB%A7%81%EA%B3%BC-csr%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%82%AC%EC%9D%B4%EB%93%9C-%EB%A0%8C%EB%8D%94%EB%A7%81&quot; aria-label=&quot;ssr서버사이드 렌더링과 csr클라이언트 사이드 렌더링 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SSR(서버사이드 렌더링)과 CSR(클라이언트 사이드 렌더링)&lt;/h3&gt;
+&lt;p&gt;Next.js가 무엇을 해결 할 수 있는지 설명하기 앞서 몇가지 개념에 대한 이해가 필요합니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;렌더링(Rendering)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;서버로부터 HTML,CSS, JS등 필요한 리소스 응답받아 &lt;strong&gt;DOM 트리&lt;/strong&gt;를 생성합니다.&lt;/li&gt;
+&lt;li&gt;DOM 트리를 생성하는 동안 &lt;strong&gt;CSSOM(CSS Object Model)&lt;/strong&gt;이 생성 됩니다.&lt;/li&gt;
+&lt;li&gt;DOM 트리와 CSSOM을 결합하여 &lt;strong&gt;Rendering Tree&lt;/strong&gt;를 생성합니다.&lt;/li&gt;
+&lt;li&gt;레이아웃 단계에서는 뷰포트 내에서 각 요소의 정확한 위치와 크기 픽셀로 변환합니다.&lt;/li&gt;
+&lt;li&gt;마지막으로 렌더링 트리의 각 노드가 브라우저 화면에 출력됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/br&gt;
+&lt;p&gt;&lt;strong&gt;SSR(Server Side Rendering)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;SSR은 보편적인 렌더링 방식으로 사용자에 페이지에 접근하는 경우 서버에서
+모든 렌더링이 완료되어 사용자에게 전달 됩니다.&lt;/p&gt;
+&lt;p&gt;장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;검색엔진 최적화(SEO)&lt;/li&gt;
+&lt;li&gt;초기로딩속도가 빠름&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;단점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;서버 요청마다 새로고침 발생&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/br&gt;
+&lt;p&gt;&lt;strong&gt;CSR(Client Side Rendering)&lt;/strong&gt;
+사용자의 서버에서 Javascript를 전달받고 이를 &lt;strong&gt;사용자 브라우져&lt;/strong&gt;에 실행 하여 Rendering을 수행합니다. 이후 필요 서버와는 Rendering에 필요한 데이터 주고 받으며 동작합니다.&lt;/p&gt;
+&lt;p&gt;장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;트래픽 감소와 빠른 인터랙션&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;단점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;초기 구동 속도가 느리다.&lt;/li&gt;
+&lt;li&gt;검색엔진 최적화(SEO)가 어렵다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/br&gt;
+&lt;p&gt;React는 일반적으로 CSR(Client Side Rendering)형태로 동작합니다. 그렇다면
+CSR동작의 단점을 가진다는 것을 의미합니다.&lt;/p&gt;
+&lt;p&gt;그렇다면 React를 SSR 방식으로 동작을 바꾸면 될까요?&lt;/p&gt;
+&lt;p&gt;예를 들어 React로 개발된 웹 쇼핑몰이 있다고 가정해 봅시다.&lt;/p&gt;
+&lt;p&gt;판매 상품 페이지가 웹에 잘 노출 되는 것은 매우 중요한 지표입니다. 하지만 구매 페이지는 결제에 대한 빠른 인터렉션이 중요할 것 입니다. 즉 각 페이지의 특성에 맞는 렌더링 방식이 제공되어야 한다는 것입니다.&lt;/p&gt;
+&lt;p&gt;물론 React에서도 SSR(Server Side Rendering)이 지원됩니다. 하지만 제대로 추가하는것이 상당이 어려울 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이 문제를 Next.js에서는 쉽게 해결 할 수 있습니다.
+&lt;/br&gt;&lt;/p&gt;
+&lt;h3 id=&quot;외부-라이브러리-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%99%B8%EB%B6%80-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;외부 라이브러리 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;외부 라이브러리 설치&lt;/h3&gt;
+&lt;p&gt;앞선 설명에서 정리 하였지만 외부 라이브러리를 추가를 필요로 하는 Routing 기능을 Next.js에서는 내장 파일기반 라우팅으로 쉽게 해결 할 수 있습니다.
+&lt;/br&gt;&lt;/p&gt;
+&lt;h3 id=&quot;full-stack&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#full-stack&quot; aria-label=&quot;full stack permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Full Stack&lt;/h3&gt;
+&lt;p&gt;NextJS를 사용하면 개발자들이 React 프로젝트에
+백엔드 코드를 추가하는 작업도 수월하게 해결 할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;예를 들어 파일 시스템으로 작동을 하거나 데이터베이스로 전달이 되는
+독립적인 백엔드 코드도 포함하는 풀스택 React 프로젝트가 있을 때
+NextJS를 사용하면 NodeJS 코드를 통해
+아주 쉽게 백엔드 API를 React 프로젝트로 추가할 수 있습니다&lt;/p&gt;</content:encoded></item><item><title><![CDATA[react 작업 일지 - Project Setting (1)]]></title><description><![CDATA[1. Project Setting 1.1 NextJs 프로젝트 설치 메뉴얼 설치(create-next-app 미사용)
+설치방법 1.2 Config Setting todo :
+prettier, eslint, tsconfig, debug todo…]]></description><link>https://bnt10.github.io/react/2022-10.29---working-log/</link><guid isPermaLink="false">https://bnt10.github.io/react/2022-10.29---working-log/</guid><pubDate>Sat, 29 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;1-project-setting&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-project-setting&quot; aria-label=&quot;1 project setting permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Project Setting&lt;/h3&gt;
+&lt;h2 id=&quot;11-nextjs-프로젝트-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#11-nextjs-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;11 nextjs 프로젝트 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.1 NextJs 프로젝트 설치&lt;/h2&gt;
+&lt;p&gt;메뉴얼 설치(create-next-app 미사용)
+&lt;a href=&quot;/posts/react-nextjs-install&quot;&gt;설치방법&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;12-config-setting&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#12-config-setting&quot; aria-label=&quot;12 config setting permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.2 Config Setting&lt;/h2&gt;
+&lt;p&gt;todo :
+prettier, eslint, tsconfig, debug&lt;/p&gt;
+&lt;p&gt;todo :
+redux setting&lt;/p&gt;
+&lt;h2 id=&quot;13-route&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#13-route&quot; aria-label=&quot;13 route permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.3 Route&lt;/h2&gt;
+&lt;h2 id=&quot;14-_app-component&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#14-_app-component&quot; aria-label=&quot;14 _app component permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.4 _app component&lt;/h2&gt;
+&lt;p&gt;App의 모든 Component를 담고 있기 때문에 공통적인 Layout이나 Provider에 대한 설정을 작성하도록 합니다.
+모든 Component에 영향을 주기 때문에 꼭 필요한 공통적인 요소인지 판단이 필요합니다.&lt;/p&gt;
+&lt;p&gt;작성예시 (중요도)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;AuthProvider : 인증과 권한&lt;/li&gt;
+&lt;li&gt;ReduxProvider : Redux&lt;/li&gt;
+&lt;li&gt;SettingProvier : App의 셋팅을 관리&lt;/li&gt;
+&lt;li&gt;MotionLazyContainer : Framer Motion animation&lt;/li&gt;
+&lt;li&gt;ThemeProvider : 전체 Theme 관리&lt;/li&gt;
+&lt;li&gt;ThemeSettings Theme config 관리&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token literal-property property&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; MyAppProps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; Component&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; pageProps&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; settings &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; props&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; getLayout &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Component&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;getLayout &lt;span class=&quot;token operator&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; page&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Head&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;meta name&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;viewport&quot;&lt;/span&gt; content&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;initial-scale=1, width=device-width&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;Head&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;AuthProvider&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;ReduxProvider store&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;store&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;SettingsProvider defaultSettings&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;settings&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+          &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;MotionLazyContainer&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;ThemeProvider&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+              &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;ThemeSettings&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+                &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getLayout&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Component &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;pageProps&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+              &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;ThemeSettings&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;ThemeProvider&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+          &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;MotionLazyContainer&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;SettingsProvider&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;ReduxProvider&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;AuthProvider&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[알고리즘 기초 Chapter04]]></title><description><![CDATA[1. 큐 1.1 정의 큐(Queue)은 입력시 데이터에 대해서 순차적으로 저장합니다. 출력시  저장된 데이터를 기준으로 출력됩니다.
 이를 FIFO(First In First Out…]]></description><link>https://bnt10.github.io/algorithm/2022-09-25---algorithm-04/</link><guid isPermaLink="false">https://bnt10.github.io/algorithm/2022-09-25---algorithm-04/</guid><pubDate>Sun, 25 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;1-큐&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%ED%81%90&quot; aria-label=&quot;1 큐 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 큐&lt;/h1&gt;
 &lt;h2 id=&quot;11-정의&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#11-%EC%A0%95%EC%9D%98&quot; aria-label=&quot;11 정의 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.1 정의&lt;/h2&gt;
 &lt;p&gt;큐(Queue)은 입력시 데이터에 대해서 순차적으로 저장합니다. 출력시 &lt;code class=&quot;language-text&quot;&gt;가장 먼저&lt;/code&gt; 저장된 데이터를 기준으로 출력됩니다.
@@ -267,7 +468,7 @@ studentDict &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;인접 정점(adjacent vertex)&lt;/td&gt;
-&lt;td&gt;하나의 정점에서 간선에 의해 직접 연결되어 있는 정점을 말합니다. A의 인접 정점은 B, C 입니다.&lt;/td&gt;
+&lt;td&gt;하나의 정점에서 간선에 의해 직접 연결되어 있는 정점을 말합니다. A의 인접 정점은 B, C, D 입니다.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;차수(degree)&lt;/td&gt;
@@ -450,7 +651,166 @@ V &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&qu
 graph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; AdjacencyList&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;V&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;drawGraph&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[알고리즘 기초 Chapter03]]></title><description><![CDATA[1. 순차탐색 1.1 정의 찾고자 하는 결과에 대해서 순차적으로 하나씩 비교하며 탐색 하는 것을 말합니다. 이를 순차 탐색(sequential search…]]></description><link>https://bnt10.github.io/algorithm/2022-09-18---algorithm-03/</link><guid isPermaLink="false">https://bnt10.github.io/algorithm/2022-09-18---algorithm-03/</guid><pubDate>Sun, 18 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;1-순차탐색&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EC%88%9C%EC%B0%A8%ED%83%90%EC%83%89&quot; aria-label=&quot;1 순차탐색 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 순차탐색&lt;/h1&gt;
+graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;drawGraph&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token triple-quoted-string string&quot;&gt;&apos;&apos;&apos;
+DFS(Depth First Search)
+
+given:
+  6개 vertex(정점)과 (0,1), (0,2), (0, 3), (1, 2),(1, 3),(1, 4),(2, 0),(2, 4),(3, 0),
+  (4, 1),(4, 5),(5, 2),(5, 4) 간선(edge)가 주어졌을때
+
+when:
+  V = 6
+  dfsGraph = dfsWithAdjList(V)
+  dfsGraph.addEdge(0, 2)
+  dfsGraph.addEdge(0, 3)
+  dfsGraph.addEdge(1, 2)
+  dfsGraph.addEdge(1, 3)
+  dfsGraph.addEdge(1, 4)
+  dfsGraph.addEdge(2, 0)
+  dfsGraph.addEdge(2, 4)
+  dfsGraph.addEdge(3, 0)
+  dfsGraph.addEdge(4, 1)
+  dfsGraph.addEdge(4, 5)
+  dfsGraph.addEdge(5, 2)
+  dfsGraph.addEdge(5, 4)
+  print(dfsGraph.display(1))
+
+
+then:
+ [1, 4, 5, 2, 0, 3]
+&apos;&apos;&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;dfsWithAdjList&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; V&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;vertex &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; V
+        self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;graph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt;  &lt;span class=&quot;token builtin&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;vertex&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; source&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;graph&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;source&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;append&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; startNode&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+
+        visited &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+        stack &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;startNode&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; stack&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&apos;&apos;&apos;
+              dfs에서 stack을 사용하는 이유는
+              시작 vertex가 1인경우 아래와 같이 진행된다. 따라서 수직적으로 검색하기 위해서 queue를 사용해야한다.
+              1st
+              visited = [1]
+              queue = [2,3,4]
+
+              2st
+              visited [1,4]
+              queue = [3,4,5]
+
+            &apos;&apos;&apos;&lt;/span&gt;
+            n &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; stack&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pop&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+            &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; n &lt;span class=&quot;token keyword&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; visited&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+                visited&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;append&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+                stack &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;graph&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;visited&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; visited
+
+
+V &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;
+dfsGraph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; dfsWithAdjList&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;V&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;display&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token triple-quoted-string string&quot;&gt;&apos;&apos;&apos;
+#bfs
+given:
+  6개 vertex(정점)과 (0,1), (0,2), (0, 3), (1, 2),(1, 3),(1, 4),(2, 0),(2, 4),(3, 0),(4, 1),(4, 5),(5, 2),(5, 4) 간선(edge)가 주어졌을때
+
+when:
+  V = 6
+  bfsGraph = bfsWithAdjList(V)
+  bfsGraph.addEdge(0, 2)
+  bfsGraph.addEdge(0, 3)
+  bfsGraph.addEdge(1, 2)
+  bfsGraph.addEdge(1, 3)
+  bfsGraph.addEdge(1, 4)
+  bfsGraph.addEdge(2, 0)
+  bfsGraph.addEdge(2, 4)
+  bfsGraph.addEdge(3, 0)
+  bfsGraph.addEdge(4, 1)
+  bfsGraph.addEdge(4, 5)
+  bfsGraph.addEdge(5, 2)
+  bfsGraph.addEdge(5, 4)
+  print(bfsGraph.display(1))
+
+
+then:
+ [1, 2, 3, 4, 0, 5]
+
+&apos;&apos;&apos;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; collections &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; deque
+
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;bfsWithAdjList&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; V&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;vertex &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; V
+        self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;graph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;vertex&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; source&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;graph&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;source&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;append&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; startNode&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+
+        visited &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&apos;&apos;&apos;
+          bfs에서 queue을 사용하는 이유는 bfs는 기준 노드 기준으로 인접 노드들을 탐색하나가게 됩니다.
+          시작 vertex가 1인경우 아래와 같이 진행된다. 따라서 수평적으로 검색하기 위해서 queue를 사용해야한다.
+          1st
+           visited = [1]
+           queue = [2,3,4]
+
+          2st
+           visited [1,2]
+           queue = [3,4,0]
+
+        &apos;&apos;&apos;&lt;/span&gt;
+        queue &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; deque&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;startNode&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; queue&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            n &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; queue&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;popleft&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; n &lt;span class=&quot;token keyword&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; visited&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+                visited&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;append&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+                queue &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;self&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;graph&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;visited&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; visited
+
+
+V &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;
+bfsGraph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; bfsWithAdjList&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;V&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addEdge&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;bfsGraph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;display&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[알고리즘 기초 Chapter03]]></title><description><![CDATA[1. 순차탐색 1.1 정의 찾고자 하는 결과에 대해서 순차적으로 하나씩 비교하며 탐색 하는 것을 말합니다. 이를 순차 탐색(sequential search…]]></description><link>https://bnt10.github.io/algorithm/2022-09-18---algorithm-03/</link><guid isPermaLink="false">https://bnt10.github.io/algorithm/2022-09-18---algorithm-03/</guid><pubDate>Sun, 18 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;1-순차탐색&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EC%88%9C%EC%B0%A8%ED%83%90%EC%83%89&quot; aria-label=&quot;1 순차탐색 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 순차탐색&lt;/h1&gt;
 &lt;h2 id=&quot;11-정의&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#11-%EC%A0%95%EC%9D%98&quot; aria-label=&quot;11 정의 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.1 정의&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -555,7 +915,7 @@ selectionSort&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;numLi
 &lt;p&gt;삽입 정렬은 자료 배열의 모든 요소를 앞에서부터 차례대로 이미 정렬된 배열 부분과 비교하여, 자신의 위치를 찾아 삽입함으로써 정렬을 완성하는 알고리즘을 말합니다.&lt;/p&gt;
 &lt;p&gt;k번째 반복 후의 결과 배열은, 앞쪽 k + 1 항목이 정렬된 상태이다.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;주어진 리스트 중에 최소값을 선택&lt;/li&gt;
+&lt;li&gt;주어진 리스트 중에 index = 1의 값 선택 (numList[i])&lt;/li&gt;
 &lt;li&gt;그 값을 맨 앞에 위치한 값과 교체&lt;/li&gt;
 &lt;li&gt;맨 처음 위치를 뺀 나머지 리스트를 같은 방법으로 교체&lt;/li&gt;
 &lt;li&gt;이미 정렬된 리스트의 경우가 아닌 경우 삽입 정렬의 계산 복잡도는 선택 정렬과 같은 O(n2)&lt;/li&gt;
@@ -580,7 +940,8 @@ selectionSort&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;numLi
 
 numList &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
 insertSort&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;numList&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;numList&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[알고리즘 기초 Chapter02]]></title><description><![CDATA[1. 팩토리얼 1.1 정의 팩토리얼은 1부터 n까지 연속한 숫자를 차례로 곱한 값입니다. 아래는 팩토리얼을 이해하기 위한 예시 입니다. 1.2 코드구현 2. 재귀호출 2.1 정의 재귀 호출(recursion…]]></description><link>https://bnt10.github.io/algorithm/2022-09-14---algorithm-02/</link><guid isPermaLink="false">https://bnt10.github.io/algorithm/2022-09-14---algorithm-02/</guid><pubDate>Wed, 14 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;1-팩토리얼&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%ED%8C%A9%ED%86%A0%EB%A6%AC%EC%96%BC&quot; aria-label=&quot;1 팩토리얼 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 팩토리얼&lt;/h1&gt;
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;numList&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/content/insert-sort.png&quot; alt=&quot;insert-sort.png&quot;&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[알고리즘 기초 Chapter02]]></title><description><![CDATA[1. 팩토리얼 1.1 정의 팩토리얼은 1부터 n까지 연속한 숫자를 차례로 곱한 값입니다. 아래는 팩토리얼을 이해하기 위한 예시 입니다. 1.2 코드구현 2. 재귀호출 2.1 정의 재귀 호출(recursion…]]></description><link>https://bnt10.github.io/algorithm/2022-09-14---algorithm-02/</link><guid isPermaLink="false">https://bnt10.github.io/algorithm/2022-09-14---algorithm-02/</guid><pubDate>Wed, 14 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;1-팩토리얼&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%ED%8C%A9%ED%86%A0%EB%A6%AC%EC%96%BC&quot; aria-label=&quot;1 팩토리얼 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 팩토리얼&lt;/h1&gt;
 &lt;h2 id=&quot;11-정의&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#11-%EC%A0%95%EC%9D%98&quot; aria-label=&quot;11 정의 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.1 정의&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
