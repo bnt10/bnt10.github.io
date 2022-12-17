@@ -12,12 +12,11 @@ export const Layout = ({ location, title, children, siteUrl, author }) => {
 
   return (
     <React.Fragment>
-
       <div
         style={{
           marginLeft: `auto`,
           marginRight: `auto`,
-          maxWidth: rhythm(40),
+          maxWidth: rhythm(35),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >

@@ -65,15 +65,6 @@ export default ({ data, pageContext, location }) => {
             <Elements.Hr />
             <Bio />
             <PostNavigator pageContext={pageContext} />
-            {/* {!!disqusShortName && (
-              <Disqus
-                post={post}
-                shortName={disqusShortName}
-                siteUrl={siteUrl}
-                slug={pageContext.slug}
-              />
-            )}
-            {!!utterances && <Utterances repo={utterances} />} */}
           </Layout>
         </div>
         {!isMobile && post.tableOfContents && (
