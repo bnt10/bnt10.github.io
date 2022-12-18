@@ -1,4 +1,172 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[배움을 기록하자]]></description><link>https://bnt10.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 13 Dec 2022 11:12:26 GMT</lastBuildDate><item><title><![CDATA[Next.js & React Study (2)]]></title><description><![CDATA[들어가기 앞서 Next.js에서 제공하는 내장 라우팅 시스템이 무엇이고 어떤방식으로 사용하는지를 중점으로 정리 하였습니다. 1. File-system based router Next.js에서 기본 내장 되어 있는 라우팅 시스템은 File-system…]]></description><link>https://bnt10.github.io/react/2022-12.13---next-study-02/</link><guid isPermaLink="false">https://bnt10.github.io/react/2022-12.13---next-study-02/</guid><pubDate>Tue, 13 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;들어가기-앞서&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%95%9E%EC%84%9C&quot; aria-label=&quot;들어가기 앞서 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 앞서&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[주 1회 작성하는 개발 블로그]]></title><description><![CDATA[배움을 기록하자]]></description><link>https://bnt10.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 18 Dec 2022 07:11:06 GMT</lastBuildDate><item><title><![CDATA[Next.js & React Study (3)]]></title><description><![CDATA[들어가기 앞서 Next.js에서 제공하는 Rendering의 종류와 사용이유 데이터 패칭 방법에 대해서 정리 하였습니다. 1. 왜 Next.js에서 별도의 Rendering 방법을 제공 할까요? 별도의 Rendering을 제공하는 이유는 앞서 Next…]]></description><link>https://bnt10.github.io/react/2022-12.17---next-study-03/</link><guid isPermaLink="false">https://bnt10.github.io/react/2022-12.17---next-study-03/</guid><pubDate>Sat, 17 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;들어가기-앞서&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%95%9E%EC%84%9C&quot; aria-label=&quot;들어가기 앞서 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 앞서&lt;/h1&gt;
+&lt;p&gt;Next.js에서 제공하는 Rendering의 종류와 사용이유 데이터 패칭 방법에 대해서 정리 하였습니다.&lt;/p&gt;
+&lt;h2 id=&quot;1-왜-nextjs에서-별도의-rendering-방법을-제공-할까요&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EC%99%9C-nextjs%EC%97%90%EC%84%9C-%EB%B3%84%EB%8F%84%EC%9D%98-rendering-%EB%B0%A9%EB%B2%95%EC%9D%84-%EC%A0%9C%EA%B3%B5-%ED%95%A0%EA%B9%8C%EC%9A%94&quot; aria-label=&quot;1 왜 nextjs에서 별도의 rendering 방법을 제공 할까요 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 왜 Next.js에서 별도의 Rendering 방법을 제공 할까요?&lt;/h2&gt;
+&lt;p&gt;별도의 Rendering을 제공하는 이유는&lt;br&gt;
+앞서 Next가 해결 할 수 있는 문제에 대한 &lt;a href=&quot;/react/2022-12.10---next-study-01&quot;&gt;정리&lt;/a&gt;에서 React의 CSR(client side rendering) Rendering
+방식을 해결하기 위해서 입니다.&lt;br&gt;
+이를 사전 렌더링(Pre-Rendering)이라는 개념을 이용해서 문제를 해결을 합니다.&lt;/p&gt;
+&lt;h2 id=&quot;2-사전-렌더링pre-rendering&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EC%82%AC%EC%A0%84-%EB%A0%8C%EB%8D%94%EB%A7%81pre-rendering&quot; aria-label=&quot;2 사전 렌더링pre rendering permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 사전 렌더링(Pre-Rendering)&lt;/h2&gt;
+&lt;p&gt;어떤 페이지가 있다고 가정해 봅시다.&lt;/p&gt;
+&lt;p&gt;이 페이지를 사용자에게 보여주려고 한다면 표준 React라면 사용자가 접근 하는 순간
+제일 먼저 HTMML 파일과 Javascript 코드가 표시될 겁니다. 그리고 Javascript 코드가 실행되면서 스크린에 Rendering된 내용을 출력하게 될겁니다.
+물론 이 속도는 아주 빨라서 사용자에게는 문제로 보이지 않을 수 있습니다.
+하지만 서버로 부터 데이터를 받아서 해당 데이터로 화면을 구성하는 경우는 데이터를 불러올떄 까지 화면을 볼 수 없게 됩니다. (로딩이 필요한 이유)&lt;/p&gt;
+&lt;p&gt;페이지를 클라이언트로 전송된 뒤에만 데이터를 로딩하는 대신 &lt;strong&gt;Next.js는 페이지와 필요할 법한 모든 데이터가 있는 HTML 콘텐츠&lt;/strong&gt;를 사전에 렌더링 합니다&lt;/p&gt;
+&lt;p&gt;바로 이것이 표준 React와의 차이점 입니다.&lt;br&gt;
+사전에 HTML 페이지를 완성해 놓고 완전히 채워진 HTML 파일을 클라이언트에게 전송하는 겁니다.&lt;/p&gt;
+&lt;p&gt;’&lt;em&gt;잠깐.. 이게 무슨 소리지?&lt;/em&gt; ’ 어렵게 느껴질 수 있습니다.&lt;/p&gt;
+&lt;p&gt;간단히 말해서 React는 사용자가 접근하면 이제 화면을 그리기 시작합니다 반면 Next.js는 미리 화면을 그려놓고 사용자가 접근하면 전달 합니다.&lt;br&gt;
+Next.js는 단순히 사전 렌더링된 페이지를 재전송하는 데 그치지 않고
+번들링된 JavaScript 코드를 모두 재전송합니다
+이런 재전송을 해당 페이지에 대해 수화(hydrate)한다고 합니다&lt;/p&gt;
+&lt;p&gt;재전송된 JavaScript 코드는
+나중에 사전 렌더링된 페이지를 대체하고
+이후 React가 알맞은 작업을 수행합니다.&lt;/p&gt;
+&lt;p&gt;’&lt;em&gt;방금 사전에 렌더링해서 전달해준다고 했는데..? Javascript 코드를 재전송? 수화(hydrate)??&lt;/em&gt; ’ 위기가 찾아 옵니다.&lt;/p&gt;
+&lt;p&gt;여기가 마지막! 이해의 마지막 고비 입니다.&lt;br&gt;
+사전 렌더링된 페이지는 사용자에게 보여줄 페이지 자체를 HTML 콘텐츠로 변환하여 보여주는 것이라
+Javascript 요소들이 하나도 없는 상태입니다. 이는 단순 클릭과 같은 이벤트 리스너들이 각 웹 페이지의 DOM 요소에 하나도 적용되어 있지 않은 상태라는 것 입니다.&lt;br&gt;
+이를 해결 하기 위해서 재전송된 Javascript 코드들이 사전 렌더링 된 HTML DOM 위에서 한번 더 렌더링 하면서 이벤트 리스너등 비어있던 부분들을 채워나가게 됩니다.&lt;/p&gt;
+&lt;p&gt;이 과정을 &lt;strong&gt;수화(Hydrate)&lt;/strong&gt;라고 부릅니다. 용어가 다소 낯설게 느껴집니다.
+사전적으로는 수분을 공급한다는 의미입니다. 앞서 정리한 내용처럼 사전 렌더링된 페이지는 이벤트 리스너등이 비어있는 HTML DOM 입니다.&lt;br&gt;
+여기에 수분을 공급하는 것 처럼 필요한 부분을 채워 넣는 것이라 이해 하면됩니다.&lt;/p&gt;
+&lt;p&gt;페이지의 수화(Hydrate), 즉 첫 번째 렌더링이 끝나고 나면
+다시 표준 싱글 페이지 애플리케이션으로 돌아갑니다
+그때부터는 React가 프론트엔드에서 모든 처리를 수행합니다.
+그 후에 페이지가 바뀔 때, 즉 같은 웹사이트의 다른 페이지로 넘어갈 때는
+해당 페이지가 사전 렌더링되지 않고 React를 통해 CSR로 동작합니다.&lt;/p&gt;
+&lt;p&gt;사전 렌더링(Pre-Rendering)이 동작하는건 최초 접속하는 페이지 뿐입니다.
+따라서 React가 준비를 마칠 때까지 빈 페이지를 보는 대신에
+모든 초기 콘텐츠가 포함된 사전 렌더링된 페이지가 표시되는 겁니다.&lt;/p&gt;
+&lt;p&gt;참고로 이때 처음에 재전송한 사전 렌더링된 페이지에는
+주요 콘텐츠가 모두 포함되어 있는 상태이기 때문에
+검색 엔진 크롤러도 전체 페이지에 이미 포함된
+모든 콘텐츠를 살펴보게 됩니다. 따라서 SEO의 관점에서 표준 React 방식보다 유리 합니다.&lt;/p&gt;
+&lt;p&gt;이러한 사전 렌더링을 수행하기 위해서 Next.js에는 두 가지 사전 렌더링 방법 있습니다&lt;/p&gt;
+&lt;/br&gt;
+&lt;h3 id=&quot;21-정적-생성static-generation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#21-%EC%A0%95%EC%A0%81-%EC%83%9D%EC%84%B1static-generation&quot; aria-label=&quot;21 정적 생성static generation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2.1 정적 생성(Static Generation)&lt;/h3&gt;
+&lt;p&gt;정적 생성의 개념은 간단합니다
+빌드하는 동안 페이지를 사전 생성합니다. 사전 생성이라 함은 콘텐츠를 구성하는 모든 HTML 코드와 모든 데이터를 사전에 준비시켜 놓는다는 뜻입니다
+빌드 시간 중 페이지가 사전에 구축되었기 때문에 배포되고 나면 구축된 페이지는 서버나 앱을 실행시키는 CDN을 통해서 캐시로 저장됩니다&lt;/p&gt;
+&lt;p&gt;Next.js는 기본적으로 동적 데이터가 없는 모든 페이지를 사전 렌더링합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;About&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;About&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; About&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위 같은 페이지가 있다면 외부에서 데이터를 가져올 필요가 없기 때문에 빌드시점에 정적 생성(Static Generation)되고 사전 렌더링 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;getStaticProps&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;사전 생성할 페이지에 어떤 데이터가 포함되어야 하는 경우는 어떻게 해야 할까요?
+이에 대한 해답은 페이지 컴포넌트에서 가져올 수 있는 특정 함수에서 찾을 수 있습니다 이는 반드시 사용하는 페이지 컴포넌트의 내부에 있어야 하며
+다른 React 컴포넌트가 아닌 pages 폴더의 component 파일 내부가 그 위치여야 합니다&lt;/p&gt;
+&lt;p&gt;그 안에서 특수한 비동기 함수인 &lt;code class=&quot;language-text&quot;&gt;getStaticProps&lt;/code&gt;를 가져오는데
+이때 그 이름이 정확히 &lt;code class=&quot;language-text&quot;&gt;getStaticProps&lt;/code&gt;여야 합니다&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; posts &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Render posts...&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// 빌드 시점에 호출됩니다.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getStaticProps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// 외부 데이터 가져오기&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;https://.../posts&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; posts &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; res&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// 빌드시 props로 posts를 전달 받습니다.&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      posts&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Next.js에서 이 이름 그대로 함수를 찾기 때문입니다.
+그리고 이 함수에서 주목할 점은
+보통 서버 사이드에서만 실행되는 모든 코드도 실행할 수가 있다는 겁니다.
+이 함수에서는 클라이언트 사이드 코드로만 제한되는 게 아니라
+특정 클라이언트 사이드 API에 액세스가 없거나
+윈도우 객체에 대한 액세스가 없는
+일반적으로는 서버 사이드에서만
+가능한 모든 코드도 실행할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;더 나아가서 &lt;code class=&quot;language-text&quot;&gt;getStaticProps&lt;/code&gt; 내에 작성한 코드는
+클라이언트에게 재전송되는 코드로 포함되지 않는다는 겁니다.&lt;/p&gt;
+&lt;p&gt;즉 해당 함수 내에 포함하는 코드는 클라이언트는 볼 수 없다는 것 입니다.
+가령 데이터베이스 크리덴셜(credential)을 포함하고 있는 경우에는
+이를 클라이언트 사이드에 노출하고 싶지 않을 테니
+getStaticProps 내에 해당 코드를 작성하여
+클라이언트 사이드에서 볼 수 없게 할 수 있습니다&lt;/p&gt;
+&lt;p&gt;이렇게 서버 사이드에서&lt;code class=&quot;language-text&quot;&gt;getStaticProps&lt;/code&gt;에 외부 데이터를 전달하여 정적 생성을 수행합니다.
+하지만 여기서 한가지 생각해봐야 할 점이 있습니다.&lt;/p&gt;
+&lt;p&gt;자주 변경되는 데이터 형태를 가진 경우 사전에 정적 생성하는게 적당하지 않을 수 있습니다.
+이를 해결하기 위해서 Next.js에서는 &lt;strong&gt;증분 정적 생성(ISR)&lt;/strong&gt;이라는 내장 기능이 존재 합니다.
+한번 생성해놓고 끝이 아니라 일정시간마다 다시 페이지를 업데이트 해주는 기능입니다.
+사용방법은 간단합니다. 아래 예시 처럼 &lt;code class=&quot;language-text&quot;&gt;revalidation&lt;/code&gt; 옵션을 사용합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getStaticProps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; res &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;https://.../posts&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; posts &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; res&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      posts&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;revalidation&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 10초 마다 생성한 페이지를 업데이트 합니다.&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;getStaticPaths&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Next.js의 라우팅 시스템에서 &lt;code class=&quot;language-text&quot;&gt;/pages/post/[id].js&lt;/code&gt; 의 형태로 동적으로 페이지를 생성할 수 있습니다.
+하지만 이렇게 생성된 페이지는 Next.js에서 정적 생성을 수행하지 않습니다. 동적 페이지는 사실 여러 페이지가 뭉쳐 있기 떄문입니다.
+어떤 페이지가 생성되는지 알려줘야 합니다. Next.js에서는 이를 &lt;code class=&quot;language-text&quot;&gt;getStaticPaths&lt;/code&gt; 를 사용해서 해결합니다. 아래는 사용 예시입니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getStaticPaths&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;1&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;2&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//동적 경로&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;fallback&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// false == paths 전달한 페이지 이외는 생성하지 않음&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getStaticProps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; post &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Render post...&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;한가지 &lt;code class=&quot;language-text&quot;&gt;fallback&lt;/code&gt; 옵션에 대해서 추가적으로 알아야 합니다. &lt;code class=&quot;language-text&quot;&gt;fallback&lt;/code&gt; 옵션이 &lt;code class=&quot;language-text&quot;&gt;true&lt;/code&gt;라면 요청이 서버에 도달하는 순간
+paths에 정의되어 있지 않더라도 사전 생성을 수행합니다. 매우 유용한 옵션이지만 여기서 한가지 주의해야 할 부분이 있습니다.
+사용자가 동적 경로에 대해서 url 을 통해서 접근하는 경우 동적 생성이 끝나지 않는 상태로 처리됩니다. 이를 해결하기 위해서는
+&lt;code class=&quot;language-text&quot;&gt;fallback : &apos;blocking&apos;&lt;/code&gt; 으로 값을 변경 한다면 생성이 끝난 후 정상적으로 페이지 접근 할 수 있습니다.&lt;/p&gt;
+&lt;/br&gt;
+&lt;h3 id=&quot;22-서버-사이드-렌더링server-side-rendering&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#22-%EC%84%9C%EB%B2%84-%EC%82%AC%EC%9D%B4%EB%93%9C-%EB%A0%8C%EB%8D%94%EB%A7%81server-side-rendering&quot; aria-label=&quot;22 서버 사이드 렌더링server side rendering permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2.2 서버 사이드 렌더링(Server-Side Rendering)&lt;/h3&gt;
+&lt;p&gt;때때로 매번 요청에 대한 사전 렌더링에 대해서 요청 객체에 대해서 접근이 필요 할 수 있습니다.(Cookie 접근)&lt;br&gt;
+하지만 앞서 설명한 두 방법으로는 실제 요청에 대해서 접근 할 수 없습니다. 이에 대한 해결방법은 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;getServerSideProps&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;내용은 간단합니다 페이지 요청이 서버에 도달할 때마다 실행되는 함수입니다
+빌드 시간이나 매초마다 사전 생성하지 않고
+서버에서만 작동하는 코드로 애플리케이션을 배포한 후 유입되는 모든 요청에 대해서만 재실행됩니다&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;title&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;//매 요청마다 수행합니다.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getServerSideProps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; params &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; context
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token literal-property property&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token literal-property property&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; params&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;title&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Next.js & React Study (2)]]></title><description><![CDATA[들어가기 앞서 Next.js에서 제공하는 내장 라우팅 시스템이 무엇이고 어떤방식으로 사용하는지를 중점으로 정리 하였습니다. 1. File-system based router Next.js에서 기본 내장 되어 있는 라우팅 시스템은 File-system…]]></description><link>https://bnt10.github.io/react/2022-12.13---next-study-02/</link><guid isPermaLink="false">https://bnt10.github.io/react/2022-12.13---next-study-02/</guid><pubDate>Tue, 13 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;들어가기-앞서&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%95%9E%EC%84%9C&quot; aria-label=&quot;들어가기 앞서 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 앞서&lt;/h1&gt;
 &lt;p&gt;Next.js에서 제공하는 내장 라우팅 시스템이 무엇이고 어떤방식으로 사용하는지를 중점으로 정리 하였습니다.&lt;/p&gt;
 &lt;h2 id=&quot;1-file-system-based-router&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-file-system-based-router&quot; aria-label=&quot;1 file system based router permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. File-system based router&lt;/h2&gt;
 &lt;p&gt;Next.js에서 기본 내장 되어 있는 라우팅 시스템은 File-system 기반으로 정적 파일을 생성하여 동작합니다.&lt;/p&gt;
@@ -1465,44 +1633,7 @@ history state를 관리하기 위해서 top-level의 Game 컴포넌트 까지&lt
 &lt;/li&gt;
 &lt;li&gt;Implementing Time Travel&lt;br&gt;
 key까지 추가된 상태에서의 &lt;a href=&quot;https://codepen.io/gaearon/pen/gWWZgR?editors=0010&quot;&gt;최종코드&lt;/a&gt; 입니다.&lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Docker - 설치부터(2)]]></title><description><![CDATA[1. Docker 기술 개념 도커의 Container, Image에 대해서 알아 보겠습니다. 컨테이너(Container) 정의: 컨테이너(Container…]]></description><link>https://bnt10.github.io/docker/2022-02-09--docker-개념/</link><guid isPermaLink="false">https://bnt10.github.io/docker/2022-02-09--docker-개념/</guid><pubDate>Tue, 08 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;1-docker-기술-개념&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-docker-%EA%B8%B0%EC%88%A0-%EA%B0%9C%EB%85%90&quot; aria-label=&quot;1 docker 기술 개념 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Docker 기술 개념&lt;/h3&gt;
-&lt;p&gt;도커의 Container, Image에 대해서 알아 보겠습니다.&lt;/p&gt;
-&lt;h4 id=&quot;컨테이너container&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88container&quot; aria-label=&quot;컨테이너container permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;컨테이너(Container)&lt;/h4&gt;
-&lt;p&gt;정의: 컨테이너(Container)는 운영체제 수준에서 다른 실행환경과의 간섭없이 격리하는 기술을 말합니다.&lt;/p&gt;
-&lt;p&gt;궁금증: 컨테이너를 공부하다 보면 쉽게 찾아 볼 수 있는 다른 가상환경 기술인 &lt;strong&gt;가상머신(Virtual Machine)&lt;/strong&gt;과의 차이
-는 무엇있가?&lt;/p&gt;
-&lt;p&gt;제가 공부하면서 가장 큰 차이점으로 생각된 부분은 &lt;strong&gt;‘어디까지를 가상화 하는가?’&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;컨테이너&lt;/strong&gt;의 경우 운영체제의 커널을 공유하여 그 위에 격리환경을 구성합니다.&lt;br&gt;
-&lt;strong&gt;가상머신&lt;/strong&gt;의 경우 하드웨어조차도 가상화시켜 격리환경을 구성합니다.&lt;/p&gt;
-&lt;p&gt;두 차이점 때문에 일반적으로 컨테이너가 낮은 오버헤드 환경을 제공합니다.&lt;br&gt;
-다만 그렇다면 &lt;strong&gt;‘가상머신은 사용할 필요가 없는가?’&lt;/strong&gt; 라는 생각을 하게 되었습니다.&lt;/p&gt;
-&lt;p&gt;가상머신의 활용분야: 가상화를 하드웨어까지 하기 때문에
-개발상 하드웨어 요구 사항이 있거나 Windows, MacOS등 서로 호환성이부족한 플랫폼 개발&lt;/p&gt;
-&lt;h4 id=&quot;이미지image&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EB%AF%B8%EC%A7%80image&quot; aria-label=&quot;이미지image permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이미지(Image)&lt;/h4&gt;
-&lt;p&gt;공부하면서 이해한 도커의 이미지의 개념은 일종의 객체지향의 클래스라고 생각되었습니다.&lt;br&gt;
-이미지라는 클래스를 통해서 컨테이러나는 객체를 만드는 것이라 가정하면 이미지는 컨테이너 생성을 위한 파일, 설정등을 포함하고 상태값을 가지지않는 &lt;strong&gt;Imutable&lt;/strong&gt;상태로 저장되기 때문입니다.&lt;/p&gt;
-&lt;p&gt;또한 같은 이미지는 여러개의 컨테이너를 생성할 수 있고 컨테이너의 상태의 변경은&lt;br&gt;
-컨테이너에만 적용되고 이미지에는 적용되지 않습니다.&lt;/p&gt;
-&lt;p&gt;이미지의 구성은 N층의 레이어를 통해 구성됩니다.&lt;br&gt;
-예를 들어서 base가 되는 Ubuntu 레이어 위에 Nginx layer를 올리는 방식으로&lt;br&gt;
-N층의 레이어 구성을 통해서 하나의 이미지가 구성됩니다.&lt;/p&gt;
-&lt;p&gt;docker file 에 추가적인 layer가 올라가게 될 경우
-delta (difference between the old and new image) update가 수행됩니다.&lt;/p&gt;
-&lt;p&gt;실제 이미지를 만드는 방법은 다음과 같습니다.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Dockerfile&lt;/strong&gt;이란 파일을 작성하여 &lt;strong&gt;Build&lt;/strong&gt;하는 과정이 필요합니다.&lt;br&gt;
-참고 : &lt;a href=&quot;https://docs.docker.com/develop/develop-images/dockerfile_best-practices/&quot;&gt;자세한 작성가이드 입니다.&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;ubuntu&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;18.04&lt;/span&gt;
-&lt;span class=&quot;token constant&quot;&gt;COPY&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;app
-&lt;span class=&quot;token constant&quot;&gt;RUN&lt;/span&gt; make &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;app
-&lt;span class=&quot;token constant&quot;&gt;CMD&lt;/span&gt; python &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;app&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;py&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;각 명령어들은 하나의 &lt;strong&gt;layer&lt;/strong&gt;가 됩니다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;FROM : ubuntu:18.04라는 DockerImage를 이용해서 레이어를 생성&lt;/li&gt;
-&lt;li&gt;COPY : . /app . &amp;#x3C;- host /app &amp;#x3C;- container&lt;/li&gt;
-&lt;li&gt;RUN : 명령을 실행할 때 마다 layer가 생성되고 캐시된다.&lt;/li&gt;
-&lt;li&gt;CMD : 컨테이너가 실행되는 시점에 사용되는 명령어&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;계속&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B3%84%EC%86%8D&quot; aria-label=&quot;계속 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;계속&lt;/h1&gt;</content:encoded></item><item><title><![CDATA[Docker - 설치부터(1)]]></title><description><![CDATA[1. Docker? Docker는 애플리케이션에 대한 구축,테스트를 표준화하여 컨테이너기반의 배포를 할 수 있는 플랫폼 입니다. 2. 공부한 이유 On-premise…]]></description><link>https://bnt10.github.io/docker/2022-02-08--docker-설치/</link><guid isPermaLink="false">https://bnt10.github.io/docker/2022-02-08--docker-설치/</guid><pubDate>Tue, 08 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;1-docker&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-docker&quot; aria-label=&quot;1 docker permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Docker?&lt;/h3&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Docker - 설치부터(1)]]></title><description><![CDATA[1. Docker? Docker는 애플리케이션에 대한 구축,테스트를 표준화하여 컨테이너기반의 배포를 할 수 있는 플랫폼 입니다. 2. 공부한 이유 On-premise…]]></description><link>https://bnt10.github.io/docker/2022-02-08--docker-설치/</link><guid isPermaLink="false">https://bnt10.github.io/docker/2022-02-08--docker-설치/</guid><pubDate>Tue, 08 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;1-docker&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-docker&quot; aria-label=&quot;1 docker permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Docker?&lt;/h3&gt;
 &lt;p&gt;Docker는 애플리케이션에 대한 구축,테스트를 표준화하여 컨테이너기반의 배포를 할 수 있는 플랫폼 입니다.&lt;/p&gt;
 &lt;h3 id=&quot;2-공부한-이유&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EA%B3%B5%EB%B6%80%ED%95%9C-%EC%9D%B4%EC%9C%A0&quot; aria-label=&quot;2 공부한 이유 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 공부한 이유&lt;/h3&gt;
 &lt;p&gt;On-premise 환경에서 애플리케이션을 배포시 같은 사양의 서버라도 예상치 못한
@@ -1613,7 +1744,44 @@ delta (difference between the old and new image) update가 수행됩니다.&lt;/
     &lt;/span&gt;&lt;/p&gt;
 &lt;h1 id=&quot;다음&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8B%A4%EC%9D%8C&quot; aria-label=&quot;다음 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;다음&lt;/h1&gt;
 &lt;p&gt;다음 설명부터는 도커의 기술적인 개념에 대해서
-설명해보겠습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Python - Singleton class]]></title><description><![CDATA[1. Singleton 현재 실행중인 프로세스에서 하나의 인스터스를 메모리에 할당하여 유일한 단일객체로서 사용하는 디자인패턴을 말한다. 2. 공부한 이유 현재 개발중인 게이트웨이로서의 Proxy서버에 대해서 다수의 node…]]></description><link>https://bnt10.github.io/python/2022-02-07--python-singleton/</link><guid isPermaLink="false">https://bnt10.github.io/python/2022-02-07--python-singleton/</guid><pubDate>Mon, 07 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;1-singleton&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-singleton&quot; aria-label=&quot;1 singleton permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Singleton&lt;/h3&gt;
+설명해보겠습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Docker - 설치부터(2)]]></title><description><![CDATA[1. Docker 기술 개념 도커의 Container, Image에 대해서 알아 보겠습니다. 컨테이너(Container) 정의: 컨테이너(Container…]]></description><link>https://bnt10.github.io/docker/2022-02-09--docker-개념/</link><guid isPermaLink="false">https://bnt10.github.io/docker/2022-02-09--docker-개념/</guid><pubDate>Tue, 08 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;1-docker-기술-개념&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-docker-%EA%B8%B0%EC%88%A0-%EA%B0%9C%EB%85%90&quot; aria-label=&quot;1 docker 기술 개념 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Docker 기술 개념&lt;/h3&gt;
+&lt;p&gt;도커의 Container, Image에 대해서 알아 보겠습니다.&lt;/p&gt;
+&lt;h4 id=&quot;컨테이너container&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88container&quot; aria-label=&quot;컨테이너container permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;컨테이너(Container)&lt;/h4&gt;
+&lt;p&gt;정의: 컨테이너(Container)는 운영체제 수준에서 다른 실행환경과의 간섭없이 격리하는 기술을 말합니다.&lt;/p&gt;
+&lt;p&gt;궁금증: 컨테이너를 공부하다 보면 쉽게 찾아 볼 수 있는 다른 가상환경 기술인 &lt;strong&gt;가상머신(Virtual Machine)&lt;/strong&gt;과의 차이
+는 무엇있가?&lt;/p&gt;
+&lt;p&gt;제가 공부하면서 가장 큰 차이점으로 생각된 부분은 &lt;strong&gt;‘어디까지를 가상화 하는가?’&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;컨테이너&lt;/strong&gt;의 경우 운영체제의 커널을 공유하여 그 위에 격리환경을 구성합니다.&lt;br&gt;
+&lt;strong&gt;가상머신&lt;/strong&gt;의 경우 하드웨어조차도 가상화시켜 격리환경을 구성합니다.&lt;/p&gt;
+&lt;p&gt;두 차이점 때문에 일반적으로 컨테이너가 낮은 오버헤드 환경을 제공합니다.&lt;br&gt;
+다만 그렇다면 &lt;strong&gt;‘가상머신은 사용할 필요가 없는가?’&lt;/strong&gt; 라는 생각을 하게 되었습니다.&lt;/p&gt;
+&lt;p&gt;가상머신의 활용분야: 가상화를 하드웨어까지 하기 때문에
+개발상 하드웨어 요구 사항이 있거나 Windows, MacOS등 서로 호환성이부족한 플랫폼 개발&lt;/p&gt;
+&lt;h4 id=&quot;이미지image&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EB%AF%B8%EC%A7%80image&quot; aria-label=&quot;이미지image permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이미지(Image)&lt;/h4&gt;
+&lt;p&gt;공부하면서 이해한 도커의 이미지의 개념은 일종의 객체지향의 클래스라고 생각되었습니다.&lt;br&gt;
+이미지라는 클래스를 통해서 컨테이러나는 객체를 만드는 것이라 가정하면 이미지는 컨테이너 생성을 위한 파일, 설정등을 포함하고 상태값을 가지지않는 &lt;strong&gt;Imutable&lt;/strong&gt;상태로 저장되기 때문입니다.&lt;/p&gt;
+&lt;p&gt;또한 같은 이미지는 여러개의 컨테이너를 생성할 수 있고 컨테이너의 상태의 변경은&lt;br&gt;
+컨테이너에만 적용되고 이미지에는 적용되지 않습니다.&lt;/p&gt;
+&lt;p&gt;이미지의 구성은 N층의 레이어를 통해 구성됩니다.&lt;br&gt;
+예를 들어서 base가 되는 Ubuntu 레이어 위에 Nginx layer를 올리는 방식으로&lt;br&gt;
+N층의 레이어 구성을 통해서 하나의 이미지가 구성됩니다.&lt;/p&gt;
+&lt;p&gt;docker file 에 추가적인 layer가 올라가게 될 경우
+delta (difference between the old and new image) update가 수행됩니다.&lt;/p&gt;
+&lt;p&gt;실제 이미지를 만드는 방법은 다음과 같습니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dockerfile&lt;/strong&gt;이란 파일을 작성하여 &lt;strong&gt;Build&lt;/strong&gt;하는 과정이 필요합니다.&lt;br&gt;
+참고 : &lt;a href=&quot;https://docs.docker.com/develop/develop-images/dockerfile_best-practices/&quot;&gt;자세한 작성가이드 입니다.&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;ubuntu&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;18.04&lt;/span&gt;
+&lt;span class=&quot;token constant&quot;&gt;COPY&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;app
+&lt;span class=&quot;token constant&quot;&gt;RUN&lt;/span&gt; make &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;app
+&lt;span class=&quot;token constant&quot;&gt;CMD&lt;/span&gt; python &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;app&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;py&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;각 명령어들은 하나의 &lt;strong&gt;layer&lt;/strong&gt;가 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;FROM : ubuntu:18.04라는 DockerImage를 이용해서 레이어를 생성&lt;/li&gt;
+&lt;li&gt;COPY : . /app . &amp;#x3C;- host /app &amp;#x3C;- container&lt;/li&gt;
+&lt;li&gt;RUN : 명령을 실행할 때 마다 layer가 생성되고 캐시된다.&lt;/li&gt;
+&lt;li&gt;CMD : 컨테이너가 실행되는 시점에 사용되는 명령어&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;계속&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B3%84%EC%86%8D&quot; aria-label=&quot;계속 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;계속&lt;/h1&gt;</content:encoded></item><item><title><![CDATA[Python - Singleton class]]></title><description><![CDATA[1. Singleton 현재 실행중인 프로세스에서 하나의 인스터스를 메모리에 할당하여 유일한 단일객체로서 사용하는 디자인패턴을 말한다. 2. 공부한 이유 현재 개발중인 게이트웨이로서의 Proxy서버에 대해서 다수의 node…]]></description><link>https://bnt10.github.io/python/2022-02-07--python-singleton/</link><guid isPermaLink="false">https://bnt10.github.io/python/2022-02-07--python-singleton/</guid><pubDate>Mon, 07 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;1-singleton&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-singleton&quot; aria-label=&quot;1 singleton permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Singleton&lt;/h3&gt;
 &lt;p&gt;현재 실행중인 프로세스에서 하나의 인스터스를 메모리에 할당하여 유일한 단일객체로서 사용하는 디자인패턴을 말한다.&lt;/p&gt;
 &lt;h3 id=&quot;2-공부한-이유&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EA%B3%B5%EB%B6%80%ED%95%9C-%EC%9D%B4%EC%9C%A0&quot; aria-label=&quot;2 공부한 이유 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 공부한 이유&lt;/h3&gt;
 &lt;p&gt;현재 개발중인 게이트웨이로서의 Proxy서버에 대해서 다수의 node서버 접속시 사용할 전역 Proxy서버 객체 및
@@ -1785,58 +1953,7 @@ PORT &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=
     &lt;span class=&quot;token keyword&quot;&gt;finally&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
         client_socket&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;close&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;참고
-&lt;a href=&quot;https://stickode.tistory.com/225&quot;&gt;https://stickode.tistory.com/225&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[영어공부 - 종속접속사]]></title><description><![CDATA[종속접속사 원문
-종속접속사란 어떤 주절에 대해서 다른 절을 종속시키는 것을 말한다. 주절 <-(종속접속사) 종속절 종류에는 명사, 형용사, 부사 종속 접속사가 있다. 여기서 종속시키려는 절 앞에 붙기 때문에 이끈다는 표현으로 설명해보자…]]></description><link>https://bnt10.github.io/english/2022.02-05--종속접속사/</link><guid isPermaLink="false">https://bnt10.github.io/english/2022.02-05--종속접속사/</guid><pubDate>Sat, 05 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;종속접속사&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A2%85%EC%86%8D%EC%A0%91%EC%86%8D%EC%82%AC&quot; aria-label=&quot;종속접속사 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;종속접속사&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://koonhous.tistory.com/entry/subordinating-conjunction&quot;&gt;원문&lt;/a&gt;
-종속접속사란 어떤 주절에 대해서 다른 절을 종속시키는 것을 말한다.&lt;br&gt;
-주절 &amp;#x3C;-(종속접속사) 종속절&lt;/p&gt;
-&lt;p&gt;종류에는 명사, 형용사, 부사 종속 접속사가 있다.&lt;br&gt;
-여기서 종속시키려는 절 앞에 붙기 때문에 이끈다는 표현으로 설명해보자&lt;/p&gt;
-&lt;h4 id=&quot;1-명사절-종속접속사&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EB%AA%85%EC%82%AC%EC%A0%88-%EC%A2%85%EC%86%8D%EC%A0%91%EC%86%8D%EC%82%AC&quot; aria-label=&quot;1 명사절 종속접속사 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 명사절 종속접속사&lt;/h4&gt;
-&lt;p&gt;주어/보어/목적어 역활을 하는 절을 명사 절이라 하는데&lt;br&gt;
-명사절을 이끄는 종속접속사에는 what, that, if(wheter)등이 있다한다.&lt;/p&gt;
-&lt;h5 id=&quot;1-주어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EC%A3%BC%EC%96%B4&quot; aria-label=&quot;1 주어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 주어&lt;/h5&gt;
-&lt;p&gt;주어&lt;br&gt;
-&lt;u&gt;What she said&lt;/u&gt; is a lie &amp;#x3C;—&gt; &lt;u&gt;그녀가 말한것은&lt;/u&gt; 거짓이다.&lt;/p&gt;
-&lt;h5 id=&quot;2-목적어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EB%AA%A9%EC%A0%81%EC%96%B4&quot; aria-label=&quot;2 목적어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 목적어&lt;/h5&gt;
-&lt;p&gt;I think &lt;u&gt;(that) he is young&lt;/u&gt; &amp;#x3C;—&gt; 나는 &lt;u&gt;그가 어리다고&lt;/u&gt; 생각한다.&lt;br&gt;
-I wonder &lt;u&gt;if(whether) he likes me&lt;/u&gt; &amp;#x3C;—&gt; 나는 &lt;u&gt;그가 나를 좋아하는지 아닌지&lt;/u&gt; 궁금하다&lt;br&gt;
-종속 접속사 if는 목적어 역활로만 사용할 수 있습니다.&lt;/p&gt;
-&lt;h5 id=&quot;3-보어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-%EB%B3%B4%EC%96%B4&quot; aria-label=&quot;3 보어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. 보어&lt;/h5&gt;
-&lt;p&gt;The problem is &lt;u&gt;(that) she was absent from work.&lt;/u&gt; &amp;#x3C;—&gt; 문제는 &lt;u&gt;그녀가 결근을 했다&lt;/u&gt;는 것이다.&lt;/p&gt;
-&lt;p&gt;종속접속사 that을 사용하여 the problem을 보충 설명하며 목적어, 보어 역활을 하는 that은 생략할 수 있다.&lt;/p&gt;
-&lt;h4 id=&quot;2-형용사-절을-이끄는-종속접속사&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%ED%98%95%EC%9A%A9%EC%82%AC-%EC%A0%88%EC%9D%84-%EC%9D%B4%EB%81%84%EB%8A%94-%EC%A2%85%EC%86%8D%EC%A0%91%EC%86%8D%EC%82%AC&quot; aria-label=&quot;2 형용사 절을 이끄는 종속접속사 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 형용사 절을 이끄는 종속접속사&lt;/h4&gt;
-&lt;p&gt;흔히 관계대명사, 관계부사로 일컬어지는 문법이 종속접속사의 형용사절이다.
-종속접속사 who, which, that, when, where, why, how는 형용사처럼 쓰여 명사를 수식&lt;br&gt;
-who : 사람&lt;br&gt;
-which : 사물&lt;br&gt;
-where : 장소&lt;br&gt;
-when : 시점&lt;br&gt;
-why : 이유&lt;/p&gt;
-&lt;p&gt;I know a &lt;u&gt;man&lt;/u&gt; &lt;strong&gt;who&lt;/strong&gt; &lt;u&gt;is wearing a blue shirt&lt;/u&gt;&lt;br&gt;
-명사를 수식한다&lt;/p&gt;
-&lt;h4 id=&quot;3-부사-절을-이끄는-종속접속사&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-%EB%B6%80%EC%82%AC-%EC%A0%88%EC%9D%84-%EC%9D%B4%EB%81%84%EB%8A%94-%EC%A2%85%EC%86%8D%EC%A0%91%EC%86%8D%EC%82%AC&quot; aria-label=&quot;3 부사 절을 이끄는 종속접속사 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. 부사 절을 이끄는 종속접속사&lt;/h4&gt;
-&lt;p&gt;부사절은 주절에서 전달하려는 내용에 대해 시간, 조건, 이유, 양보 등의 부연설명을 해주는 역활을 한다.
-시간 : when, before, after, since, while, until&lt;br&gt;
-조건 : if, unless, as long as
-이유 : because, as, since&lt;br&gt;
-양보 : even though, although, though&lt;/p&gt;
-&lt;p&gt;When I was young I wanted to be an actor &amp;#x3C;—&gt; 내가 어렸을때 나는 배우가 되길 원했다&lt;/p&gt;
-&lt;p&gt;부사절은 단독으로 쓰일 수 없다.&lt;br&gt;
-주절인 I wanted to be a actor(나는 배우가 되는 것을 원했다)는 단독으로 쓰여도 어색하지 않지만
-부사절인 when I was young(내가 어렸을때)는 단독으로 쓰기에는 완전하지 않다는데 ???&lt;br&gt;
-(뒤에 말이 나올꺼 같다는 의미로 완전하지 않다는건가?)&lt;/p&gt;
-&lt;p&gt;다른 예문은 아래와 같다.&lt;/p&gt;
-&lt;p&gt;She read a book &lt;strong&gt;while(~동안에)&lt;/strong&gt; she waited for him&lt;br&gt;
-그녀는 그를 기다리는 &lt;strong&gt;동안에&lt;/strong&gt; 책을 읽는다.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Though(비록 ~일지라도)&lt;/strong&gt; it was cold I went out&lt;br&gt;
-비록 추웠지만 나는 밖으로 나갔다.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;As(~ 할떄)&lt;/strong&gt; he entered the room she was sleeping on her stomach&lt;br&gt;
-그가 방으로 &lt;strong&gt;들어갔을 때&lt;/strong&gt;, 그녀는 엎드려 자고 있었다.&lt;/p&gt;
-&lt;p&gt;He was late &lt;strong&gt;because(때문에)&lt;/strong&gt; he missed the bus.&lt;br&gt;
-그는 버스를 놓쳤기 &lt;strong&gt;때문에&lt;/strong&gt; 늦었다.&lt;/p&gt;
-&lt;p&gt;It’s 10 years &lt;strong&gt;since(~한 이래로)&lt;/strong&gt; I’ve seen him&lt;br&gt;
-&lt;strong&gt;내가 그를 본지&lt;/strong&gt; 10년이 되었다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[gatsby research]]></title><description><![CDATA[content Folder 현재 사용하고 있는 Lumen 테마에 대한 커스텀을 하기 위해서 공부를 시작하였습니다. 먼저 content 폴더를 살펴 보았습니다. pages 폴더와 posts 폴더로 구성되어 있습니다.
+&lt;a href=&quot;https://stickode.tistory.com/225&quot;&gt;https://stickode.tistory.com/225&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[gatsby research]]></title><description><![CDATA[content Folder 현재 사용하고 있는 Lumen 테마에 대한 커스텀을 하기 위해서 공부를 시작하였습니다. 먼저 content 폴더를 살펴 보았습니다. pages 폴더와 posts 폴더로 구성되어 있습니다.
 page와 posts…]]></description><link>https://bnt10.github.io/react/2022-02-05---gatsby-study/</link><guid isPermaLink="false">https://bnt10.github.io/react/2022-02-05---gatsby-study/</guid><pubDate>Sat, 05 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h4 id=&quot;content-folder&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#content-folder&quot; aria-label=&quot;content folder permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;content Folder&lt;/h4&gt;
 &lt;p&gt;현재 사용하고 있는 &lt;a href=&quot;https://github.com/alxshelepenok/gatsby-starter-lumen&quot;&gt;Lumen 테마&lt;/a&gt;에 대한 커스텀을 하기 위해서 공부를 시작하였습니다.&lt;br&gt;
 먼저 content 폴더를 살펴 보았습니다.&lt;/p&gt;
@@ -1908,7 +2025,58 @@ dangerouslySetInnerHTML React에서 InnerHTML을 사용하기 위한 방식&lt;/
         &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Comments postSlug&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;slug&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; postTitle&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;post&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;frontmatter&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;title&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
       &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
     &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;page 와 post를 수정할때는 두 Component를 수정하면 됩니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[react 개발일지-(3)]]></title><description><![CDATA[설치 구성 Nextjs, Typescript, ReduxToolkit를 조합하여
+&lt;p&gt;page 와 post를 수정할때는 두 Component를 수정하면 됩니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[영어공부 - 종속접속사]]></title><description><![CDATA[종속접속사 원문
+종속접속사란 어떤 주절에 대해서 다른 절을 종속시키는 것을 말한다. 주절 <-(종속접속사) 종속절 종류에는 명사, 형용사, 부사 종속 접속사가 있다. 여기서 종속시키려는 절 앞에 붙기 때문에 이끈다는 표현으로 설명해보자…]]></description><link>https://bnt10.github.io/english/2022.02-05--종속접속사/</link><guid isPermaLink="false">https://bnt10.github.io/english/2022.02-05--종속접속사/</guid><pubDate>Sat, 05 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;종속접속사&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A2%85%EC%86%8D%EC%A0%91%EC%86%8D%EC%82%AC&quot; aria-label=&quot;종속접속사 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;종속접속사&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://koonhous.tistory.com/entry/subordinating-conjunction&quot;&gt;원문&lt;/a&gt;
+종속접속사란 어떤 주절에 대해서 다른 절을 종속시키는 것을 말한다.&lt;br&gt;
+주절 &amp;#x3C;-(종속접속사) 종속절&lt;/p&gt;
+&lt;p&gt;종류에는 명사, 형용사, 부사 종속 접속사가 있다.&lt;br&gt;
+여기서 종속시키려는 절 앞에 붙기 때문에 이끈다는 표현으로 설명해보자&lt;/p&gt;
+&lt;h4 id=&quot;1-명사절-종속접속사&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EB%AA%85%EC%82%AC%EC%A0%88-%EC%A2%85%EC%86%8D%EC%A0%91%EC%86%8D%EC%82%AC&quot; aria-label=&quot;1 명사절 종속접속사 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 명사절 종속접속사&lt;/h4&gt;
+&lt;p&gt;주어/보어/목적어 역활을 하는 절을 명사 절이라 하는데&lt;br&gt;
+명사절을 이끄는 종속접속사에는 what, that, if(wheter)등이 있다한다.&lt;/p&gt;
+&lt;h5 id=&quot;1-주어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EC%A3%BC%EC%96%B4&quot; aria-label=&quot;1 주어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 주어&lt;/h5&gt;
+&lt;p&gt;주어&lt;br&gt;
+&lt;u&gt;What she said&lt;/u&gt; is a lie &amp;#x3C;—&gt; &lt;u&gt;그녀가 말한것은&lt;/u&gt; 거짓이다.&lt;/p&gt;
+&lt;h5 id=&quot;2-목적어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EB%AA%A9%EC%A0%81%EC%96%B4&quot; aria-label=&quot;2 목적어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 목적어&lt;/h5&gt;
+&lt;p&gt;I think &lt;u&gt;(that) he is young&lt;/u&gt; &amp;#x3C;—&gt; 나는 &lt;u&gt;그가 어리다고&lt;/u&gt; 생각한다.&lt;br&gt;
+I wonder &lt;u&gt;if(whether) he likes me&lt;/u&gt; &amp;#x3C;—&gt; 나는 &lt;u&gt;그가 나를 좋아하는지 아닌지&lt;/u&gt; 궁금하다&lt;br&gt;
+종속 접속사 if는 목적어 역활로만 사용할 수 있습니다.&lt;/p&gt;
+&lt;h5 id=&quot;3-보어&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-%EB%B3%B4%EC%96%B4&quot; aria-label=&quot;3 보어 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. 보어&lt;/h5&gt;
+&lt;p&gt;The problem is &lt;u&gt;(that) she was absent from work.&lt;/u&gt; &amp;#x3C;—&gt; 문제는 &lt;u&gt;그녀가 결근을 했다&lt;/u&gt;는 것이다.&lt;/p&gt;
+&lt;p&gt;종속접속사 that을 사용하여 the problem을 보충 설명하며 목적어, 보어 역활을 하는 that은 생략할 수 있다.&lt;/p&gt;
+&lt;h4 id=&quot;2-형용사-절을-이끄는-종속접속사&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%ED%98%95%EC%9A%A9%EC%82%AC-%EC%A0%88%EC%9D%84-%EC%9D%B4%EB%81%84%EB%8A%94-%EC%A2%85%EC%86%8D%EC%A0%91%EC%86%8D%EC%82%AC&quot; aria-label=&quot;2 형용사 절을 이끄는 종속접속사 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 형용사 절을 이끄는 종속접속사&lt;/h4&gt;
+&lt;p&gt;흔히 관계대명사, 관계부사로 일컬어지는 문법이 종속접속사의 형용사절이다.
+종속접속사 who, which, that, when, where, why, how는 형용사처럼 쓰여 명사를 수식&lt;br&gt;
+who : 사람&lt;br&gt;
+which : 사물&lt;br&gt;
+where : 장소&lt;br&gt;
+when : 시점&lt;br&gt;
+why : 이유&lt;/p&gt;
+&lt;p&gt;I know a &lt;u&gt;man&lt;/u&gt; &lt;strong&gt;who&lt;/strong&gt; &lt;u&gt;is wearing a blue shirt&lt;/u&gt;&lt;br&gt;
+명사를 수식한다&lt;/p&gt;
+&lt;h4 id=&quot;3-부사-절을-이끄는-종속접속사&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-%EB%B6%80%EC%82%AC-%EC%A0%88%EC%9D%84-%EC%9D%B4%EB%81%84%EB%8A%94-%EC%A2%85%EC%86%8D%EC%A0%91%EC%86%8D%EC%82%AC&quot; aria-label=&quot;3 부사 절을 이끄는 종속접속사 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. 부사 절을 이끄는 종속접속사&lt;/h4&gt;
+&lt;p&gt;부사절은 주절에서 전달하려는 내용에 대해 시간, 조건, 이유, 양보 등의 부연설명을 해주는 역활을 한다.
+시간 : when, before, after, since, while, until&lt;br&gt;
+조건 : if, unless, as long as
+이유 : because, as, since&lt;br&gt;
+양보 : even though, although, though&lt;/p&gt;
+&lt;p&gt;When I was young I wanted to be an actor &amp;#x3C;—&gt; 내가 어렸을때 나는 배우가 되길 원했다&lt;/p&gt;
+&lt;p&gt;부사절은 단독으로 쓰일 수 없다.&lt;br&gt;
+주절인 I wanted to be a actor(나는 배우가 되는 것을 원했다)는 단독으로 쓰여도 어색하지 않지만
+부사절인 when I was young(내가 어렸을때)는 단독으로 쓰기에는 완전하지 않다는데 ???&lt;br&gt;
+(뒤에 말이 나올꺼 같다는 의미로 완전하지 않다는건가?)&lt;/p&gt;
+&lt;p&gt;다른 예문은 아래와 같다.&lt;/p&gt;
+&lt;p&gt;She read a book &lt;strong&gt;while(~동안에)&lt;/strong&gt; she waited for him&lt;br&gt;
+그녀는 그를 기다리는 &lt;strong&gt;동안에&lt;/strong&gt; 책을 읽는다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Though(비록 ~일지라도)&lt;/strong&gt; it was cold I went out&lt;br&gt;
+비록 추웠지만 나는 밖으로 나갔다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;As(~ 할떄)&lt;/strong&gt; he entered the room she was sleeping on her stomach&lt;br&gt;
+그가 방으로 &lt;strong&gt;들어갔을 때&lt;/strong&gt;, 그녀는 엎드려 자고 있었다.&lt;/p&gt;
+&lt;p&gt;He was late &lt;strong&gt;because(때문에)&lt;/strong&gt; he missed the bus.&lt;br&gt;
+그는 버스를 놓쳤기 &lt;strong&gt;때문에&lt;/strong&gt; 늦었다.&lt;/p&gt;
+&lt;p&gt;It’s 10 years &lt;strong&gt;since(~한 이래로)&lt;/strong&gt; I’ve seen him&lt;br&gt;
+&lt;strong&gt;내가 그를 본지&lt;/strong&gt; 10년이 되었다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[react 개발일지-(3)]]></title><description><![CDATA[설치 구성 Nextjs, Typescript, ReduxToolkit를 조합하여
 Redux를 구성하기
 이번에는 ReduxToolkit을 기준으로 하여 구성해보기로 한다. rootReducer 작성 reducer를 통합할 rootReducer…]]></description><link>https://bnt10.github.io/react/2021-12-17---react-3/</link><guid isPermaLink="false">https://bnt10.github.io/react/2021-12-17---react-3/</guid><pubDate>Fri, 17 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h4 id=&quot;설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%A4%EC%B9%98&quot; aria-label=&quot;설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;설치&lt;/h4&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;npm install @reduxjs&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;toolkit react&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;redux
